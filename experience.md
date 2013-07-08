@@ -41,7 +41,7 @@ mail
 config management / VCS
 -----------------------
 
-* Chef, Fabric tools for configuration/deployment magic
+* Chef, Puppet, Ansible tools for configuration/deployment magic
 * Proficient in version control systems: Git, Subversion, CVS, RCS
 
 web development
