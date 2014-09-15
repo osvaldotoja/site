@@ -7,7 +7,7 @@ image:
   feature:
 ---
 
-<img src="/images/linkedin-image.jpg" class="bio-photo" alt="Osvaldo Toja" align="right">
+<img src="{{ site.url }}/images/linkedin-image.jpg" class="bio-photo" alt="Osvaldo Toja" align="right">
 
 
 # links
