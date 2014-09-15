@@ -4,7 +4,7 @@
 		  "title"      : "Organizing Group Vars Files in Ansible",
 		  "category"   : "",
       "tags"       : "ansible",
-		  "url"        : "https://toja.io/using-host-and-group-vars-files-in-ansible/",
+		  "url"        : "/using-host-and-group-vars-files-in-ansible/",
 		  "date"       : "2014-09-14 22:51:11 -0300",
 		  "shortdate"  : "September 14, 2014"
 		} ,
@@ -13,7 +13,7 @@
 		  "title"      : "Install Ansible in CentOS 5.3",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "https://toja.io/install-ansible-in-centos-5-3/",
+		  "url"        : "/install-ansible-in-centos-5-3/",
 		  "date"       : "2014-09-14 22:50:52 -0300",
 		  "shortdate"  : "September 14, 2014"
 		} ,
@@ -22,7 +22,7 @@
 		  "title"      : "Hello World",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "https://toja.io/hello-world/",
+		  "url"        : "/hello-world/",
 		  "date"       : "2014-08-08 16:39:55 -0300",
 		  "shortdate"  : "August 08, 2014"
 		} ,
@@ -31,7 +31,7 @@
 		  "title"      : "Override Author Byline Test Post",
 		  "category"   : "",
       "tags"       : "sample-post, readability, and test",
-		  "url"        : "https://toja.io/author-override/",
+		  "url"        : "/author-override/",
 		  "date"       : "2014-06-19 00:00:00 -0300",
 		  "shortdate"  : "June 19, 2014"
 		} ,
@@ -40,7 +40,7 @@
 		  "title"      : "How to Get Last Commit Hash in Git",
 		  "category"   : "",
       "tags"       : "git",
-		  "url"        : "https://toja.io/how-to-get-last-commit-hash-in-git/",
+		  "url"        : "/how-to-get-last-commit-hash-in-git/",
 		  "date"       : "2014-03-12 21:15:58 -0300",
 		  "shortdate"  : "March 12, 2014"
 		} ,
@@ -49,7 +49,7 @@
 		  "title"      : "Parsing in Coffescript",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "https://toja.io/parsing-in-coffescript/",
+		  "url"        : "/parsing-in-coffescript/",
 		  "date"       : "2014-02-26 15:35:04 -0300",
 		  "shortdate"  : "February 26, 2014"
 		} ,
@@ -58,7 +58,7 @@
 		  "title"      : "Http Requests in Coffeescript",
 		  "category"   : "",
       "tags"       : "coffescript",
-		  "url"        : "https://toja.io/http-request-in-coffeescript/",
+		  "url"        : "/http-request-in-coffeescript/",
 		  "date"       : "2014-02-26 15:11:01 -0300",
 		  "shortdate"  : "February 26, 2014"
 		} ,
@@ -67,7 +67,7 @@
 		  "title"      : "Using Logstash for Artifactory Notifications",
 		  "category"   : "",
       "tags"       : "logstash, jfrog, and elasticsearch",
-		  "url"        : "https://toja.io/using-logstash-for-artifactory-notifications/",
+		  "url"        : "/using-logstash-for-artifactory-notifications/",
 		  "date"       : "2014-02-16 16:44:58 -0300",
 		  "shortdate"  : "February 16, 2014"
 		} ,
@@ -76,7 +76,7 @@
 		  "title"      : "'Staying Alive' by Ghost",
 		  "category"   : "",
       "tags"       : "ghost and nodejs",
-		  "url"        : "https://toja.io/staying-alive-by-ghost/",
+		  "url"        : "/staying-alive-by-ghost/",
 		  "date"       : "2014-02-06 14:15:55 -0300",
 		  "shortdate"  : "February 06, 2014"
 		} ,
@@ -85,7 +85,7 @@
 		  "title"      : "Installing Pip",
 		  "category"   : "",
       "tags"       : "python and pip",
-		  "url"        : "https://toja.io/installing-pip/",
+		  "url"        : "/installing-pip/",
 		  "date"       : "2014-01-30 14:19:49 -0300",
 		  "shortdate"  : "January 30, 2014"
 		} ,
@@ -94,7 +94,7 @@
 		  "title"      : "Installing Git in Centos 5.3",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "https://toja.io/installing-git-in-centos-5-3/",
+		  "url"        : "/installing-git-in-centos-5-3/",
 		  "date"       : "2014-01-30 12:04:46 -0300",
 		  "shortdate"  : "January 30, 2014"
 		} ,
@@ -103,7 +103,7 @@
 		  "title"      : "Installing Python 2.7 in CentOS 5.3",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "https://toja.io/installing-python-2-7-in-centos-5-3/",
+		  "url"        : "/installing-python-2-7-in-centos-5-3/",
 		  "date"       : "2014-01-29 10:37:43 -0300",
 		  "shortdate"  : "January 29, 2014"
 		} ,
@@ -112,7 +112,7 @@
 		  "title"      : "Previewing Ghost 0.4",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "https://toja.io/previewing-ghost-0-4/",
+		  "url"        : "/previewing-ghost-0-4/",
 		  "date"       : "2014-01-11 16:56:40 -0300",
 		  "shortdate"  : "January 11, 2014"
 		} ,
@@ -121,7 +121,7 @@
 		  "title"      : "Code Snippets",
 		  "category"   : "",
       "tags"       : "",
-		  "url"        : "https://toja.io/code-snippets/",
+		  "url"        : "/code-snippets/",
 		  "date"       : "2014-01-01 21:45:37 -0300",
 		  "shortdate"  : "January 01, 2014"
 		} ,
@@ -130,7 +130,7 @@
 		  "title"      : "Oh My Ghost",
 		  "category"   : "",
       "tags"       : "ghost",
-		  "url"        : "https://toja.io/oh-my-ghost/",
+		  "url"        : "/oh-my-ghost/",
 		  "date"       : "2014-01-01 21:42:57 -0300",
 		  "shortdate"  : "January 01, 2014"
 		} ,
@@ -139,7 +139,7 @@
 		  "title"      : "Syntax Highlighting Post",
 		  "category"   : "",
       "tags"       : "sample-post, code, and highlighting",
-		  "url"        : "https://toja.io/code-highlighting-post/",
+		  "url"        : "/code-highlighting-post/",
 		  "date"       : "2013-08-16 00:00:00 -0300",
 		  "shortdate"  : "August 16, 2013"
 		} ,
@@ -148,7 +148,7 @@
 		  "title"      : "Sample Link Post",
 		  "category"   : "",
       "tags"       : "sample-post and link-post",
-		  "url"        : "https://toja.io/sample-link-post/",
+		  "url"        : "/sample-link-post/",
 		  "date"       : "2013-08-12 00:00:00 -0300",
 		  "shortdate"  : "August 12, 2013"
 		} ,
@@ -157,7 +157,7 @@
 		  "title"      : "A Post with a Video",
 		  "category"   : "",
       "tags"       : "sample-post and video",
-		  "url"        : "https://toja.io/video-post/",
+		  "url"        : "/video-post/",
 		  "date"       : "2013-06-25 00:00:00 -0300",
 		  "shortdate"  : "June 25, 2013"
 		} ,
@@ -166,7 +166,7 @@
 		  "title"      : "Post with Large Feature Image and Text",
 		  "category"   : "",
       "tags"       : "sample-post and readability",
-		  "url"        : "https://toja.io/readability-feature-post/",
+		  "url"        : "/readability-feature-post/",
 		  "date"       : "2013-05-23 00:00:00 -0300",
 		  "shortdate"  : "May 23, 2013"
 		} ,
@@ -175,7 +175,7 @@
 		  "title"      : "A Post with Images",
 		  "category"   : "",
       "tags"       : "sample-post, images, and test",
-		  "url"        : "https://toja.io/sample-post-images/",
+		  "url"        : "/sample-post-images/",
 		  "date"       : "2013-05-22 00:00:00 -0300",
 		  "shortdate"  : "May 22, 2013"
 		} ,
@@ -184,7 +184,7 @@
 		  "title"      : "Testing Readability with a Bunch of Text",
 		  "category"   : "",
       "tags"       : "sample-post, readability, test, and intro",
-		  "url"        : "https://toja.io/readability-post/",
+		  "url"        : "/readability-post/",
 		  "date"       : "2012-05-22 00:00:00 -0300",
 		  "shortdate"  : "May 22, 2012"
 		} ,
@@ -193,7 +193,7 @@
 		  "title"      : "Sample Post",
 		  "category"   : "",
       "tags"       : "sample-post",
-		  "url"        : "https://toja.io/sample-post/",
+		  "url"        : "/sample-post/",
 		  "date"       : "2011-03-10 00:00:00 -0300",
 		  "shortdate"  : "March 10, 2011"
 		} 
