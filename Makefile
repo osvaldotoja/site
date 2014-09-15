@@ -10,8 +10,8 @@ build:
 	jekyll build
 
 publish:
-	make build
-	git commit -am"site update" 
+	jekyll build
+	#git commit -am"site update" 
 	git checkout gh-pages
 	rsync -av _site/* .
 	rm -fr _site/
