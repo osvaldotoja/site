@@ -12,3 +12,5 @@ bbin/
 Gemfile*
 Rakefile*
 bin/*
+.sass_cache/*
+.sass_cache

@@ -1,0 +1,318 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Installing Python 2.7 in CentOS 5.3 &#8211; toja.io</title>
+
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Installing Python 2.7 in CentOS 5.3">
+
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://toja.io/images/">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Installing Python 2.7 in CentOS 5.3">
+
+<meta property="og:url" content="https://toja.io/installing-python-2-7-in-centos-5-3/">
+<meta property="og:site_name" content="toja.io">
+
+
+
+
+
+<link rel="canonical" href="https://toja.io/installing-python-2-7-in-centos-5-3/">
+<link href="https://toja.io/feed.xml" type="application/atom+xml" rel="alternate" title="toja.io Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://toja.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="https://toja.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="https://toja.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="https://toja.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://toja.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://toja.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://toja.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://toja.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://toja.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://toja.io/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="https://toja.io/" >Home</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="https://toja.io/articles/" >Articles</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="https://toja.io/about/" >About</a></li>
+		  
+        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+        <h1 class="site-title animated fadeIn"><a href="https://toja.io/">toja.io</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Installing Python 2.7 in CentOS 5.3</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="https://toja.io/images/linkedin-image.jpg" class="bio-photo" alt="Osvaldo Toja bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Osvaldo Toja</span></span>
+        <span class="entry-date date published"><time datetime="2014-01-29T10:37:43-03:00"><i class="fa fa-calendar-o"></i> January 29, 2014</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>Ansible requires python 2.6 or newer.
+CentOS 5.3 comes with python 2.4, a version which is used by system tools like yum.
+In order to run ansible on older CentOS version, an alternative installation is provided below.
+The following commands will install Python 2.7 (check section for requirements below) in the user’s directory. No root access is required.</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>USER=osvaldo
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>VERSION=2.7.5
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>mkdir ~/src
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>cd ~/src
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>wget http://python.org/ftp/python/$VERSION/Python-$VERSION.tar.bz2
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>tar xjf Python-$VERSION.tar.bz2
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>rm Python-$VERSION.tar.bz2
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>cd Python-$VERSION
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>INSTALL_DIR=/home/$USER/bin/python27
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>mkdir -p $INSTALL_DIR
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>./configure --prefix=$INSTALL_DIR
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>make
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>make install
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>ln -s $INSTALL_DIR/bin/python27 /home/${USER}/bin/
+</pre></div>
+</div>
+</div>
+
+<h4 id="requirements">Requirements</h4>
+
+<p>If after the <code>make</code> step the following error appears</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>[osvaldo@srv2 Python-2.7.5]$ make
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>running build
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>running build_ext
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>INFO: Can't locate Tcl/Tk libs and/or headers
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>Python build finished, but the necessary bits to build these modules were not found:
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>_bsddb             _curses            _curses_panel
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>_sqlite3           _tkinter           bsddb185
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>bz2                dbm                gdbm
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>sunaudiodev
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>To find the necessary bits, look in setup.py in detect_modules() for the module's name.
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>running build_scripts
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>[osvaldo@srv2 Python-2.7.5]$
+</pre></div>
+</div>
+</div>
+
+<p>The following packages should be installed.</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>sudo yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel
+</pre></div>
+</div>
+</div>
+
+<h4 id="post-installation">Post installation</h4>
+
+<p>The new binaries should be added to the bin path. This can be done by modifying the <code>~/.bash_profile</code> to look like the following. Remember to start a new session for the change to apply.</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>PATH=$PATH:$HOME/bin:$HOME/bin/python/bin
+</pre></div>
+</div>
+</div>
+
+<p>For example. The following error:</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>[osvaldo@srv2 tmp]$ sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>setuptools-0.6c11-py2.7.egg: line 3: exec: python2.7: not found
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>[osvaldo@srv2 tmp]$
+</pre></div>
+</div>
+</div>
+
+<p>Can be fixed after adding the python 2.7 binary scripts to the bin path.</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>[osvaldo@srv2 tmp]$ sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>Processing setuptools-0.6c11-py2.7.egg
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>Copying setuptools-0.6c11-py2.7.egg to /home/osvaldo/bin/python27/lib/python2.7/site-packages
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>Adding setuptools 0.6c11 to easy-install.pth file
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>Installing easy_install script to /home/osvaldo/bin/python/bin
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>Installing easy_install-2.7 script to /home/osvaldo/bin/python/bin
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>Installed /home/osvaldo/bin/python27/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>Processing dependencies for setuptools==0.6c11
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>Finished processing dependencies for setuptools==0.6c11
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>[osvaldo@srv2 tmp]$
+</pre></div>
+</div>
+</div>
+
+
+        <nav class="pagination" role="navigation">
+          
+            <a href="https://toja.io/previewing-ghost-0-4/" class="btn" title="Previewing Ghost 0.4">Previous</a>
+          
+          
+            <a href="https://toja.io/installing-git-in-centos-5-3/" class="btn" title="Installing Git in Centos 5.3">Next</a>
+          
+        </nav><!-- /.pagination -->
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	
+	
+	
+	
+	
+	
+	<a href="http://github.com/osvaldotoja" title="Osvaldo Toja on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="https://toja.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://toja.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://toja.io/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'https://toja.io/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+	        
+
+</body>
+</html>

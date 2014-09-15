@@ -1,0 +1,279 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Using Logstash for Artifactory Notifications &#8211; toja.io</title>
+
+<meta name="keywords" content="logstash, jfrog, elasticsearch">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Using Logstash for Artifactory Notifications">
+
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://toja.io/images/">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using Logstash for Artifactory Notifications">
+
+<meta property="og:url" content="https://toja.io/using-logstash-for-artifactory-notifications/">
+<meta property="og:site_name" content="toja.io">
+
+
+
+
+
+<link rel="canonical" href="https://toja.io/using-logstash-for-artifactory-notifications/">
+<link href="https://toja.io/feed.xml" type="application/atom+xml" rel="alternate" title="toja.io Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://toja.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="https://toja.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="https://toja.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="https://toja.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://toja.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://toja.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://toja.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://toja.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://toja.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://toja.io/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="https://toja.io/" >Home</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="https://toja.io/articles/" >Articles</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="https://toja.io/about/" >About</a></li>
+		  
+        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+        <h1 class="site-title animated fadeIn"><a href="https://toja.io/">toja.io</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="https://toja.io/tags/#logstash" title="Pages tagged logstash">logstash</a>&nbsp;&bull;&nbsp;<a href="https://toja.io/tags/#jfrog" title="Pages tagged jfrog">jfrog</a>&nbsp;&bull;&nbsp;<a href="https://toja.io/tags/#elasticsearch" title="Pages tagged elasticsearch">elasticsearch</a></span>
+        
+          <h1 class="entry-title">Using Logstash for Artifactory Notifications</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="https://toja.io/images/linkedin-image.jpg" class="bio-photo" alt="Osvaldo Toja bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Osvaldo Toja</span></span>
+        <span class="entry-date date published"><time datetime="2014-02-16T16:44:58-03:00"><i class="fa fa-calendar-o"></i> February 16, 2014</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>One of the limitations for the opensource version of <a href="http://www.jfrog.com/home/v_artifactory_opensource_overview">Artifactory’s jfrog</a> is notifications for newly added artifacts. We will provide a workaround to that issue.</p>
+
+<p>Being an app running inside a tomcat container, a  quick inspection on the log file revealed new artifacts creation was being logged in. Below it’s an example taken from the log file.</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>2014-02-06 14:13:47,259 [art-exec-3091] [INFO ] (o.a.s.a.ArchiveIndexer:102) - The content of the archive: 'acme-alfa-3.4.5.zip' was indexed successfully.
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>2014-02-06 14:19:45,870 [art-exec-3094] [INFO ] (o.a.s.a.ArchiveIndexer:102) - The content of the archive: 'acme-beta-3.4.1.zip' was indexed successfully.
+</pre></div>
+</div>
+</div>
+
+<p>A simple solution would had been using a <code>tail -f .. | some_parsing_script.sh</code>. But that would had implied taking care of the persistance of the script (screen is not <em>that</em> good). So the search for a generic solution begins.</p>
+
+<p>Being familiar with logstash it was just a matter of taking a quick look at the documentation and writing down a simple configuration file.</p>
+
+<p>The configuration files contains three sections:</p>
+
+<ul>
+  <li>input. where you declare the source of the logs. here we’re using a file, the path for the log file and a plus advantage is the support for log files created by commonly used services like tomcat.</li>
+  <li>filter. where we declare the parsing logic, for now, just standard regex parse.</li>
+  <li>output. whenever the filter matches the declared string on this section, an execution will occured. here we send a notification to IRC (via hubot) and execute an ansible playbook on a remote server via ssh.</li>
+</ul>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>input {
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>  file {
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    type =&gt; &quot;tomcat&quot;
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    path =&gt; &quot;/var/log/artifactory/catalina/catalina.out&quot;
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>  }
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>}
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>filter {
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>   grok {
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>     match =&gt; [ &quot;message&quot;, &quot;^%{TIMESTAMP_ISO8601:date},%{NUMBER:number}%{GREEDYDATA:data1}The content of the archive: '%{DATA:artifact}'%{GREEDYDATA:data}&quot; ]
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>   }
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>}
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>output {
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>  if [data] =~ &quot;successfully.$&quot; {
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>    exec {
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>      command =&gt; &quot;curl -s -H 'Host: hubot.acme.com' 'http://10.1.0.10/message/create?room=%23hubot&amp;text=new%20artifact:%20'%{artifact}&quot;
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>    }
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>    exec {
+<span class="line-numbers"><a href="#n22" name="n22">22</a></span>      command =&gt; &quot;ssh srv9 /home/bofh/ansible/deploy-pkg.sh %{artifact} prod&quot;
+<span class="line-numbers"><a href="#n23" name="n23">23</a></span>    }
+<span class="line-numbers"><a href="#n24" name="n24">24</a></span>  }
+<span class="line-numbers"><a href="#n25" name="n25">25</a></span>
+<span class="line-numbers"><a href="#n26" name="n26">26</a></span>}
+</pre></div>
+</div>
+</div>
+
+        <nav class="pagination" role="navigation">
+          
+            <a href="https://toja.io/staying-alive-by-ghost/" class="btn" title="'Staying Alive' by Ghost">Previous</a>
+          
+          
+            <a href="https://toja.io/http-request-in-coffeescript/" class="btn" title="Http Requests in Coffeescript">Next</a>
+          
+        </nav><!-- /.pagination -->
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	
+	
+	
+	
+	
+	
+	<a href="http://github.com/osvaldotoja" title="Osvaldo Toja on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="https://toja.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://toja.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://toja.io/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'https://toja.io/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+	        
+
+</body>
+</html>

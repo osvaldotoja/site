@@ -1,0 +1,341 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Organizing Group Vars Files in Ansible &#8211; toja.io</title>
+
+<meta name="keywords" content="ansible">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Organizing Group Vars Files in Ansible">
+
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://toja.io/images/">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Organizing Group Vars Files in Ansible">
+
+<meta property="og:url" content="https://toja.io/using-host-and-group-vars-files-in-ansible/">
+<meta property="og:site_name" content="toja.io">
+
+
+
+
+
+<link rel="canonical" href="https://toja.io/using-host-and-group-vars-files-in-ansible/">
+<link href="https://toja.io/feed.xml" type="application/atom+xml" rel="alternate" title="toja.io Feed">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://toja.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="https://toja.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="https://toja.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="https://toja.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://toja.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://toja.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://toja.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://toja.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://toja.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://toja.io/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="https://toja.io/" >Home</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="https://toja.io/articles/" >Articles</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="https://toja.io/about/" >About</a></li>
+		  
+        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<div class="search-wrapper">
+  <div class="search-form">
+    <input type="text" class="search-field" placeholder="Search...">
+    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
+    <ul class="search-results post-list"></ul><!-- /.search-results -->
+  </div><!-- /.search-form -->
+</div><!-- ./search-wrapper -->
+
+<header class="masthead">
+	<div class="wrap">
+        
+        <h1 class="site-title animated fadeIn"><a href="https://toja.io/">toja.io</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
+	</div>
+</header><!-- /.masthead -->
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="https://toja.io/tags/#ansible" title="Pages tagged ansible">ansible</a></span>
+        
+          <h1 class="entry-title">Organizing Group Vars Files in Ansible</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="https://toja.io/images/linkedin-image.jpg" class="bio-photo" alt="Osvaldo Toja bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Osvaldo Toja</span></span>
+        <span class="entry-date date published"><time datetime="2014-09-14T22:51:11-03:00"><i class="fa fa-calendar-o"></i> September 14, 2014</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>from <a href="http://docs.ansible.com/intro_inventory.html#splitting-out-host-and-group-specific-data">here</a></p>
+
+<p>In addition to the storing variables directly in the INI file, host and group variables can be stored in individual files relative to the inventory file.</p>
+
+<h2 id="directory-layout">directory layout</h2>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>production/
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>├── group_vars
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>│   └── server.yml
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>└── inventory
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>staging/
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>├── group_vars
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>│   └── server
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>└── inventory
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>group-vars.yml
+</pre></div>
+</div>
+</div>
+
+<h2 id="playbook">playbook</h2>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#777"># group-vars.yml</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>- <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">hosts: all</span></span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span>  <span style="color:#606">user</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">osvaldo</span></span>
+<span class="line-numbers"><a href="#n4" name="n4">4</a></span>  <span style="color:#606">sudo</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">no</span></span>
+<span class="line-numbers"><a href="#n5" name="n5">5</a></span>  <span style="color:#606">gather_facts</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">False</span></span>
+<span class="line-numbers"><a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"><a href="#n7" name="n7">7</a></span>  <span style="color:#606">tasks</span>:
+<span class="line-numbers"><a href="#n8" name="n8">8</a></span>     - <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">debug: msg=&quot;reading from &quot;</span></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="files-in-production-directory">files in production directory</h2>
+
+<p>inventory</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#777"># production/inventory</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>[<span style="color:#F00;background-color:#FAA">server]</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#F00;background-color:#FAA">localhost   ansible_connection=local</span>
+</pre></div>
+</div>
+</div>
+
+<p>vars</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#777"># production/group_vars/server.yml</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#606">env_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">production</span></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="files-in-staging-directory">files in staging directory</h2>
+
+<p>inventory</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#777"># staging/inventory</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span>[<span style="color:#F00;background-color:#FAA">server]</span>
+<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#F00;background-color:#FAA">localhost   ansible_connection=local</span>
+</pre></div>
+</div>
+</div>
+
+<p>vars</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="color:#777"># staging/group_vars/server</span>
+<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#606">env_name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">staging</span></span>
+</pre></div>
+</div>
+</div>
+
+<h2 id="executing-the-playbook">executing the playbook</h2>
+
+<p>using data from staging directory</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>$ ansible-playbook -i staging group-vars.yml
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>PLAY [all] ********************************************************************
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>TASK: [debug msg=&quot;reading from &quot;] *********************************
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>ok: [localhost] =&gt; {
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    &quot;msg&quot;: &quot;reading from staging&quot;
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>}
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>PLAY RECAP ********************************************************************
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>localhost                  : ok=1    changed=0    unreachable=0    failed=0
+</pre></div>
+</div>
+</div>
+
+<p>using data from production directory</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>$ ansible-playbook -i production group-vars.yml
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>PLAY [all] ********************************************************************
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>TASK: [debug msg=&quot;reading from &quot;] *********************************
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>ok: [localhost] =&gt; {
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    &quot;msg&quot;: &quot;reading from production&quot;
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>}
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>PLAY RECAP ********************************************************************
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>localhost                  : ok=1    changed=0    unreachable=0    failed=0
+</pre></div>
+</div>
+</div>
+
+<blockquote>
+  <p>Interesting fact: <code>ansible-playbook</code> when provided a directory as the inventory, will search by default a file named inventory so no need to specify <code>-i production/inventory</code>, only <code>-i production</code> will work just fine.</p>
+</blockquote>
+
+        <nav class="pagination" role="navigation">
+          
+            <a href="https://toja.io/install-ansible-in-centos-5-3/" class="btn" title="Install Ansible in CentOS 5.3">Previous</a>
+          
+          
+        </nav><!-- /.pagination -->
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	
+	
+	
+	
+	
+	
+	<a href="http://github.com/osvaldotoja" title="Osvaldo Toja on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+  <a href="https://toja.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://toja.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://toja.io/assets/js/scripts.min.js"></script>
+
+<!-- Jekyll Simple Search option -->
+<script>
+  $(document).ready(function() {
+      $('.search-field').jekyllSearch({
+          jsonFile: 'https://toja.io/search.json',
+          searchResults: '.search-results',
+          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
+          fuzzy: true,
+          noResults: '<p>Nothing found.</p>'
+        });
+  });
+
+  (function( $, window, undefined ) {
+    
+     var bs = {
+          close: $(".close-btn"),
+          searchform: $(".search-form"),
+          canvas: $("body"),
+          dothis: $('.dosearch')
+      };
+    
+    bs.dothis.on('click', function() {
+      $('.search-wrapper').css({ display: "block" });
+      bs.searchform.toggleClass('active');
+      bs.searchform.find('input').focus();
+      bs.canvas.toggleClass('search-overlay');
+    });
+    
+      bs.close.on('click', function() {
+        $('.search-wrapper').removeAttr( 'style' );
+        bs.searchform.toggleClass('active');
+        bs.canvas.removeClass('search-overlay');
+    });
+  })( jQuery, window );
+</script>
+
+
+
+
+	        
+
+</body>
+</html>
