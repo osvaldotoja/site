@@ -1,0 +1,620 @@
+---
+sitemap: false
+---
+
+/*
+ *
+ *  So Simple
+ *
+ *  Designer: Michael Rose
+ *  Twitter: http://twitter.com/mmistakes
+ *
+*/
+
+// Partials
+@import "variables";
+@import "grid";
+@import "mixins";
+@import "reset";
+@import "site";
+@import "typography";
+/* borrowed from hpstr - added at the bottom
+@import "pygments";
+@import "coderay";
+*/
+@import "elements";
+@import "forms";
+@import "page";
+@import "vendor/font-awesome/font-awesome";
+@import "vendor/magnific-popup/magnific-popup";
+
+
+
+.highlight {
+  margin-bottom: 1.5em;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 2.1667;
+  color: #d0d0d0;
+  background-color: #272822;
+  border: 1px solid #dbdbdb;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.highlight pre {
+  position: relative;
+  padding: 1em;
+  margin: 0;
+}
+
+.highlight .lineno {
+  padding-right: 24px;
+  color: #8f908a;
+}
+
+.highlight .hll {
+  background-color: #49483e;
+}
+
+.highlight .c {
+  color: #75715e;
+}
+
+.highlight .err {
+  color: #960050;
+  background-color: #1e0010;
+}
+
+.highlight .k {
+  color: #66d9ef;
+}
+
+.highlight .l {
+  color: #ae81ff;
+}
+
+.highlight .n {
+  color: #f8f8f2;
+}
+
+.highlight .o {
+  color: #f92672;
+}
+
+.highlight .p {
+  color: #f8f8f2;
+}
+
+.highlight .cm {
+  color: #75715e;
+}
+
+.highlight .cp {
+  color: #75715e;
+}
+
+.highlight .c1 {
+  color: #75715e;
+}
+
+.highlight .cs {
+  color: #75715e;
+}
+
+.highlight .ge {
+  font-style: italic;
+}
+
+.highlight .gs {
+  font-weight: bold;
+}
+
+.highlight .kc {
+  color: #66d9ef;
+}
+
+.highlight .kd {
+  color: #66d9ef;
+}
+
+.highlight .kn {
+  color: #f92672;
+}
+
+.highlight .kp {
+  color: #66d9ef;
+}
+
+.highlight .kr {
+  color: #66d9ef;
+}
+
+.highlight .kt {
+  color: #66d9ef;
+}
+
+.highlight .ld {
+  color: #e6db74;
+}
+
+.highlight .m {
+  color: #ae81ff;
+}
+
+.highlight .s {
+  color: #e6db74;
+}
+
+.highlight .na {
+  color: #a6e22e;
+}
+
+.highlight .nb {
+  color: #f8f8f2;
+}
+
+.highlight .nc {
+  color: #a6e22e;
+}
+
+.highlight .no {
+  color: #66d9ef;
+}
+
+.highlight .nd {
+  color: #a6e22e;
+}
+
+.highlight .ni {
+  color: #f8f8f2;
+}
+
+.highlight .ne {
+  color: #a6e22e;
+}
+
+.highlight .nf {
+  color: #a6e22e;
+}
+
+.highlight .nl {
+  color: #f8f8f2;
+}
+
+.highlight .nn {
+  color: #f8f8f2;
+}
+
+.highlight .nx {
+  color: #a6e22e;
+}
+
+.highlight .py {
+  color: #f8f8f2;
+}
+
+.highlight .nt {
+  color: #f92672;
+}
+
+.highlight .nv {
+  color: #f8f8f2;
+}
+
+.highlight .ow {
+  color: #f92672;
+}
+
+.highlight .w {
+  color: #f8f8f2;
+}
+
+.highlight .mf {
+  color: #ae81ff;
+}
+
+.highlight .mh {
+  color: #ae81ff;
+}
+
+.highlight .mi {
+  color: #ae81ff;
+}
+
+.highlight .mo {
+  color: #ae81ff;
+}
+
+.highlight .sb {
+  color: #e6db74;
+}
+
+.highlight .sc {
+  color: #e6db74;
+}
+
+.highlight .sd {
+  color: #e6db74;
+}
+
+.highlight .s2 {
+  color: #e6db74;
+}
+
+.highlight .se {
+  color: #ae81ff;
+}
+
+.highlight .sh {
+  color: #e6db74;
+}
+
+.highlight .si {
+  color: #e6db74;
+}
+
+.highlight .sx {
+  color: #e6db74;
+}
+
+.highlight .sr {
+  color: #e6db74;
+}
+
+.highlight .s1 {
+  color: #e6db74;
+}
+
+.highlight .ss {
+  color: #e6db74;
+}
+
+.highlight .bp {
+  color: #f8f8f2;
+}
+
+.highlight .vc {
+  color: #f8f8f2;
+}
+
+.highlight .vg {
+  color: #f8f8f2;
+}
+
+.highlight .vi {
+  color: #f8f8f2;
+}
+
+.highlight .il {
+  color: #ae81ff;
+}
+
+.CodeRay {
+  margin-bottom: 1.5em;
+  font-family: monospace;
+  font-size: 12px;
+  font-size: 0.75rem;
+  line-height: 2.1667;
+  color: #d0d0d0;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.CodeRay .code pre {
+  padding: 1em;
+  margin: 0;
+  background-color: #272822;
+  border: 1px solid #dbdbdb;
+}
+
+span.CodeRay {
+  padding: 2px;
+  white-space: pre;
+  border: 0;
+}
+
+table.CodeRay {
+  width: 100%;
+  padding: 2px;
+  border-collapse: collapse;
+}
+
+table.CodeRay td {
+  padding: 1em 0.5em;
+  vertical-align: top;
+}
+
+.CodeRay .line-numbers,
+.CodeRay .no {
+  color: #8f908a;
+  text-align: right;
+}
+
+.CodeRay .line-numbers a {
+  color: #8f908a;
+}
+
+.CodeRay .line-numbers tt {
+  font-weight: bold;
+}
+
+.CodeRay .line-numbers .highlighted {
+  color: #ff0000;
+}
+
+.CodeRay .line {
+  display: block;
+  float: left;
+  width: 100%;
+}
+
+.CodeRay span.line-numbers {
+  padding: 0 24px 0 4px;
+}
+
+.CodeRay .code {
+  width: 100%;
+}
+
+ol.CodeRay {
+  font-size: 10pt;
+}
+
+ol.CodeRay li {
+  white-space: pre;
+}
+
+.CodeRay .code pre {
+  overflow: auto;
+}
+
+.CodeRay .debug {
+  color: white ! important;
+  background: blue ! important;
+}
+
+.CodeRay .doctype,
+.CodeRay .key,
+.CodeRay .instance-variable {
+  color: #f8f8f2;
+}
+
+.CodeRay .attribute-name {
+  color: #a6e22e;
+}
+
+.CodeRay .symbol,
+.CodeRay .integer,
+.CodeRay .float {
+  color: #ff658b;
+}
+
+.CodeRay .string {
+  color: #2dc900;
+}
+
+.CodeRay .keyword {
+  color: #66d9ef;
+}
+
+.CodeRay .function,
+.CodeRay .class {
+  color: #a6e22e;
+}
+
+.CodeRay .regexp,
+.CodeRay .constant,
+.CodeRay .tag {
+  color: #f92672;
+}
+
+.CodeRay .modifier,
+.CodeRay .predefined-constant {
+  color: #ff84e4;
+}
+
+.CodeRay .comment {
+  color: #75715e;
+}
+
+.CodeRay .error {
+  color: #ecc;
+}
+
+.CodeRay .content {
+  color: #e6db74;
+}
+
+.CodeRay .delimiter {
+  color: #e6db74;
+}
+
+.CodeRay .inline {
+  color: #e6db74;
+}
+
+.gist .highlight {
+  color: #000;
+}
+
+.gist .render-container .render-viewer-error,
+.gist .render-container .render-viewer-fatal,
+.gist .render-container .octospinner {
+  display: none;
+}
+
+.gist .gist-render iframe {
+  width: 100%;
+}
+
+.gist .gist-file.gist-render .highlight {
+  border: none;
+}
+
+.gist .gist-file .gist-meta .highlight a {
+  font-weight: 700;
+  color: #666;
+  text-decoration: none;
+}
+
+.gist .highlight {
+  background: #fff;
+}
+
+.gist .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.gist .highlight .cp {
+  font-weight: 700;
+  color: #999;
+}
+
+.gist .highlight .cs {
+  font-style: italic;
+  font-weight: 700;
+  color: #999;
+}
+
+.gist .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.gist .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.gist .highlight .ge {
+  font-style: italic;
+  color: #000;
+}
+
+.gist .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.gist .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.gist .highlight .go {
+  color: #888;
+}
+
+.gist .highlight .gs {
+  font-weight: 700;
+}
+
+.gist .highlight .gu {
+  color: #aaa;
+}
+
+.gist .highlight .nb {
+  color: #0086b3;
+}
+
+.gist .highlight .ni {
+  color: purple;
+}
+
+.gist .highlight .nt {
+  color: navy;
+}
+
+.gist .highlight .w {
+  color: #bbb;
+}
+
+.gist .highlight .sr {
+  color: #009926;
+}
+
+.gist .highlight .ss {
+  color: #990073;
+}
+
+.gist .highlight .c,
+.gist .highlight .cm,
+.gist .highlight .c1 {
+  font-style: italic;
+  color: #998;
+}
+
+.gist .highlight .k,
+.gist .highlight .o,
+.gist .highlight .kc,
+.gist .highlight .kd,
+.gist .highlight .kp,
+.gist .highlight .kr,
+.gist .highlight .ow,
+.gist .highlight .n,
+.gist .highlight .p {
+  font-weight: 700;
+  color: #000;
+}
+
+.gist .highlight .gr,
+.gist .highlight .gt {
+  color: #a00;
+}
+
+.gist .highlight .gh,
+.gist .highlight .bp {
+  color: #999;
+}
+
+.gist .highlight .gp,
+.gist .highlight .nn {
+  color: #555;
+}
+
+.gist .highlight .kt,
+.gist .highlight .nc {
+  font-weight: 700;
+  color: #458;
+}
+
+.gist .highlight .m,
+.gist .highlight .mf,
+.gist .highlight .mh,
+.gist .highlight .mi,
+.gist .highlight .mo,
+.gist .highlight .il {
+  color: #099;
+}
+
+.gist .highlight .s,
+.gist .highlight .sb,
+.gist .highlight .sc,
+.gist .highlight .sd,
+.gist .highlight .s2,
+.gist .highlight .se,
+.gist .highlight .sh,
+.gist .highlight .si,
+.gist .highlight .sx,
+.gist .highlight .s1 {
+  color: #d14;
+}
+
+.gist .highlight .na,
+.gist .highlight .no,
+.gist .highlight .nv,
+.gist .highlight .vc,
+.gist .highlight .vg,
+.gist .highlight .vi {
+  color: teal;
+}
+
+.gist .highlight .ne,
+.gist .highlight .nf {
+  font-weight: 700;
+  color: #900;
+}
