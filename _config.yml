@@ -8,7 +8,7 @@ logo: null
 search: true
 
 #url: https://toja.io
-#baseurl: site
+baseurl: site
 
 
 # Jekyll configuration
