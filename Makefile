@@ -10,11 +10,13 @@ build:
 	jekyll build
 
 publish:
+	ssh-add ~/.ssh/osvaldotoja
 	jekyll build
-	#git commit -am"site update" 
+	git commit -am"site update" 
 	git checkout gh-pages
 	rsync -av _site/* .
 	rm -fr _site/
 	git commit -am"site update" ; git push
 	git checkout master
+	ssh-add -D
 

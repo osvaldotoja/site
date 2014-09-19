@@ -14,8 +14,8 @@
 <!-- Twitter Cards -->
 <meta name="twitter:title" content="Sample Post">
 <meta name="twitter:description" content="Just about everything you'll need to style in the theme: headings, paragraphs, blockquotes, tables, code blocks, and more.">
-
-
+<meta name="twitter:site" content="@otsuarez">
+<meta name="twitter:creator" content="@otsuarez">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://toja.io/images/so-simple-sample-image-1.jpg">
@@ -134,10 +134,10 @@
         <span class="author vcard">By <span class="fn">Osvaldo Toja</span></span>
         <span class="entry-date date published"><time datetime="2011-03-10T00:00:00-03:00"><i class="fa fa-calendar-o"></i> March 10, 2011</time></span>
         <span class="entry-date date modified"><time datetime="2013-05-31"><i class="fa fa-pencil"></i> May 31, 2013</time></span>
-        
+        <span class="entry-comments"><i class="fa fa-comment-o"></i> <a href="#disqus_thread">Comment</a></span>
         
         <span class="social-share-twitter">
-          <a href="https://twitter.com/intent/tweet?hashtags=sample-post&text=Sample%20Post&url=http://toja.io/sample-post/" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
+          <a href="https://twitter.com/intent/tweet?hashtags=sample-post&text=Sample%20Post&url=http://toja.io/sample-post/&via=otsuarez" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a>
         </span>
         <span class="social-share-facebook">
           <a href="https://www.facebook.com/sharer/sharer.php?u=http://toja.io/sample-post/" title="Share on Facebook" itemprop="Facebook"><i class="fa fa-facebook-square"></i> Like</a>
@@ -275,7 +275,7 @@
             <a href="http://toja.io/readability-post/" class="btn" title="Testing Readability with a Bunch of Text">Next</a>
           
         </nav><!-- /.pagination -->
-        
+        <div id="disqus_thread"></div><!-- /#disqus_thread -->
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
   </article>
@@ -287,7 +287,7 @@
 
 <span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
 <div class="social-icons">
-	
+	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
 	
 	
@@ -342,9 +342,47 @@
 </script>
 
 
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-47799513-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
 
 
   
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'tojaio'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 
 	        
 
