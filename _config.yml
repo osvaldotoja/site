@@ -42,8 +42,8 @@ owner:
   name: Osvaldo Toja
   avatar: linkedin-image.jpg
   email: osvaldo.toja@gmail.com
-  disqus-shortname:
-  twitter: #username
+  disqus-shortname: tojaio
+  twitter: otsuarez
   facebook: #username
   github: osvaldotoja
   stackexchange: #http://stackoverflow.com/users/123456/username
@@ -53,7 +53,7 @@ owner:
   tumblr: #username
   google:
     plus: #username
-    analytics:
+    analytics: UA-47799513-1
     verify:
     ad-client:
     ad-slot: 
