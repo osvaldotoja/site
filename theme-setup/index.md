@@ -23,7 +23,7 @@ If you are creating a new Jekyll site using So Simple follow these steps:
 1. Fork the [So Simple repo](http://github.com/mmistakes/so-simple-theme/fork).
 2. Clone the repo you just forked and rename it.
 3. [Install Bundler](http://bundler.io) `gem install bundler` and Run `bundle install` to install all dependencies (Jekyll, [Jekyll-Sitemap](https://github.com/jekyll/jekyll-sitemap), [Octopress](https://github.com/octopress/octopress), etc)
-4. Update `config.yml`, add navigation, and replace demo posts and pages with your own. Full details below.
+4. Update `_config.yml`, add navigation, and replace demo posts and pages with your own. Full details below.
 
 If you want to use So Simple with an existing Jekyll site follow these steps:
 
@@ -36,6 +36,22 @@ If you want to use So Simple with an existing Jekyll site follow these steps:
 
 **Pro-tip:** Delete the `gh-pages` branch after cloning and start fresh by branching off `master`. There is a bunch of garbage in `gh-pages` used for the theme's demo site that I'm guessing you won't want.
 {: .notice}
+
+---
+
+## Running Jekyll
+
+If `jekyll build` and `jekyll serve` throw errors you may have to run Jekyll with `bundled exec` instead.
+
+> In some cases, running executables without bundle exec may work, if the executable happens to be installed in your system and does not pull in any gems that conflict with your bundle.
+>
+>However, this is unreliable and is the source of considerable pain. Even if it looks like it works, it may not work in the future or on another machine.
+
+{% highlight text %}
+bundle exec jekyll build
+
+bundle exec jekyll serve
+{% endhighlight %}
 
 ---
 
@@ -65,12 +81,11 @@ so-simple-theme/
 ├── assets/
 |    ├── css/                    # compiled stylesheets
 |    ├── fonts/                  # webfonts
-|    ├── js/
-|    |   ├── _main.js            # main JavaScript file, plugin settings, etc
-|    |   ├── plugins/            # scripts and jQuery plugins to combine with _main.js
-|    |   ├── scripts.min.js      # concatenated and minified _main.js + plugin scripts
-|    |   └── vendor/             # vendor scripts to leave alone and load as is
-|    └── less/
+|    └── js/
+|        ├── _main.js            # main JavaScript file, plugin settings, etc
+|        ├── plugins/            # scripts and jQuery plugins to combine with _main.js
+|        ├── scripts.min.js      # concatenated and minified _main.js + plugin scripts
+|        └── vendor/             # vendor scripts to leave alone and load as is
 ├── blog/                        # sample blog category page
 ├── images/                      # images for posts and pages
 ├── 404.md                       # 404 page
@@ -101,7 +116,7 @@ Your site's logo, appears in the header below the navigation bar and is used as 
 
 #### url
 
-Used to generate absolute URLs for sitemaps, feeds and for generating canonical URLs in a page's `<head>`. When developing locally either comment this out or use something like `http://localhost:4000` so all assets load properly. *Don't include a trailing `/`*.
+Used to generate absolute URLs for sitemaps, feeds and for generating canonical URLs in a page's `<head>`. When developing locally either comment this out or use something like `http://localhost:4000` so all assets load properly. *Don't include a trailing `/`*. [Protocol-relative URLs](http://www.paulirish.com/2010/the-protocol-relative-url/) are a nice option but there are a few caveats[^protocol].
 
 Examples:
 
@@ -109,8 +124,11 @@ Examples:
 url: http://mmistakes.github.io/so-simple-theme
 url: http://localhost:4000
 url: http://mademistakes.com
+url: //mademistakes.com
 url: 
 {% endhighlight %}
+
+[^protocol]: If you decide to use a protocol-relative URL know that it will most likely break sitemap.xml that the Jekyll-Sitemap gem creates. If a valid sitemap matters to you I'd suggest [creating your own sitemap.xml](http://davidensinger.com/2013/03/generating-a-sitemap-in-jekyll-without-a-plugin/) and apply some Liquid logic to prepend links to posts/pages with `https:`.
 
 #### Google Analytics and Webmaster Tools
 
@@ -130,9 +148,9 @@ To set what links appear in the top navigation edit `_data/navigation.yml`. Use 
 
 ---
 
-## Adding New Content
+## Adding New Content with Octopress
 
-Install the [Octopress](https://github.com/octopress/octopress) gem if it isn't already.
+While completely optional, I've included Octopress and some starter templates to automate the creation of new posts and pages. To take advantage of it start by installing the [Octopress](https://github.com/octopress/octopress) gem if it isn't already.
 
 {% highlight bash %}
 $ gem install octopress --pre
@@ -140,7 +158,7 @@ $ gem install octopress --pre
 
 ### New Post
 
-Default command
+Default command for creating a new post.
 
 {% highlight bash %}
 $ octopress new post "Post Title"

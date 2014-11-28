@@ -1,10 +1,15 @@
 all: serve
 
+help:
+	@echo 'create new articles:'
+	@echo '    octopress new post "installing pip" --dir articles'
+
 drafts:
 	jekyll serve --watch --drafts
 
 serve:
-	jekyll serve --watch 
+	jekyll serve --config _local.yml
+	#jekyll serve --watch 
 
 build:
 	jekyll build
@@ -17,6 +22,7 @@ publish:
 	rsync -av _site/* .
 	rm -fr _site/
 	git commit -am"site update" ; git push
-	git checkout master
+	git checkout working
+	#git checkout master
 	ssh-add -D
 
