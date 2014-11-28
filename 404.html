@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="entry">
@@ -146,7 +147,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -183,21 +184,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

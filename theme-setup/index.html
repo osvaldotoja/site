@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -114,6 +114,7 @@
 </header><!-- /.masthead -->
 
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="entry">
@@ -127,6 +128,7 @@
 
 <ul id="markdown-toc">
   <li><a href="#installation">Installation</a></li>
+  <li><a href="#running-jekyll">Running Jekyll</a></li>
   <li><a href="#scaffolding">Scaffolding</a></li>
   <li><a href="#site-setup">Site Setup</a>    <ul>
       <li><a href="#site-wide-configuration">Site Wide Configuration</a>        <ul>
@@ -139,7 +141,7 @@
       <li><a href="#navigation-links">Navigation Links</a></li>
     </ul>
   </li>
-  <li><a href="#adding-new-content">Adding New Content</a>    <ul>
+  <li><a href="#adding-new-content-with-octopress">Adding New Content with Octopress</a>    <ul>
       <li><a href="#new-post">New Post</a></li>
       <li><a href="#new-page">New Page</a></li>
     </ul>
@@ -171,7 +173,7 @@
   <li>Fork the <a href="http://github.com/mmistakes/so-simple-theme/fork">So Simple repo</a>.</li>
   <li>Clone the repo you just forked and rename it.</li>
   <li><a href="http://bundler.io">Install Bundler</a> <code>gem install bundler</code> and Run <code>bundle install</code> to install all dependencies (Jekyll, <a href="https://github.com/jekyll/jekyll-sitemap">Jekyll-Sitemap</a>, <a href="https://github.com/octopress/octopress">Octopress</a>, etc)</li>
-  <li>Update <code>config.yml</code>, add navigation, and replace demo posts and pages with your own. Full details below.</li>
+  <li>Update <code>_config.yml</code>, add navigation, and replace demo posts and pages with your own. Full details below.</li>
 </ol>
 
 <p>If you want to use So Simple with an existing Jekyll site follow these steps:</p>
@@ -186,6 +188,22 @@
 </ol>
 
 <p class="notice"><strong>Pro-tip:</strong> Delete the <code>gh-pages</code> branch after cloning and start fresh by branching off <code>master</code>. There is a bunch of garbage in <code>gh-pages</code> used for the theme’s demo site that I’m guessing you won’t want.</p>
+
+<hr />
+
+<h2 id="running-jekyll">Running Jekyll</h2>
+
+<p>If <code>jekyll build</code> and <code>jekyll serve</code> throw errors you may have to run Jekyll with <code>bundled exec</code> instead.</p>
+
+<blockquote>
+  <p>In some cases, running executables without bundle exec may work, if the executable happens to be installed in your system and does not pull in any gems that conflict with your bundle.</p>
+
+  <p>However, this is unreliable and is the source of considerable pain. Even if it looks like it works, it may not work in the future or on another machine.</p>
+</blockquote>
+
+<div class="highlight"><pre><code class="language-text" data-lang="text">bundle exec jekyll build
+
+bundle exec jekyll serve</code></pre></div>
 
 <hr />
 
@@ -214,12 +232,11 @@
 ├── assets/
 |    ├── css/                    # compiled stylesheets
 |    ├── fonts/                  # webfonts
-|    ├── js/
-|    |   ├── _main.js            # main JavaScript file, plugin settings, etc
-|    |   ├── plugins/            # scripts and jQuery plugins to combine with _main.js
-|    |   ├── scripts.min.js      # concatenated and minified _main.js + plugin scripts
-|    |   └── vendor/             # vendor scripts to leave alone and load as is
-|    └── less/
+|    └── js/
+|        ├── _main.js            # main JavaScript file, plugin settings, etc
+|        ├── plugins/            # scripts and jQuery plugins to combine with _main.js
+|        ├── scripts.min.js      # concatenated and minified _main.js + plugin scripts
+|        └── vendor/             # vendor scripts to leave alone and load as is
 ├── blog/                        # sample blog category page
 ├── images/                      # images for posts and pages
 ├── 404.md                       # 404 page
@@ -249,13 +266,14 @@
 
 <h4 id="url">url</h4>
 
-<p>Used to generate absolute URLs for sitemaps, feeds and for generating canonical URLs in a page’s <code>&lt;head&gt;</code>. When developing locally either comment this out or use something like <code>http://localhost:4000</code> so all assets load properly. <em>Don’t include a trailing <code>/</code></em>.</p>
+<p>Used to generate absolute URLs for sitemaps, feeds and for generating canonical URLs in a page’s <code>&lt;head&gt;</code>. When developing locally either comment this out or use something like <code>http://localhost:4000</code> so all assets load properly. <em>Don’t include a trailing <code>/</code></em>. <a href="http://www.paulirish.com/2010/the-protocol-relative-url/">Protocol-relative URLs</a> are a nice option but there are a few caveats<sup id="fnref:protocol"><a href="#fn:protocol" class="footnote">1</a></sup>.</p>
 
 <p>Examples:</p>
 
 <div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://mmistakes.github.io/so-simple-theme</span>
 <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://localhost:4000</span>
 <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://mademistakes.com</span>
+<span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">//mademistakes.com</span>
 <span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span></code></pre></div>
 
 <h4 id="google-analytics-and-webmaster-tools">Google Analytics and Webmaster Tools</h4>
@@ -274,15 +292,15 @@
 
 <hr />
 
-<h2 id="adding-new-content">Adding New Content</h2>
+<h2 id="adding-new-content-with-octopress">Adding New Content with Octopress</h2>
 
-<p>Install the <a href="https://github.com/octopress/octopress">Octopress</a> gem if it isn’t already.</p>
+<p>While completely optional, I’ve included Octopress and some starter templates to automate the creation of new posts and pages. To take advantage of it start by installing the <a href="https://github.com/octopress/octopress">Octopress</a> gem if it isn’t already.</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>gem install octopress --pre</code></pre></div>
 
 <h3 id="new-post">New Post</h3>
 
-<p>Default command</p>
+<p>Default command for creating a new post.</p>
 
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>octopress new post <span class="s2">&quot;Post Title&quot;</span></code></pre></div>
 
@@ -320,7 +338,7 @@
 
 <h3 id="feature-images">Feature Images</h3>
 
-<p>A good rule of thumb is to keep feature images nice and wide so you don’t push the body text too far down. An image cropped around around 1024 x 256 pixels will keep file size down with an acceptable resolution for most devices. If you want to serve these images responsively I’d suggest looking at the <a href="https://github.com/robwierzbowski/jekyll-picture-tag">Jekyll Picture Tag</a> plugin<sup id="fnref:plugins"><a href="#fn:plugins" class="footnote">1</a></sup>.</p>
+<p>A good rule of thumb is to keep feature images nice and wide so you don’t push the body text too far down. An image cropped around around 1024 x 256 pixels will keep file size down with an acceptable resolution for most devices. If you want to serve these images responsively I’d suggest looking at the <a href="https://github.com/robwierzbowski/jekyll-picture-tag">Jekyll Picture Tag</a> plugin<sup id="fnref:plugins"><a href="#fn:plugins" class="footnote">2</a></sup>.</p>
 
 <p>The post and page layouts make the assumption that the feature images live in the <code>images/</code> folder. To add a feature image to a post or page just include the filename in the front matter like so.</p>
 
@@ -438,6 +456,9 @@
 <p>This theme is free and open source software, distributed under the MIT License. So feel free to use this Jekyll theme on your site without linking back to me or including a disclaimer. </p>
 <div class="footnotes">
   <ol>
+    <li id="fn:protocol">
+      <p>If you decide to use a protocol-relative URL know that it will most likely break sitemap.xml that the Jekyll-Sitemap gem creates. If a valid sitemap matters to you I’d suggest <a href="http://davidensinger.com/2013/03/generating-a-sitemap-in-jekyll-without-a-plugin/">creating your own sitemap.xml</a> and apply some Liquid logic to prepend links to posts/pages with <code>https:</code>. <a href="#fnref:protocol" class="reversefootnote">&#8617;</a></p>
+    </li>
     <li id="fn:plugins">
       <p>If you’re using GitHub Pages to host your site be aware that plugins are disabled. You’ll need to build your site locally and then manually deploy if you want to use this sweet plugin. <a href="#fnref:plugins" class="reversefootnote">&#8617;</a></p>
     </li>
@@ -453,7 +474,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -490,21 +511,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

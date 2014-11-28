@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="hentry">
@@ -146,37 +147,31 @@
 
 <p>shell script</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>#!/bin/bash
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>hostname
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">#!/bin/bash
+hostname
+</code></pre>
 
 <p>php code</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span style="font-weight:bold;color:#666">&lt;?php</span>
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span><span style="color:#950">$msg</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">hola</span><span style="color:#710">&quot;</span></span>;
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span><span style="color:#369;font-weight:bold">phpinfo</span>();
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span><span style="font-weight:bold;color:#666">?&gt;</span>
-</pre></div>
-</div>
-</div>
+<pre><code class="language-php">&lt;?php
+$msg="hola";
+phpinfo();
+?&gt;
+</code></pre>
 
 <p>hum… no coloring syntax. we’ll came back to that later on.</p>
 
-        <nav class="pagination" role="navigation">
-          
-            <a href="http://toja.io/oh-my-ghost/" class="btn" title="Oh My Ghost">Previous</a>
-          
-          
-            <a href="http://toja.io/previewing-ghost-0-4/" class="btn" title="Previewing Ghost 0.4">Next</a>
-          
-        </nav><!-- /.pagination -->
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/oh-my-ghost/" class="btn" title="Oh My Ghost">Previous</a>
+      
+      
+        <a href="http://toja.io/previewing-ghost-0-4/" class="btn" title="Previewing Ghost 0.4">Next</a>
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -184,7 +179,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -221,21 +216,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

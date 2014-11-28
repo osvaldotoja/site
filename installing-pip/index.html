@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="hentry">
@@ -144,29 +145,26 @@
       <div class="entry-content">
         <p>Installation of pip will be done via <code>easy_install</code>, a command provided by the setuptools package.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>cd /var/tmp
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg --no-check-certificate
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>/home/osvaldo/bin/python/bin/easy_install-2.7 pip
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">cd /var/tmp
+wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg --no-check-certificate
+sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
+/home/osvaldo/bin/python/bin/easy_install-2.7 pip
+</code></pre>
 
 <p>requires previous <a href="/installing-python-2-7-in-centos-5-3/">python 2.7 installation</a></p>
 
 
-        <nav class="pagination" role="navigation">
-          
-            <a href="http://toja.io/installing-git-in-centos-5-3/" class="btn" title="Installing Git in Centos 5.3">Previous</a>
-          
-          
-            <a href="http://toja.io/staying-alive-by-ghost/" class="btn" title="'Staying Alive' by Ghost">Next</a>
-          
-        </nav><!-- /.pagination -->
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/installing-git-in-centos-5-3/" class="btn" title="Installing Git in Centos 5.3">Previous</a>
+      
+      
+        <a href="http://toja.io/staying-alive-by-ghost/" class="btn" title="'Staying Alive' by Ghost">Next</a>
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -174,7 +172,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -211,21 +209,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

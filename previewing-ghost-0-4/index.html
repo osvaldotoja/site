@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="hentry">
@@ -142,48 +143,45 @@
         
       </footer>
       <div class="entry-content">
-        <div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>https://ghost.org/download/
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>git clone git@github.com:TryGhost/Ghost.git
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>cd Ghost
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>git submodule update --init
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>bundle install
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>sudo npm install -g grunt-cli
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>npm install
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>grunt init
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span>npm start
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span>
-<span class="line-numbers"><a href="#n13" name="n13">13</a></span># Front-end will be accesible at http://localhost:2368, Admin is at http://localhost:2368/ghost/.
-<span class="line-numbers"><a href="#n14" name="n14">14</a></span>
-<span class="line-numbers"><a href="#n15" name="n15">15</a></span>
-<span class="line-numbers"><a href="#n16" name="n16">16</a></span># buster
-<span class="line-numbers"><a href="#n17" name="n17">17</a></span>
-<span class="line-numbers"><a href="#n18" name="n18">18</a></span>pip install buster
-<span class="line-numbers"><a href="#n19" name="n19">19</a></span>buster --version
-<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>buster setup
-<span class="line-numbers"><a href="#n21" name="n21">21</a></span>
-<span class="line-numbers"><a href="#n22" name="n22">22</a></span>buster generate --domain=http://127.0.0.1:2368
-<span class="line-numbers"><a href="#n23" name="n23">23</a></span>buster preview
-<span class="line-numbers"><a href="#n24" name="n24">24</a></span>buster deploy
-<span class="line-numbers"><a href="#n25" name="n25">25</a></span>
-<span class="line-numbers"><a href="#n26" name="n26">26</a></span># nice! .... (no hice el setup)
-</pre></div>
-</div>
-</div>
+        <pre><code class="language-sh">
+https://ghost.org/download/
 
-        <nav class="pagination" role="navigation">
-          
-            <a href="http://toja.io/code-snippets/" class="btn" title="Code Snippets">Previous</a>
-          
-          
-            <a href="http://toja.io/installing-python-2-7-in-centos-5-3/" class="btn" title="Installing Python 2.7 in CentOS 5.3">Next</a>
-          
-        </nav><!-- /.pagination -->
+git clone git@github.com:TryGhost/Ghost.git
+cd Ghost
+git submodule update --init
+bundle install
+sudo npm install -g grunt-cli
+npm install
+grunt init
+npm start
+
+# Front-end will be accesible at http://localhost:2368, Admin is at http://localhost:2368/ghost/.
+
+
+# buster
+
+pip install buster
+buster --version
+buster setup
+
+buster generate --domain=http://127.0.0.1:2368
+buster preview
+buster deploy
+
+# nice! .... (no hice el setup)
+</code></pre>
+
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/code-snippets/" class="btn" title="Code Snippets">Previous</a>
+      
+      
+        <a href="http://toja.io/installing-python-2-7-in-centos-5-3/" class="btn" title="Installing Python 2.7 in CentOS 5.3">Next</a>
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -191,7 +189,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -228,21 +226,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

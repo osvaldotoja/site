@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="hentry">
@@ -148,65 +149,56 @@
 
 <p><code>http_get.coffee </code></p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>http = require 'http'
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>component='frontend'
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>url=&quot;http://dev.acme.com/api/conf/key/&quot;+component+&quot;/DEFAULT_DEPLOY_ENV&quot;
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>console.log url
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>req = http.get url, (res) -&gt;
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  status = res.statusCode
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  value = if status == 200 then 1 else 0
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  if status == 200
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>    # ...
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span>    console.log &quot;yey!&quot;
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span>    res.on 'data', (chunk) -&gt;
-<span class="line-numbers"><a href="#n13" name="n13">13</a></span>      console.log('body: ' + chunk)
-<span class="line-numbers"><a href="#n14" name="n14">14</a></span>  else
-<span class="line-numbers"><a href="#n15" name="n15">15</a></span>    # ...
-<span class="line-numbers"><a href="#n16" name="n16">16</a></span>    console.log &quot;i'm not worthy&quot;
-<span class="line-numbers"><a href="#n17" name="n17">17</a></span>
-<span class="line-numbers"><a href="#n18" name="n18">18</a></span>req.on 'error', -&gt;
-<span class="line-numbers"><a href="#n19" name="n19">19</a></span>  msg = &quot;not available&quot;
-<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>  console.log msg
-<span class="line-numbers"><a href="#n21" name="n21">21</a></span>console.log &quot;done!&quot;
-</pre></div>
-</div>
-</div>
+<pre><code class="language-coffescript">http = require 'http'
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>osvaldo@laptop:~/ $ coffee http_get.coffee
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>http://dev.acme.com/api/conf/key/frontend/someenv
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>done!
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>i'm not worthy
-</pre></div>
-</div>
-</div>
+component='frontend'
+url="http://dev.acme.com/api/conf/key/"+component+"/DEFAULT_DEPLOY_ENV"
+console.log url
+req = http.get url, (res) -&gt;
+  status = res.statusCode
+  value = if status == 200 then 1 else 0
+  if status == 200
+    # ...
+    console.log "yey!"
+    res.on 'data', (chunk) -&gt;
+      console.log('body: ' + chunk)
+  else
+    # ...
+    console.log "i'm not worthy"
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>osvaldo@laptop:~/ $ coffee http_get.coffee
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>http://dev.acme.com/api/conf/key/frontend/prod
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>done!
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>yey!
-<span class="line-numbers"><a href="#n5" name="n5">5</a></span>body: prod
-</pre></div>
-</div>
-</div>
+req.on 'error', -&gt;
+  msg = "not available"
+  console.log msg
+console.log "done!"
+</code></pre>
+
+<pre><code class="language-sh">osvaldo@laptop:~/ $ coffee http_get.coffee
+http://dev.acme.com/api/conf/key/frontend/someenv
+done!
+i'm not worthy
+</code></pre>
+
+<pre><code class="language-sh">osvaldo@laptop:~/ $ coffee http_get.coffee
+http://dev.acme.com/api/conf/key/frontend/prod
+done!
+yey!
+body: prod
+</code></pre>
 
 <p>As a bonus note check how the <code>console.log "done!"</code> is executed before displaying the output from the request. That’s because of the asynchronous nature from the callback function  handling the request.</p>
 
 
-        <nav class="pagination" role="navigation">
-          
-            <a href="http://toja.io/using-logstash-for-artifactory-notifications/" class="btn" title="Using Logstash for Artifactory Notifications">Previous</a>
-          
-          
-            <a href="http://toja.io/parsing-in-coffescript/" class="btn" title="Parsing in Coffescript">Next</a>
-          
-        </nav><!-- /.pagination -->
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/using-logstash-for-artifactory-notifications/" class="btn" title="Using Logstash for Artifactory Notifications">Previous</a>
+      
+      
+        <a href="http://toja.io/parsing-in-coffescript/" class="btn" title="Parsing in Coffescript">Next</a>
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -214,7 +206,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -251,21 +243,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

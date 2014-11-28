@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="hentry">
@@ -147,105 +148,87 @@ CentOS 5.3 comes with python 2.4, a version which is used by system tools like y
 In order to run ansible on older CentOS version, an alternative installation is provided below.
 The following commands will install Python 2.7 (check section for requirements below) in the user’s directory. No root access is required.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>USER=osvaldo
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>VERSION=2.7.5
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>mkdir ~/src
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>cd ~/src
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>wget http://python.org/ftp/python/$VERSION/Python-$VERSION.tar.bz2
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>tar xjf Python-$VERSION.tar.bz2
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>rm Python-$VERSION.tar.bz2
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>cd Python-$VERSION
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>INSTALL_DIR=/home/$USER/bin/python27
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>mkdir -p $INSTALL_DIR
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span>./configure --prefix=$INSTALL_DIR
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span>make
-<span class="line-numbers"><a href="#n13" name="n13">13</a></span>make install
-<span class="line-numbers"><a href="#n14" name="n14">14</a></span>ln -s $INSTALL_DIR/bin/python27 /home/${USER}/bin/
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">USER=osvaldo
+VERSION=2.7.5
+mkdir ~/src
+cd ~/src
+wget http://python.org/ftp/python/$VERSION/Python-$VERSION.tar.bz2
+tar xjf Python-$VERSION.tar.bz2
+rm Python-$VERSION.tar.bz2
+cd Python-$VERSION
+INSTALL_DIR=/home/$USER/bin/python27
+mkdir -p $INSTALL_DIR
+./configure --prefix=$INSTALL_DIR
+make
+make install
+ln -s $INSTALL_DIR/bin/python27 /home/${USER}/bin/
+</code></pre>
 
 <h4 id="requirements">Requirements</h4>
 
 <p>If after the <code>make</code> step the following error appears</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>[osvaldo@srv2 Python-2.7.5]$ make
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>running build
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>running build_ext
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>INFO: Can't locate Tcl/Tk libs and/or headers
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>Python build finished, but the necessary bits to build these modules were not found:
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>_bsddb             _curses            _curses_panel
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>_sqlite3           _tkinter           bsddb185
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>bz2                dbm                gdbm
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>sunaudiodev
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span>To find the necessary bits, look in setup.py in detect_modules() for the module's name.
-<span class="line-numbers"><a href="#n12" name="n12">12</a></span>
-<span class="line-numbers"><a href="#n13" name="n13">13</a></span>running build_scripts
-<span class="line-numbers"><a href="#n14" name="n14">14</a></span>[osvaldo@srv2 Python-2.7.5]$
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">[osvaldo@srv2 Python-2.7.5]$ make
+running build
+running build_ext
+INFO: Can't locate Tcl/Tk libs and/or headers
+
+Python build finished, but the necessary bits to build these modules were not found:
+_bsddb             _curses            _curses_panel
+_sqlite3           _tkinter           bsddb185
+bz2                dbm                gdbm
+sunaudiodev
+To find the necessary bits, look in setup.py in detect_modules() for the module's name.
+
+running build_scripts
+[osvaldo@srv2 Python-2.7.5]$
+</code></pre>
 
 <p>The following packages should be installed.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>sudo yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">sudo yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel
+</code></pre>
 
 <h4 id="post-installation">Post installation</h4>
 
 <p>The new binaries should be added to the bin path. This can be done by modifying the <code>~/.bash_profile</code> to look like the following. Remember to start a new session for the change to apply.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>PATH=$PATH:$HOME/bin:$HOME/bin/python/bin
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">PATH=$PATH:$HOME/bin:$HOME/bin/python/bin
+</code></pre>
 
 <p>For example. The following error:</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>[osvaldo@srv2 tmp]$ sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>setuptools-0.6c11-py2.7.egg: line 3: exec: python2.7: not found
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>[osvaldo@srv2 tmp]$
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">[osvaldo@srv2 tmp]$ sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
+setuptools-0.6c11-py2.7.egg: line 3: exec: python2.7: not found
+[osvaldo@srv2 tmp]$
+</code></pre>
 
 <p>Can be fixed after adding the python 2.7 binary scripts to the bin path.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>[osvaldo@srv2 tmp]$ sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>Processing setuptools-0.6c11-py2.7.egg
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>Copying setuptools-0.6c11-py2.7.egg to /home/osvaldo/bin/python27/lib/python2.7/site-packages
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>Adding setuptools 0.6c11 to easy-install.pth file
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>Installing easy_install script to /home/osvaldo/bin/python/bin
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>Installing easy_install-2.7 script to /home/osvaldo/bin/python/bin
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>Installed /home/osvaldo/bin/python27/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>Processing dependencies for setuptools==0.6c11
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>Finished processing dependencies for setuptools==0.6c11
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>[osvaldo@srv2 tmp]$
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">[osvaldo@srv2 tmp]$ sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
+Processing setuptools-0.6c11-py2.7.egg
+Copying setuptools-0.6c11-py2.7.egg to /home/osvaldo/bin/python27/lib/python2.7/site-packages
+Adding setuptools 0.6c11 to easy-install.pth file
+Installing easy_install script to /home/osvaldo/bin/python/bin
+Installing easy_install-2.7 script to /home/osvaldo/bin/python/bin
+Installed /home/osvaldo/bin/python27/lib/python2.7/site-packages/setuptools-0.6c11-py2.7.egg
+Processing dependencies for setuptools==0.6c11
+Finished processing dependencies for setuptools==0.6c11
+[osvaldo@srv2 tmp]$
+</code></pre>
 
 
-        <nav class="pagination" role="navigation">
-          
-            <a href="http://toja.io/previewing-ghost-0-4/" class="btn" title="Previewing Ghost 0.4">Previous</a>
-          
-          
-            <a href="http://toja.io/installing-git-in-centos-5-3/" class="btn" title="Installing Git in Centos 5.3">Next</a>
-          
-        </nav><!-- /.pagination -->
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/previewing-ghost-0-4/" class="btn" title="Previewing Ghost 0.4">Previous</a>
+      
+      
+        <a href="http://toja.io/installing-git-in-centos-5-3/" class="btn" title="Installing Git in Centos 5.3">Next</a>
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -253,7 +236,7 @@ The following commands will install Python 2.7 (check section for requirements b
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -290,21 +273,23 @@ The following commands will install Python 2.7 (check section for requirements b
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

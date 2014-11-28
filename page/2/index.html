@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="entry">
@@ -128,13 +129,11 @@
       <div class="entry-content">
         <ul class="post-list">
  
+  <li><article><a href="http://toja.io/velocity-barcelona-dia-1/">Velocity Barcelona Dia 1 <span class="entry-date"><time datetime="2014-11-28T07:59:02-03:00">November 28, 2014</time></span></a></article></li>
+ 
   <li><article><a href="http://toja.io/using-host-and-group-vars-files-in-ansible/">Organizing Group Vars Files in Ansible <span class="entry-date"><time datetime="2014-09-14T22:51:11-03:00">September 14, 2014</time></span></a></article></li>
  
   <li><article><a href="http://toja.io/install-ansible-in-centos-5-3/">Install Ansible in CentOS 5.3 <span class="entry-date"><time datetime="2014-09-14T22:50:52-03:00">September 14, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://toja.io/hello-world/">Hello World <span class="entry-date"><time datetime="2014-08-08T16:39:55-03:00">August 08, 2014</time></span></a></article></li>
- 
-  <li><article><a href="http://toja.io/author-override/">Override Author Byline Test Post <span class="entry-date"><time datetime="2014-06-19T00:00:00-03:00">June 19, 2014</time></span></a></article></li>
  
   <li><article><a href="http://toja.io/how-to-get-last-commit-hash-in-git/">How to Get Last Commit Hash in Git <span class="entry-date"><time datetime="2014-03-12T21:15:58-03:00">March 12, 2014</time></span></a></article></li>
  
@@ -147,6 +146,8 @@
   <li><article><a href="http://toja.io/staying-alive-by-ghost/">'Staying Alive' by Ghost <span class="entry-date"><time datetime="2014-02-06T14:15:55-03:00">February 06, 2014</time></span></a></article></li>
  
   <li><article><a href="http://toja.io/installing-pip/">Installing Pip <span class="entry-date"><time datetime="2014-01-30T14:19:49-03:00">January 30, 2014</time></span></a></article></li>
+ 
+  <li><article><a href="http://toja.io/installing-git-in-centos-5-3/">Installing Git in Centos 5.3 <span class="entry-date"><time datetime="2014-01-30T12:04:46-03:00">January 30, 2014</time></span></a></article></li>
 
 </ul>
 
@@ -159,7 +160,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -196,21 +197,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

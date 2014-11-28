@@ -1,181 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  
+  <url>
+    <loc>http://toja.io/velocity-barcelona-dia-1/</loc>
+    <lastmod>2014-11-28T07:59:02-03:00</lastmod>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>http://toja.io/using-host-and-group-vars-files-in-ansible/</loc>
     <lastmod>2014-09-14T22:51:11-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/install-ansible-in-centos-5-3/</loc>
     <lastmod>2014-09-14T22:50:52-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
-  <url>
-    <loc>http://toja.io/hello-world/</loc>
-    <lastmod>2014-08-08T16:39:55-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/author-override/</loc>
-    <lastmod>2014-06-19T00:00:00-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
   <url>
     <loc>http://toja.io/how-to-get-last-commit-hash-in-git/</loc>
     <lastmod>2014-03-12T21:15:58-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/parsing-in-coffescript/</loc>
     <lastmod>2014-02-26T15:35:04-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/http-request-in-coffeescript/</loc>
     <lastmod>2014-02-26T15:11:01-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/using-logstash-for-artifactory-notifications/</loc>
     <lastmod>2014-02-16T16:44:58-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/staying-alive-by-ghost/</loc>
     <lastmod>2014-02-06T14:15:55-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/installing-pip/</loc>
     <lastmod>2014-01-30T14:19:49-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/installing-git-in-centos-5-3/</loc>
     <lastmod>2014-01-30T12:04:46-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/installing-python-2-7-in-centos-5-3/</loc>
     <lastmod>2014-01-29T10:37:43-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/previewing-ghost-0-4/</loc>
     <lastmod>2014-01-11T16:56:40-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/code-snippets/</loc>
     <lastmod>2014-01-01T21:45:37-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
   <url>
     <loc>http://toja.io/oh-my-ghost/</loc>
     <lastmod>2014-01-01T21:42:57-03:00</lastmod>
     <priority>0.8</priority>
   </url>
-  
-  <url>
-    <loc>http://toja.io/code-highlighting-post/</loc>
-    <lastmod>2013-08-16T00:00:00-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/sample-link-post/</loc>
-    <lastmod>2013-08-12T00:00:00-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/video-post/</loc>
-    <lastmod>2013-06-25T00:00:00-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/readability-feature-post/</loc>
-    <lastmod>2013-05-23T00:00:00-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/sample-post-images/</loc>
-    <lastmod>2013-05-22T00:00:00-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/readability-post/</loc>
-    <lastmod>2012-05-22T00:00:00-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/sample-post/</loc>
-    <lastmod>2011-03-10T00:00:00-03:00</lastmod>
-    <priority>0.8</priority>
-  </url>
-  
-  
   <url>
     <loc>http://toja.io/</loc>
-    <lastmod>2014-09-19T10:02:31-03:00</lastmod>
+    <lastmod>2014-11-28T08:26:03-03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <url>
-    <loc>http://toja.io/theme-setup/</loc>
-    <lastmod>2014-09-19T10:02:31-03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/articles/</loc>
-    <lastmod>2014-09-19T10:02:31-03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>http://toja.io/blog/</loc>
-    <lastmod>2014-09-19T10:02:31-03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
   <url>
     <loc>http://toja.io/tags/</loc>
-    <lastmod>2014-09-19T10:02:31-03:00</lastmod>
+    <lastmod>2014-11-28T08:26:03-03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  
+  <url>
+    <loc>http://toja.io/articles/</loc>
+    <lastmod>2014-11-28T08:26:03-03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://toja.io/theme-setup/</loc>
+    <lastmod>2014-11-28T08:26:03-03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>http://toja.io/about/</loc>
-    <lastmod>2014-09-19T10:02:31-03:00</lastmod>
+    <lastmod>2014-11-28T08:26:03-03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  
+  <url>
+    <loc>http://toja.io/blog/</loc>
+    <lastmod>2014-11-28T08:26:03-03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

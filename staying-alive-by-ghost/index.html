@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="hentry">
@@ -146,12 +147,9 @@
 
 <p>Today ghost crashed:</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>/var/www/ghost/toja.io/node_modules/express-hbs/node_modules/handlebars/dist/cjs/handlebars/compiler/compiler.js:444
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>    throw new Exception(&quot;You must pass a string or Handlebars AST to Handlebar&quot;
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">/var/www/ghost/toja.io/node_modules/express-hbs/node_modules/handlebars/dist/cjs/handlebars/compiler/compiler.js:444
+    throw new Exception("You must pass a string or Handlebars AST to Handlebar"
+</code></pre>
 
 <p>Luckily there’re a couple of options: supervisord, init scripts and forever. Being this a temporary setup (the static site version is the ultimate goal remember?) the third option was choosen.</p>
 
@@ -159,57 +157,45 @@
 
 <p>Installation is simple:</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>sudo npm -g install forever
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">sudo npm -g install forever
+</code></pre>
 
 <p>Being temporary doesn’t means it should run without leaving any track. Forever allows you to use a log file. Since the daemon will be running under a non-root account a directory was created, owned by the same user the script will be executed.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>sudo mkdir /var/www/ghost/logs/
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>sudo chown osvaldo:osvaldo /var/www/ghost/logs/
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">sudo mkdir /var/www/ghost/logs/
+sudo chown osvaldo:osvaldo /var/www/ghost/logs/
+</code></pre>
 
 <p>By default, forever will start ghots in development mode. To start Ghost in production mode type <code>NODE_ENV=production forever start index.js</code>
 The command should be run from the ghost installation directory.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>cd /var/www/ghost/toja.io/
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>forever -l /var/www/ghost/logs/toja-io.log start index.js
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">cd /var/www/ghost/toja.io/
+forever -l /var/www/ghost/logs/toja-io.log start index.js
+</code></pre>
 
 <p>To check if Ghost is currently running type <code>forever list</code></p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>osvaldo@li68-220:~$ forever list
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>info:    Forever processes running
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>data:        uid  command             script   forever pid   logfile                         uptime
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>data:    [0] mnz9 /usr/local/bin/node index.js 20031   20033 /var/www/ghost/logs/toja-io.log 0:0:1:26.478
-<span class="line-numbers"><a href="#n5" name="n5">5</a></span>osvaldo@li68-220:~$
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">osvaldo@li68-220:~$ forever list
+info:    Forever processes running
+data:        uid  command             script   forever pid   logfile                         uptime
+data:    [0] mnz9 /usr/local/bin/node index.js 20031   20033 /var/www/ghost/logs/toja-io.log 0:0:1:26.478
+osvaldo@li68-220:~$
+</code></pre>
 
 <p>To stop Ghost type <code>forever stop index.js</code></p>
 
 
-        <nav class="pagination" role="navigation">
-          
-            <a href="http://toja.io/installing-pip/" class="btn" title="Installing Pip">Previous</a>
-          
-          
-            <a href="http://toja.io/using-logstash-for-artifactory-notifications/" class="btn" title="Using Logstash for Artifactory Notifications">Next</a>
-          
-        </nav><!-- /.pagination -->
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/installing-pip/" class="btn" title="Installing Pip">Previous</a>
+      
+      
+        <a href="http://toja.io/using-logstash-for-artifactory-notifications/" class="btn" title="Using Logstash for Artifactory Notifications">Next</a>
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -217,7 +203,7 @@ The command should be run from the ghost installation directory.</p>
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -254,21 +240,23 @@ The command should be run from the ghost installation directory.</p>
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

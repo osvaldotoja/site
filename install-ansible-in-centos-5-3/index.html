@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="hentry">
@@ -152,61 +153,49 @@
 
 <p>First we install python modules. Ansible is available via package managers but not for CentOS 5.3 so a git based installation will be used.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>/home/rls/bin/python/bin/pip install paramiko PyYAML jinja2 httplib2
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>cd ~/bin
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>git clone git://github.com/ansible/ansible.git
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>sed -i '1 s/python$/python2.7/' ansible/bin/ansible*
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">/home/rls/bin/python/bin/pip install paramiko PyYAML jinja2 httplib2
+cd ~/bin
+git clone git://github.com/ansible/ansible.git
+sed -i '1 s/python$/python2.7/' ansible/bin/ansible*
+</code></pre>
 
 <p>After cloning the repository, the binary scripts are modified in order to use our custom python 2.7 installation.</p>
 
 <h4 id="test-installation">Test installation</h4>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>source bin/ansible/hacking/env-setup
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>echo &quot;127.0.0.1 ansible_python_interpreter=/home/rls/bin/python/bin/python2.7  ansible_connection=local&quot; &gt; ~/ansible_hosts
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>export ANSIBLE_HOSTS=~/ansible_hosts
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>ansible -i ~/ansible_hosts all -m ping
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">source bin/ansible/hacking/env-setup
+echo "127.0.0.1 ansible_python_interpreter=/home/rls/bin/python/bin/python2.7  ansible_connection=local" &gt; ~/ansible_hosts
+export ANSIBLE_HOSTS=~/ansible_hosts
+ansible -i ~/ansible_hosts all -m ping
+</code></pre>
 
 <p>expected output:</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>[osvaldo@srv2 ~]$ ansible -i ~/ansible_hosts all -m ping  -o
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>127.0.0.1 | success &gt;&gt; {&quot;changed&quot;: false, &quot;ping&quot;: &quot;pong&quot;}
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>
-<span class="line-numbers"><a href="#n5" name="n5">5</a></span>[osvaldo@srv2 ~]$
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">
+[osvaldo@srv2 ~]$ ansible -i ~/ansible_hosts all -m ping  -o
+127.0.0.1 | success &gt;&gt; {"changed": false, "ping": "pong"}
+
+[osvaldo@srv2 ~]$
+</code></pre>
 
 <h4 id="post-installation-steps">Post installation steps</h4>
 
 <p>Add to <code>~/.bash_profile</code> the following line.</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>source bin/ansible/hacking/env-setup
-</pre></div>
-</div>
-</div>
+<pre><code class="language-sh">source bin/ansible/hacking/env-setup
+</code></pre>
 
-        <nav class="pagination" role="navigation">
-          
-            <a href="http://toja.io/hello-world/" class="btn" title="Hello World">Previous</a>
-          
-          
-            <a href="http://toja.io/using-host-and-group-vars-files-in-ansible/" class="btn" title="Organizing Group Vars Files in Ansible">Next</a>
-          
-        </nav><!-- /.pagination -->
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/how-to-get-last-commit-hash-in-git/" class="btn" title="How to Get Last Commit Hash in Git">Previous</a>
+      
+      
+        <a href="http://toja.io/using-host-and-group-vars-files-in-ansible/" class="btn" title="Organizing Group Vars Files in Ansible">Next</a>
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -214,7 +203,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -251,21 +240,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>

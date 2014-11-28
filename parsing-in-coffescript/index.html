@@ -94,7 +94,7 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><i class="fa fa-search"></i> Search</li>
+        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
@@ -112,11 +112,12 @@
 <header class="masthead">
 	<div class="wrap">
         
-        <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+        <h1 class="site-title animated fadeIn"><a href="http://toja.io">toja.io</a></h1>
 		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
 	</div>
 </header><!-- /.masthead -->
 
+<div class="js-menu-screen menu-screen"></div>
 
 <div id="main" role="main">
   <article class="hentry">
@@ -150,34 +151,28 @@
 
 <p>for your copy/paste please, just type the following on a <code>coffee&lt;/console&gt;.</code></p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>string=&quot;wp-theme-acme-2.1.33.zip&quot;
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>pattern = /^([a-z\-]*)-([\d\.]*).zip/
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>string.match(pattern)
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>[component,version] = string.match(pattern)[1...3]
-<span class="line-numbers"><a href="#n5" name="n5">5</a></span>component
-<span class="line-numbers"><a href="#n6" name="n6">6</a></span>version
-</pre></div>
-</div>
-</div>
+<pre><code class="language-coffeescript">string="wp-theme-acme-2.1.33.zip"
+pattern = /^([a-z\-]*)-([\d\.]*).zip/
+string.match(pattern)
+[component,version] = string.match(pattern)[1...3]
+component
+version
+</code></pre>
 
 <p>Output</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>coffee&gt; string=&quot;wp-theme-acme-2.1.33.zip&quot;
-<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>'wp-theme-acme-2.1.33.zip'
-<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>coffee&gt; pattern = /^([a-z\-]*)-([\d\.]*).zip/
-<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>/^([a-z\-]*)-([\d\.]*).zip/
-<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>coffee&gt; string.match(pattern)
-<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>[ 'wp-theme-acme-2.1.33.zip',
-<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>  'wp-theme-acme',
-<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>  '2.1.33',
-<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>  index: 0,
-<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>  input: 'wp-theme-acme-2.1.33.zip' ]
-<span class="line-numbers"><a href="#n11" name="n11">11</a></span>coffee&gt;
-</pre></div>
-</div>
-</div>
+<pre><code class="language-coffeescript">coffee&gt; string="wp-theme-acme-2.1.33.zip"
+'wp-theme-acme-2.1.33.zip'
+coffee&gt; pattern = /^([a-z\-]*)-([\d\.]*).zip/
+/^([a-z\-]*)-([\d\.]*).zip/
+coffee&gt; string.match(pattern)
+[ 'wp-theme-acme-2.1.33.zip',
+  'wp-theme-acme',
+  '2.1.33',
+  index: 0,
+  input: 'wp-theme-acme-2.1.33.zip' ]
+coffee&gt;
+</code></pre>
 
 <p>We can store the parsed results directly into variables using something like the following.</p>
 
@@ -186,29 +181,26 @@
 
 <p>Output</p>
 
-<div><div class="CodeRay">
-  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span>coffee&gt; [component,version] = string.match(pattern)[1...3]
-<span class="line-numbers"><a href="#n2" name="n2">2</a></span>[ 'wp-theme-acme', '2.1.33' ]
-<span class="line-numbers"><a href="#n3" name="n3">3</a></span>coffee&gt; component
-<span class="line-numbers"><a href="#n4" name="n4">4</a></span>'wp-theme-acme'
-<span class="line-numbers"><a href="#n5" name="n5">5</a></span>coffee&gt; version
-<span class="line-numbers"><a href="#n6" name="n6">6</a></span>'2.1.33'
-<span class="line-numbers"><a href="#n7" name="n7">7</a></span>coffee&gt;
-</pre></div>
-</div>
-</div>
+<pre><code class="language-coffeescript">coffee&gt; [component,version] = string.match(pattern)[1...3]
+[ 'wp-theme-acme', '2.1.33' ]
+coffee&gt; component
+'wp-theme-acme'
+coffee&gt; version
+'2.1.33'
+coffee&gt;
+</code></pre>
 
-        <nav class="pagination" role="navigation">
-          
-            <a href="http://toja.io/http-request-in-coffeescript/" class="btn" title="Http Requests in Coffeescript">Previous</a>
-          
-          
-            <a href="http://toja.io/how-to-get-last-commit-hash-in-git/" class="btn" title="How to Get Last Commit Hash in Git">Next</a>
-          
-        </nav><!-- /.pagination -->
         
       </div><!-- /.entry-content -->
     </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/http-request-in-coffeescript/" class="btn" title="Http Requests in Coffeescript">Previous</a>
+      
+      
+        <a href="http://toja.io/how-to-get-last-commit-hash-in-git/" class="btn" title="How to Get Last Commit Hash in Git">Next</a>
+      
+    </nav><!-- /.pagination -->
   </article>
 </div><!-- /#main -->
 
@@ -216,7 +208,7 @@
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/">So Simple Theme</a>.</span>
+<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -253,21 +245,23 @@
      var bs = {
           close: $(".close-btn"),
           searchform: $(".search-form"),
-          canvas: $("body"),
+          canvas: $(".js-menu-screen"),
           dothis: $('.dosearch')
       };
     
     bs.dothis.on('click', function() {
       $('.search-wrapper').css({ display: "block" });
+      $('body').toggleClass('no-scroll');
       bs.searchform.toggleClass('active');
       bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
+      bs.canvas.toggleClass('is-visible');
     });
     
       bs.close.on('click', function() {
         $('.search-wrapper').removeAttr( 'style' );
+        $('body').toggleClass('no-scroll');
         bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
+        bs.canvas.removeClass('is-visible');
     });
   })( jQuery, window );
 </script>
