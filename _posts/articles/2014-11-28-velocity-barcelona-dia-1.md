@@ -119,3 +119,4 @@ La configuración se maneja toda por separado de la aplicación e incluye tanto 
 Fue un panel donde se discutieron las ventajas y desventajas de hospedar un sitio en servidores físicos ó en la nube. 
 
 Conclusión: depende de cada caso.
+
