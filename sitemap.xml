@@ -77,43 +77,48 @@
   </url>
   <url>
     <loc>http://toja.io/</loc>
-    <lastmod>2014-12-01T07:12:44-03:00</lastmod>
+    <lastmod>2014-12-01T09:38:01-03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>http://toja.io/tags/</loc>
-    <lastmod>2014-12-01T07:12:44-03:00</lastmod>
+    <lastmod>2014-12-01T09:38:01-03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://toja.io/articles/</loc>
-    <lastmod>2014-12-01T07:12:44-03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://toja.io/blog/</loc>
-    <lastmod>2014-12-01T07:12:44-03:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>http://toja.io/about/</loc>
-    <lastmod>2014-12-01T07:12:44-03:00</lastmod>
+    <lastmod>2014-12-01T09:38:01-03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://toja.io/theme-setup/</loc>
-    <lastmod>2014-12-01T07:12:44-03:00</lastmod>
+    <lastmod>2014-12-01T09:38:01-03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://toja.io/about/</loc>
+    <lastmod>2014-12-01T09:38:01-03:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://toja.io/blog/</loc>
+    <lastmod>2014-12-01T09:38:01-03:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>http://toja.io/velocity-barcelona-dia-1/index.html</loc>
-    <lastmod>2014-11-28T08:29:59-03:00</lastmod>
+    <lastmod>2014-12-01T07:12:45-03:00</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>http://toja.io/velocity-barcelona-dia-2/index.html</loc>
+    <lastmod>2014-12-01T07:12:45-03:00</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>
