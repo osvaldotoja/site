@@ -17,6 +17,7 @@ build:
 publish:
 	ssh-add ~/.ssh/osvaldotoja
 	jekyll build
+	git add .
 	git commit -am"site update" 
 	git checkout gh-pages
 	rsync -av _site/* .

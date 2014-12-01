@@ -4,13 +4,251 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://toja.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://toja.io" />
-<updated>2014-11-28T08:29:58-03:00</updated>
+<updated>2014-12-01T07:12:44-03:00</updated>
 <id>http://toja.io/</id>
 <author>
   <name>Osvaldo Toja</name>
   <uri>http://toja.io/</uri>
   <email>osvaldo.toja@gmail.com</email>
 </author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Velocity Barcelona Dia 2]]></title>
+  <link rel="alternate" type="text/html" href="http://toja.io/velocity-barcelona-dia-2/" />
+  <id>http://toja.io/velocity-barcelona-dia-2</id>
+  <published>2014-12-01T07:05:17-03:00</published>
+  <updated>2014-12-01T07:05:17-03:00</updated>
+  <author>
+    <name>Osvaldo Toja</name>
+    <uri>http://toja.io</uri>
+    <email>osvaldo.toja@gmail.com</email>
+  </author>
+  <content type="html">&lt;h1 id=&quot;segundo-da&quot;&gt;Segundo Día&lt;/h1&gt;
+
+&lt;h2 id=&quot;upgrading-the-web-polyfills-components-and-the-future-of-web-development-at-scalehttpvelocityconfcomvelocityeu2014publicscheduledetail37693&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37693&quot;&gt;Upgrading the Web: Polyfills, Components and the Future of Web Development at Scale&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;La charla giró en torno a un producto creado por la empresa del ponente: FT Labs y Fastly que hace la vida mas fácil para los diseñadores y programadores al mismo tiempo que a los encargados de asegurar el performance de la aplicación web.
+Empezó hablando de &lt;a href=&quot;http://origami.ft.com/&quot;&gt;Origami&lt;/a&gt; un estándar de componentes para la creación del frontend de sitios web. Una de las ventajas de su implementación fue la reducción de esfuerzos duplicados a la hora de mantener distintas versiones de un mismo sitio.&lt;/p&gt;
+
+&lt;p&gt;Estos componentes utilizan tecnologías que no siempre están presentes en todos los navegadores, como por ejemplo funcionalidades de HTML 5, para suplir esto se utilizan los polyfills. Los polyfills son código que se descargan, implementan esas tecnologías y le permiten a las viejas versiones de los navegadores poder mostrar una página creada con los últimos estandares web.&lt;/p&gt;
+
+&lt;p&gt;Para facilitar servir los polyfills, crearon un &lt;a href=&quot;https://cdn.polyfill.io/&quot;&gt;servicio&lt;/a&gt; que a través  de la CDN de Fastly sirve estos polyfills on demand. De manera automática, en base al &lt;code&gt;User-Agent&lt;/code&gt; prepara selectivamente y envia el paquete de polyfills que necesita ese navegador para completar las funcionalidades que le estarían faltando.&lt;/p&gt;
+
+&lt;p&gt;Más info &lt;a href=&quot;http://labs.ft.com/2014/09/polyfills-as-a-service/&quot;&gt;aquí&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/financial-times/polyfill-service&quot;&gt;Github Repository&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://cdn.oreillystatic.com/en/assets/1/event/121/Upgrading%20the%20Web_%20Polyfills,%20Components%20and%20the%20Future%20of%20Web%20Development%20at%20Scale%20Presentation.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;monitoring-without-alerts---and-why-it-makes-way-more-sense-than-you-might-thinkhttpvelocityconfcomvelocityeu2014publicscheduledetail39064&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/39064&quot;&gt;Monitoring without Alerts - and Why it Makes Way More Sense than You Might Think&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Traza que no vas a mirar, no la loguees. Las trazas generan alertas. No por tener más alertas vamos a resolver mejor los problemas. Además, para ser realmente efectiva, la alerta necesita un contexto. Presentó el producto de su compañia que permite todo esto. El demo esta disponible en el sitio web http://ruxit.com&lt;/p&gt;
+
+&lt;h2 id=&quot;velocity-at-githubhttpvelocityconfcomvelocityeu2014publicscheduledetail39131&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/39131&quot;&gt;Velocity at GitHub&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Chicos, Github enterprise esta disponible en Amazon AWS.&lt;/p&gt;
+
+&lt;p&gt;Ah, y los logos son muy divertidos.&lt;/p&gt;
+
+&lt;h2 id=&quot;lightning-demoshttpvelocityconfcomvelocityeu2014publicscheduledetail37195&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37195&quot;&gt;Lightning Demos&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Ilya Grigorik de Google mostró como analizar volumenes de datos utilizando BigQuery y Google Cloud Dataflow. Como base de datos utilizo el HTTP Archive, que contiene mas de 300K sitios web y archiva los archivos descargados de los mismos. 
+En el sitio http://bigqueri.es se pueden armar sentencias de búsqueda en un lenguaje similar al SQL pero con expresiones regulares y encontrar por ejemplo, una clasificación en base a los tiempos de cache de la páginas que están utilizando los sitios móbiles. Hay ejemplos de búsquedas ya creadas en el sitio a manera de guía de la potencialidad de esta herramienta.&lt;/p&gt;
+
+&lt;p&gt;La parte divertida vino a continuación. A partir de un &lt;a href=&quot;http://geeksta.net/geeklog/exploring-expressions-emotions-github-commit-messages/&quot;&gt;proyecto&lt;/a&gt; que analizaba las emociones de los programadores de cada lenguaje a partir del análisis de los commits en Github, realizó un experimento similar en base a los códigos HTML, CSS y JavaScript. ¿Que relevancia tiene esto en una conferencia sobre rendimiento de sitios web? Que las mismas búsquedas se pueden aplicar a encontrar, por ejemplo, de que maneras estan cargando el codigo JavaScript los sitios. Esto ya es algo con un impacto directo en el rendimiento del sitio. Spoiler: los resultados no fueron muy buenos, casi nadie usa async o defer :(&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.igvita.com/&quot;&gt;Sitio web de Ilya Grigorik&lt;/a&gt; (tiene cosas muy buenas, vale la pena echarle un vistazo)&lt;/p&gt;
+
+&lt;p&gt;El segundo demo fue de &lt;a href=&quot;https://github.com/IteraSpeed/OpenSpeedMonitor&quot;&gt;OpenSpeedMonitor&lt;/a&gt;, una herramienta opensource que automatiza la medición del rendimiento de páginas web, basado en &lt;a href=&quot;http://www.webpagetest.org/&quot;&gt;webpagetest&lt;/a&gt;. &lt;/p&gt;
+
+&lt;p&gt;Ambas presentaciones estuvieron buenas, el &lt;a href=&quot;http://www.youtube.com/watch?v=_CMcaYnBt-g&quot;&gt;Video&lt;/a&gt; dura 18 mins pero pasan rápido.&lt;/p&gt;
+
+&lt;h2 id=&quot;etsys-journey-to-building-a-continuous-integration-infrastructure-for-mobile-appshttpvelocityconfcomvelocityeu2014publicscheduledetail37081&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37081&quot;&gt;Etsy’s Journey to Building a Continuous Integration Infrastructure for Mobile Apps&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Etsy libera código a producción más de 50 veces al dia en el sitio web, pero para las aplicaciones para móbiles el proceso no es tán sencillo. Apple se demora un promedio de 5 dias en evaluar una app con lo cual, en caso de un error, el rollback no es tán sencillo.&lt;/p&gt;
+
+&lt;p&gt;Armaron un pipeline interno para probar las apps, utilizan &lt;a href=&quot;https://github.com/nomad/shenzhen/&quot;&gt;shenzhen&lt;/a&gt; para firmar las apps, las buildean en un pool de 25 mac minis (deployadas mediante Chef).&lt;/p&gt;
+
+&lt;p&gt;Fue interesante conocer que no utilizan branches para el desarrollo. El código nuevo va en el mismo código base, diferenciandose mediante “feature flags”. Admitió que se corre el riesgo al ir deprecando funcionalidades quede código viejo sin usar, pero prefiere ese riesgo a favor de la facilidades comparando a los problemas de compatibilidad que introduce el código basado en branches (para una empresa que comitea todos los dias, si haces hoy un branch para desarrollar una funcionalidad que te toma un mes, es muy probable que cuando vayas a mergear de vuelta tu código, ya el base se haya diferenciado demasiado del código sobre el que habias hecho el fork en primera instancia).&lt;/p&gt;
+
+&lt;p&gt;Como un detalle técnico, mencionó la herramienta &lt;a href=&quot;https://github.com/etsy/TryLib&quot;&gt;TryLib&lt;/a&gt; que permite testear en los jenkins el código antes de comitearlo al repo.&lt;/p&gt;
+
+&lt;p&gt;Tercerizan el testeo en equipos físicos a https://appthwack.com/.&lt;/p&gt;
+
+&lt;p&gt;Escribir los unit tests no le gusta a nadie. Para buscarle un ángulo divertido, implementaron los “testing dojos”, donde 6 desarrolladores se rotan cada 3 minutos para escribir una funcionalidad, por un lado tener el tiempo limitado, por otro tener tiempo para ver los otros desarrolladores como van escribiendo el código ayuda además a fomentar el trabajo en equipo.&lt;/p&gt;
+
+&lt;p&gt;Para lo que es QA directamente, habló sobre dos técnicas, una es la creacion de equipos compuestos por 8 voluntarios, un facilitador de QA y un grupo de dispositivos que se juntan durante una hora con el objetivo de encontrar la mayora cantidad de bugs durante ese tiempo. La otra es una herramienta &lt;a href=&quot;https://github.com/etsy/BugHunt-iOS&quot;&gt;BugHunt&lt;/a&gt; que le permite a los desarolladores postear capturas de pantallas de los bugs que van encontrando, convirtiendolo en un juego al llevar un ranking.&lt;/p&gt;
+
+&lt;h2 id=&quot;its-3am-do-you-know-why-you-got-pagedhttpvelocityconfcomvelocityeu2014publicscheduledetail37141&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37141&quot;&gt;It’s 3AM, Do You Know Why You Got Paged?&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;El contexto de las alarmas es importante. 
+Mostró un gráfico con el número de alertas por año. Hubieron dos descensos significativos. El primero, cuando el equipo de operaciones se tomó una semana entera, sin hacer nada más, para revisar todas las alarmas que tenian en los nagios, y hacer limpieza.&lt;/p&gt;
+
+&lt;p&gt;La segunda, cuando implementaron &lt;a href=&quot;https://github.com/etsy/nagios-herald&quot;&gt;nagios-herald&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;breaking-news-at-1000mshttpvelocityconfcomvelocityeu2014publicscheduledetail37127&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37127&quot;&gt;Breaking News at 1000ms&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;En estos tiempos donde la percepción en la velocidad de carga de un sitio web es tan importante, &lt;a href=&quot;http://www.theguardian.com&quot;&gt;The Guardian&lt;/a&gt; encontró una manera de estar en la delantera entre los sitios de noticios. Incluyen en el código fuente de la página todo lo que es necesario para que carguen los elementos principales de que se compone la página. Por ejemplo, en la página de un árticulo lo importante es mostrar el texto del árticulo, pero no sólo el contenido sino el diseño en su formato final támbien. Incluyen el código css y el javascript en el html inicial que se envia al navegador cuando se accede a la URL. De esta manera, cuando está manera, cuando la pagina carga ya muestra la noticia directamente. A continuación envían el resto del contenido: comentarios, anuncios, etc. Interesante la charla y en las slides mostraba como otros sitios de noticias mostraban una página en blanco en el navegador (mientras este aún estaba esperando por cargar archivos de css o js antes de decidir como iba a mostrar el contenido) ya el sitio de ellos mostraba el contenido, en su formato final.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/patrickhamann/breaking-news-at-1000ms-velocity-eu-2014&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;using-promise-theory-to-improve-digital-service-qualityhttpvelocityconfcomvelocityny2014publicscheduledetail35740&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityny2014/public/schedule/detail/35740&quot;&gt;Using Promise Theory to Improve Digital Service Quality&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Wikipedia dice que la &lt;a href=&quot;http://en.wikipedia.org/wiki/Promise_theory&quot;&gt;Promise Theory&lt;/a&gt;: “es un modelo de cooperación voluntaria entre individuos, agentes o actores autónomos que comunican sus intenciones entre ellos en forma de promesas.&lt;/p&gt;
+
+&lt;p&gt;Una promesa es una declaración de intención con el propósito de incrementar la certidumbre del destinatario con respecto al reclamo de una conducta pasada, presente o futura. Para que una promesa incremente la certidumbre el destinatario necesita creer en el que promete, pero la confianza también puede provenir del conocimiento de promesas anteriores que fueron cumplidas, de esta manera se aprecia que la confianza mantiene una relación simbiótica con las promesas.”&lt;/p&gt;
+
+&lt;p&gt;¿Como se relaciona esto con nuestro mundo? Para empezar asumiendo que las promesas, como tales, no necesariamente se cumplen. Los sistemas en el mundo real son colecciones de agentes autónomos colaborando a través de promesas. De este modo, el reconocimiento de la incertidumbre nos brinda un mayor grado de certidumbre. Además, al tratar a los agentes como autónomos, incrementamos la escalabilidad y la robustez de nuestros sistemas.&lt;/p&gt;
+
+&lt;p&gt;Luego pasó a hablar de los servicios. El servicio es acerca de las experiencias, no las cosas físicas. Las relaciones, no las transacciones. Los proveedores de servicios promete a sus usuarios a ayudarlos a concluir sus objetivos. Todos los elementos que integran una organización de servicios deben colaborar para cumplir con las promesas a sus usuarios.&lt;/p&gt;
+
+&lt;p&gt;Es importante hacernos preguntas como: ¿Qué promesas debemos hacer?, ¿Que promesas necesitamos que otros nos hagan a nosotros?, ¿Que debemos hacer para incrementar la confianza que nos tienen otros?, ¿Que promesas nos deben hacer nuestros usuarios?&lt;/p&gt;
+
+&lt;p&gt;La teoría de la promesa ayuda a cruzar fronteras, a establecer relaciones entre todos los integrantes de la organización. Ayuda entonces modelar la organización a partir del usuario en el flujo que siguen los mismos y definir los servicios con los que interactua.&lt;/p&gt;
+
+&lt;p&gt;Hay que ver las relaciones en términos de promesas:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Beneficios&lt;/li&gt;
+  &lt;li&gt;Empatía&lt;/li&gt;
+  &lt;li&gt;Autonomía&lt;/li&gt;
+  &lt;li&gt;Resistencia al fallo&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Todo esto en el contexto de todas las áreas de la organización.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://blog.ingineering.it/&quot;&gt;Blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.slideshare.net/ingineeringit/promising-digital-service-quality&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-bbc-sport-scales-engineeringhttpvelocityconfcomvelocityeu2014publicscheduledetail37176&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37176&quot;&gt;How BBC Sport Scales Engineering&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Tenian el problema de un ciclo de release muy largo, esto incrementaba el nivel de riesgo y de frustración. Armaron un pipeline de continuous deployment similar al que usamos en OLX.
+Para deployar el código evaluaron 4 variantes:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;El código puesto en un equipo directamente.&lt;/li&gt;
+  &lt;li&gt;El código puesto en un container puesto en un equipo.&lt;/li&gt;
+  &lt;li&gt;El código puesto en un paquete instalado en un equipo.&lt;/li&gt;
+  &lt;li&gt;El código puesto en un paquete instalado en un container puesto en un equipo.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Las dos primeras tenian un problema: ¿cómo expresas dependencias en tu software sin paquetes? (y no me digan con bash scripts)&lt;/p&gt;
+
+&lt;p&gt;Conclusión: Deja el manejo de dependencia de versiones a los sistemas diseñados a tal efecto: los gestores de paquetes.&lt;/p&gt;
+
+&lt;p&gt;Ya sea que usas contenedores o deployas directo a un equipo, empaqueta tu código.&lt;/p&gt;
+
+&lt;p&gt;Respecto a la opción de deployar contenedores (docker) es un tema dinámico:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;las herramientas de deployment y administración aun son inmaduras.&lt;/li&gt;
+  &lt;li&gt;es dificil el manejo de dependencias entre el codigo deployado en el container&lt;/li&gt;
+  &lt;li&gt;etc &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;La solución elegida entonces fue: código -&amp;gt; paquete -&amp;gt; equipo.&lt;/p&gt;
+
+&lt;p&gt;Crean dos binarios:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Paquetes (e.g. rpm, deb, etc)&lt;/li&gt;
+  &lt;li&gt;Imagenes de Equipos (e.g. AMI)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Principios Importantes&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Los binarios deben crearse de forma que sea repoducible.&lt;/li&gt;
+  &lt;li&gt;Solo se crean los binarios una vez.&lt;/li&gt;
+  &lt;li&gt;Deja el manejo de dependencias a las herramientas creadas para la tarea.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hay distintos niveles de manejo de paquetes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Específicos del sistema, e.g. apt, yum&lt;/li&gt;
+  &lt;li&gt;Portables, e.g. pip, bundle, npm&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Para manejar dependencias entre distintos tipos de manejadores de paquetes se recomienda empaquetar para el nivel mas bajo y luego, resolver las dependencias a nivel mas alto en el momento de buildear incluyendolas en el paquete final.&lt;/p&gt;
+
+&lt;p&gt;Usar CI es crítico, la elección de CI es irrelevante.&lt;/p&gt;
+
+&lt;p&gt;Buildean el código dentro de chroots creados on-demand con &lt;a href=&quot;http://fedoraproject.org/wiki/Projects/Mock&quot;&gt;mock&lt;/a&gt; lo que les asegura que todas las dependencias en tiempo de build esten especificadas correctamente y el build es reproducible.&lt;/p&gt;
+
+&lt;p&gt;¿Como crean los paquetes?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Usan jenkins&lt;/li&gt;
+  &lt;li&gt;Crean los paquetes dentro de chroots usando mock.&lt;/li&gt;
+  &lt;li&gt;Los servicios son empaquetados como archivos rpm.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;¿Qué hay en una imagen de equipo?&lt;/p&gt;
+
+&lt;p&gt;Crean dos imagenes (AMIs)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Una con el sistema operativo y los paquetes de los servicios&lt;/li&gt;
+  &lt;li&gt;Una que toma como base la imagen anterior y le agrega los paquetes con las configuraciones. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;De esta manera pueden re-utilizar la misma imagen con el sistema operativo y los paquetes de los servicios a la hora de crear las imagenes que se deployan en los distintos ambientes.&lt;/p&gt;
+
+&lt;p&gt;Es una solución de compromiso entre las dos opciones: crear una imagen básica que se deploya para luego instalar todos los paquetes sobre la misma ó crear una imagen que tenga todos los paquetes que va a llevar y este lista para ser deployada y funcionar al momento.&lt;/p&gt;
+
+&lt;p&gt;Utilizan AWS Cloudformation y el concepto de Infrastructura como código, esto les permite:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Manejar las dependencias de infrastructura&lt;/li&gt;
+  &lt;li&gt;Soportan rollbacks&lt;/li&gt;
+  &lt;li&gt;Reproducible&lt;/li&gt;
+  &lt;li&gt;Versionan la infrasctura con el código.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Esto permite:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Deployar copias idénticas del servicio en distintos ambientes&lt;/li&gt;
+  &lt;li&gt;Pueden versionar los templates de infrastructura en código y ser capaces entonces de reproducir todo el stack en cualquier momento en el tiempo.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Entonces, la aplicación no es solo código, son código e infrastructura combinados.&lt;/p&gt;
+
+&lt;p&gt;¿Como provisionan la infrastructura?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Separan en distintos templates la infrastuctura stateless de la stateful.&lt;/li&gt;
+  &lt;li&gt;Usa &lt;a href=&quot;https://github.com/cloudtools/troposphere&quot;&gt;librerias de abstracción de Cloudformation&lt;/a&gt; para generar programáticamente los templates.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Si no están utilizando Autoscaling Groups, lo están haciendo mal!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ASGs se asegura de que tus instancias siempre esten corriendo.&lt;/li&gt;
+  &lt;li&gt;ASGs maneja multi AZ por usted.&lt;/li&gt;
+  &lt;li&gt;ASGs hacen de usted un mejor ingeniero.&lt;/li&gt;
+  &lt;li&gt;ASGs pueden deployar servicios.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Es importante olvidarse de las instancias como tal, son solo una unidad de capacidad computacional.&lt;/p&gt;
+
+&lt;p&gt;¿Cómo queda todo junto?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Utilice subnets VPCs y ACLs para limitar el acceso por red a sus servicios.&lt;/li&gt;
+  &lt;li&gt;Siempre distribuya su infrastructura entre multiple AZs&lt;/li&gt;
+  &lt;li&gt;Utilice múltiples cuentas de AWS para distintos servicios y/o ambientes.&lt;/li&gt;
+  &lt;li&gt;Corra su servicio en ASGs.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+  &lt;p&gt;&lt;a href=&quot;http://toja.io/velocity-barcelona-dia-2/&quot;&gt;Velocity Barcelona Dia 2&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on December 01, 2014.&lt;/p&gt;</content>
+</entry>
 
 
   

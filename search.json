@@ -1,6 +1,15 @@
 [
 	
 		{
+		  "title"      : "Velocity Barcelona Dia 2",
+		  "category"   : "",
+      "tags"       : "conferences and velocityconf",
+		  "url"        : "http://toja.io/velocity-barcelona-dia-2/",
+		  "date"       : "2014-12-01 07:05:17 -0300",
+		  "shortdate"  : "December 01, 2014"
+		} ,
+	
+		{
 		  "title"      : "Velocity Barcelona Dia 1",
 		  "category"   : "",
       "tags"       : "conferences and velocityconf",
