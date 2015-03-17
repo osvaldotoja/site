@@ -18,7 +18,7 @@ publish:
 	git checkout gh-pages
 	rsync -av _site/* .
 	rm -fr _site/
-	git commit -am"site update" ; git push
+	git add . ; git commit -am"site update" ; git push
 	git checkout master
 	ssh-add -D
 
