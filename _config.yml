@@ -1,4 +1,4 @@
-# Site wide configuration
+# Site wide configuration 
 
 title: toja.io
 locale: en_US
@@ -30,8 +30,8 @@ kramdown:
   auto_ids: true
   footnote_nr: 1
   entity_output: as_char
-  toc_levels: 1..6
-  use_coderay: true
+  toc_levels: 1..2
+  use_coderay: false
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
@@ -45,12 +45,13 @@ owner:
   disqus-shortname: tojaio
   twitter: otsuarez
   facebook: #username
-  github: osvaldotoja
+  github: otsuarez
   stackexchange: #http://stackoverflow.com/users/123456/username
   linkedin: #username
   instagram: #username
   flickr: #username
   tumblr: #username
+  pinterest: #username
   google:
     plus: #username
     analytics: UA-47799513-1

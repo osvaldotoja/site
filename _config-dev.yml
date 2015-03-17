@@ -1,0 +1,62 @@
+# Site wide configuration 
+
+title: toja.io
+locale: en_US
+description: sysadmin, devops and videotapes
+#logo: site-logo.png
+logo: null
+search: true
+
+url: http://localhost:4000
+baseurl: /
+
+
+# Jekyll configuration
+
+#permalink:   /:categories/:title/
+permalink:   /:title/
+markdown:    kramdown
+#highlighter: pygments
+highlighter: coderay
+sass:
+  sass_dir: _sass
+  style: compressed
+gems:
+  - jekyll-sitemap
+
+paginate: 5
+paginate_path: "page/:num"
+
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..2
+  use_coderay: true
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Gemfile", "Gemfile.lock", "LICENSE", "README.md", "vendor"]
+
+
+# Site owner
+owner:
+  name: Osvaldo Toja
+  avatar: linkedin-image.jpg
+  email: osvaldo.toja@gmail.com
+  disqus-shortname: tojaio
+  twitter: otsuarez
+  facebook: #username
+  github: otsuarez
+  stackexchange: #http://stackoverflow.com/users/123456/username
+  linkedin: #username
+  instagram: #username
+  flickr: #username
+  tumblr: #username
+  pinterest: #username
+  google:
+    plus: #username
+    analytics:
+    verify:
+    ad-client:
+    ad-slot: 
+  bing-verify:

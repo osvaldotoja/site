@@ -4,6 +4,10 @@ title: Syntax Highlighting Post
 excerpt: "Demo post displaying the various ways of highlighting code in Markdown."
 categories: articles
 tags: [sample-post, code, highlighting]
+image:
+  feature: so-simple-sample-image-5.jpg
+  credit: WeGraphics
+  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
 comments: true
 share: true
 ---
@@ -12,15 +16,15 @@ Syntax highlighting is a feature that displays source code, in different colors 
 
 [^1]: <http://en.wikipedia.org/wiki/Syntax_highlighting>
 
-### Pygments Code Blocks
+### Pygments or Rouge Code Blocks
 
-To modify styling and highlight colors edit `/assets/less/pygments.less` and compile `main.less` with your favorite preprocessor. Or edit `main.css` if that's your thing, the classes you want to modify all begin with `.highlight`.
+To modify styling and highlight colors edit `/_sass/_syntax.scss`.
 
 {% highlight css %}
 #container {
-    float: left;
-    margin: 0 -240px 0 0;
-    width: 100%;
+  float: left;
+  margin: 0 -240px 0 0;
+  width: 100%;
 }
 {% endhighlight %}
 
@@ -74,7 +78,7 @@ end
 
 ### Fenced Code Blocks
 
-To modify styling and highlight colors edit `/assets/less/coderay.less` and compile `main.less` with your favorite preprocessor. Or edit `main.css` if that's your thing, the classes you want to modify all begin with `.coderay`. Line numbers and a few other things can be modified in `_config.yml` under `coderay`.
+To modify styling and highlight colors edit `/_sass/_coderay.scss`. Line numbers and a few other things can be modified in `_config.yml`. Consult [Jekyll's documentation](http://jekyllrb.com/docs/configuration/) for more information.
 
 ~~~ css
 #container {

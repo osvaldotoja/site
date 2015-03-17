@@ -1,16 +1,18 @@
 all: serve
+serve:
+	jekyll serve -c _config-dev.yml --watch
 
 drafts:
 	jekyll serve --watch --drafts
 
-serve:
-	jekyll serve --watch 
+#serve:
+#	jekyll serve --watch 
 
 build:
 	jekyll build
 
 publish:
-	ssh-add ~/.ssh/osvaldotoja
+	#ssh-add ~/.ssh/osvaldotoja
 	jekyll build
 	git commit -am"site update" 
 	git checkout gh-pages
