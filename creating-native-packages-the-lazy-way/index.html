@@ -1,0 +1,455 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Creating Native Packages the Lazy Way &#8211; toja.io</title>
+
+<meta name="keywords" content="fpm, aptly, ansible">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Creating Native Packages the Lazy Way">
+
+<meta name="twitter:site" content="@otsuarez">
+<meta name="twitter:creator" content="@otsuarez">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://toja.io/images/">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Creating Native Packages the Lazy Way">
+
+<meta property="og:url" content="http://toja.io/creating-native-packages-the-lazy-way/">
+<meta property="og:site_name" content="toja.io">
+
+
+
+
+
+<link rel="canonical" href="http://toja.io/creating-native-packages-the-lazy-way/">
+<link href="http://toja.io/feed.xml" type="application/atom+xml" rel="alternate" title="toja.io Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://toja.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="//use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://toja.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://toja.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://toja.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://toja.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://toja.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://toja.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://toja.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://toja.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://toja.io/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://toja.io/" >Home</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://toja.io/articles/" >Articles</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://toja.io/about/" >About</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+      <h1 class="site-title animated fadeIn"><a href="http://toja.io/">toja.io</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">sysadmin, devops and videotapes</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"><a href="http://toja.io/tags/#fpm" title="Pages tagged fpm">fpm</a>&nbsp;&bull;&nbsp;<a href="http://toja.io/tags/#aptly" title="Pages tagged aptly">aptly</a>&nbsp;&bull;&nbsp;<a href="http://toja.io/tags/#ansible" title="Pages tagged ansible">ansible</a></span>
+        
+          <h1 class="entry-title">Creating Native Packages the Lazy Way</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://toja.io/images/linkedin-image.jpg" class="bio-photo" alt="Osvaldo Toja bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Osvaldo Toja</span></span>
+        <span class="entry-date date published"><time datetime="2015-03-17T12:01:06-03:00"><i class="fa fa-calendar-o"></i> March 17, 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <h1 id="the-chain">the chain</h1>
+
+<p>Using native packages provides many benefits. However, building native packages is not a simple task. Tools like <code>fpm</code> help getting the job done but still creating the package is only one link on the whole chain. </p>
+
+<p>The chain starts on the code repositories, where the files to be deployed are stored. For source code files, subversion and git repositories are common choices. Artifactory servers are used by java projects. The first step would be to able to grab the code from any of thouse sources.</p>
+
+<p>To create the packages some data is needed. Metadata like the plattform supported by the files, the version number. Data like the directory where the files will be installed. Actions which might be required to be executed upon installation or removal of the package.</p>
+
+<p>The family of the server will define whether a deb or an rpm file will be created. Both formats should be supported since are the most used and it would not be weird to have only one to migrate to the other one at some point in time.</p>
+
+<p>The final step would be to make available the new package to the servers. Package repositories are used for that purpose. So the package will need to be published. Repositories used to be stored on web server’s directories but these days services like Amazon’s S3 are used as well.</p>
+
+<h1 id="the-tool">the tool</h1>
+
+<p>How can we orchestrate the package creation chain? A tool for achieving such goal is described below. It is built on ansible, using fpm as the motor engine, aptly as the publishing media and jenkins for running the show. </p>
+
+<p>Main features:</p>
+
+<ul>
+  <li>simple. Configuration is done via yaml files.</li>
+  <li>modular. New inputs or outputs can be added writing ansible playbooks.</li>
+  <li>scalable. Can be used for large number of components.</li>
+  <li>convention over configuration.</li>
+</ul>
+
+<p>One of the objectives for this project was not to require any technical knowledge of native package creation in order to use it. All the data required to create the package is stored in one place: the variables files. When a new package is required, just add a new file to the variables directory and it will be ready to be built. If a git repository is used for this project, a PR would be all it needs for a developer to get his code ready for installation using native packages.</p>
+
+<p>The arquitecture is based on the Unix philosophy. Small parts combined to provide the final result. Each step is responsable for one thing only. The input plugins will retrieve the files and place them under a predefined directory. The package’s data is defined on variables stored in yaml files. The <code>fpm</code> command is executed with the proper set of variables to create the native package. Once the package was created, the output plugin will publish it to a package repository.</p>
+
+<p>Simplicity does comes at a cost. Use of convention over configuration is mandatory for some of the features of this tool, the use of common variables for instance.</p>
+
+<h1 id="data">data</h1>
+
+<p>Data is stored in ansible variable files. Packages can be grouped to avoid repeating data. For instance, a web site might have different components: modules, themes (i’m thinking drupal), each one a different package yet all sharing the same document root. A common file can be created for storing such data while keeping info about the components on their specific file. A variable file named <code>all</code> will contain data available to all projects. </p>
+
+<p>Data can be stored in a hierarchy format composed by three levels where the more granular override the general ones:</p>
+
+<ul>
+  <li>global</li>
+  <li>common</li>
+  <li>component</li>
+</ul>
+
+<p>There is also data specific for the plugins, which be stored on files <code>input-*</code> and <code>output-*</code> where the plugin name will be part of the filename (e.g. <code>input-git</code> for the git input plugin).</p>
+
+<h2 id="global">global</h2>
+
+<p>The <code>global</code> level consists of only one file: <code>group_vars/all</code>. This file stores variables shared by all components.</p>
+
+<p>Examples.</p>
+
+<p>Package metadata can be stored on this file. </p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># package metadata</span>
+<span class="l-Scalar-Plain">pkg_vendor</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ACME</span>
+<span class="l-Scalar-Plain">pkg_license</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Apache Licence</span>
+<span class="l-Scalar-Plain">pkg_maintainer</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">&lt;release-team@acme.com&gt;</span></code></pre></div>
+
+<p>Default values for the build process like the directory where the input plugins will store the files for the build process process them.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># fpm temp dir</span>
+<span class="l-Scalar-Plain">pkg_tmp_dir</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/var/tmp/fpm</span></code></pre></div>
+
+<p>Mantainer scripts can be added to the package just by droping the scripts in a predefined folder. Same works for config files like service scripts.
+The location of the folder where this files are to be found can be defined at a global level. It is also a good design choice to provide default options or whether to use or not the funcionalities provided by the tool.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># roles/packaging/tasks/pkg-scripts.yml</span>
+<span class="l-Scalar-Plain">init_scripts_rootdir</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/home/local/git/pkg-scripts/</span>
+<span class="l-Scalar-Plain">pkg_scripts_setup</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+<span class="l-Scalar-Plain">pkg_script_opts</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">--template-scripts</span>
+<span class="l-Scalar-Plain">pkg_script_files_opt</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">preinst</span><span class="p-Indicator">:</span> <span class="s">&#39;--before-install&#39;</span><span class="p-Indicator">,</span> <span class="nv">postinst</span><span class="p-Indicator">:</span> <span class="s">&#39;--after-install</span><span class="nv"> </span><span class="s">&#39;</span><span class="p-Indicator">,</span> <span class="nv">prerm</span><span class="p-Indicator">:</span> <span class="s">&#39;--before-remove</span><span class="nv"> </span><span class="s">&#39;</span><span class="p-Indicator">,</span> <span class="nv">postrm</span><span class="p-Indicator">:</span> <span class="s">&#39;--after-remove</span><span class="nv"> </span><span class="s">&#39;</span> <span class="p-Indicator">}</span>
+<span class="l-Scalar-Plain">fpm_pkg_opts</span><span class="p-Indicator">:</span>
+<span class="c1"># roles/packaging/tasks/pkg-conffiles.yml</span>
+<span class="l-Scalar-Plain">pkg_conffiles_setup</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+<span class="l-Scalar-Plain">pkg_conffiles_etcdir</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/etc</span>
+<span class="l-Scalar-Plain">fpm_scripts_opts</span><span class="p-Indicator">:</span></code></pre></div>
+
+<p>Any value found on this file will be ovewritten if declared on any of the following levels.</p>
+
+<h2 id="common">common</h2>
+
+<p>If a project is splited on several packages, chances are they will share some variables, like the document root for web based projects. To avoid repeating data, a file can be created which will be automatically be imported during the build phase. </p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">pkg</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">rpm</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">base_prefix</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/home/httpd/www.acme.com</span>
+    <span class="l-Scalar-Plain">user</span><span class="p-Indicator">:</span> <span class="s">&quot;--rpm-user</span><span class="nv"> </span><span class="s">httpd&quot;</span>
+    <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span> <span class="s">&quot;--deb-group</span><span class="nv"> </span><span class="s">httpd&quot;</span>
+  <span class="l-Scalar-Plain">deb</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">base_prefix</span> <span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/var/www/www.acme.com</span>
+    <span class="l-Scalar-Plain">user</span><span class="p-Indicator">:</span> <span class="s">&quot;--deb-user</span><span class="nv"> </span><span class="s">www-data&quot;</span>
+    <span class="l-Scalar-Plain">group</span><span class="p-Indicator">:</span> <span class="s">&quot;--deb-group</span><span class="nv"> </span><span class="s">www-data&quot;</span></code></pre></div>
+
+<p>The common level is composed by files named <code>common-'component-name'</code>. The filename for the common variables is created by parsing the component string: “common-<first word="" of="" the="" component="" up="" to="" dash="" sign="">". So a component named <code>web-frontend</code> will automatically import the <code>common-web</code> file.</first></p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># extracts the component name up to the first dash</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">get common component filename</span>
+    <span class="l-Scalar-Plain">set_fact</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">common_component=&quot;{{ component | regex_replace(&#39;(.*?)\-.*$&#39;, &#39;\\1&#39;) }}&quot;</span>
+
+  <span class="c1">#&quot; include common if it exists, just continue if not</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">include component common vars file</span> 
+    <span class="l-Scalar-Plain">include_vars</span><span class="p-Indicator">:</span> <span class="s">&quot;group_vars/common-{{</span><span class="nv"> </span><span class="s">common_component</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">ignore_errors</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">yes</span></code></pre></div>
+
+<p>The common file is not mandatory, execution will continue normally if the file is not found.</p>
+
+<h2 id="component">component</h2>
+
+<p>The variables declared at this level will override any previously declared variable. Because of the way ansible works, there is no merge for variables, it just use the new one. The files at component level will be named after the project’s name and stored in the <code>group_vars</code> directory. For a project named web-frontend, the file <code>group_vars/web-frontend</code> will automatically be imported. The execution of the tool will fail if this file is not found.</p>
+
+<p>The component variable file is mandatory, execution will be interrupted if the file is not found.</p>
+
+<h1 id="input">input</h1>
+
+<p>The input plugins do only one job. To retrieve the files and put them on a folder in the server. Plugins are ansible tasks files available in the <code>packaging</code> role. Each plugin will have the logic for retrieving the files where the development team left them.</p>
+
+<p>The plugin to be used is declared via the <code>component_input</code> variable, usually on the common file: </p>
+
+<p>group_vars/common-web</p>
+
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">component_input: main_jfrog</code></pre></div>
+
+<p>By convention, input variable files will be named: <code>input-'component_input'</code>.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">include component input vars file</span> 
+    <span class="l-Scalar-Plain">include_vars</span><span class="p-Indicator">:</span> <span class="s">&quot;group_vars/input-{{</span><span class="nv"> </span><span class="s">component_input</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">when</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">component_input is defined</span></code></pre></div>
+
+<p>Although the project can use the same technologies, like artifactory servers or git repositories, different teams might use different servers, which means different access urls, credentials.</p>
+
+<p>The <code>component_input</code> variable will point to an input file where such data is stored. All git related input files will do share one variable in common: <code>input_type: artifact</code>.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># group_vars/web-frontend</span>
+<span class="l-Scalar-Plain">component_input</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">github</span>
+
+<span class="c1"># group_vars/web-translations</span>
+<span class="l-Scalar-Plain">component_input</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">gitlab</span>
+
+<span class="c1"># group_vars/web-daemon</span>
+<span class="l-Scalar-Plain">component_input</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">main_jfrog</span>
+
+<span class="c1"># group_vars/input-github</span>
+<span class="l-Scalar-Plain">input_url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">git@github.com:acme</span>
+<span class="l-Scalar-Plain">input_type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">git</span>
+
+<span class="c1"># group_vars/input-gitlab</span>
+<span class="l-Scalar-Plain">input_url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">git@git.acme.com.ar:acme</span>
+<span class="l-Scalar-Plain">input_type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">git</span>
+
+<span class="c1">#group_vars/input-main_jfrog</span>
+<span class="l-Scalar-Plain">jfrog_admin_user</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">admin</span>
+<span class="l-Scalar-Plain">jfrog_admin_password</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">secret</span>
+<span class="l-Scalar-Plain">jfrog_url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">jfrog.acme.com.ar/artifactory/simple</span>
+<span class="l-Scalar-Plain">input_type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">artifact</span></code></pre></div>
+
+<p>The input variable files will contain specific access data for that component. But all the component stored in a git repository will have the following line: <code>input_type: git</code>. This variable defines the task file to be used on the ansible role <code>packaging</code>.</p>
+
+<p>roles/packaging/tasks/main.yml</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">include</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">git.yml</span>
+  <span class="l-Scalar-Plain">when</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">input_type == &#39;git&#39;</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">include</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">artifact.yml</span>
+  <span class="l-Scalar-Plain">when</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">input_type == &#39;artifact&#39;</span></code></pre></div>
+
+<p>With this setup, both components: web-frontend and web-translations will download code using the <code>git.yml</code> task file using the corresponding access credentials. </p>
+
+<p>At the end of this step, the code will reside in a directory, by default: <code>/var/tmp/'component-name'/src</code>.</p>
+
+<h1 id="build">build</h1>
+
+<p>Once the files had been retrieved and placed in the directory, the time has come for the <code>fpm</code> command to be executed. Mantainer scripts and rcconf files are added if required.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">include</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pkg-scripts.yml</span>
+  <span class="l-Scalar-Plain">when</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pkg_scripts_setup</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">include</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pkg-conffiles.yml</span>
+  <span class="l-Scalar-Plain">when</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pkg_conffiles_setup</span></code></pre></div>
+
+<p>The actual execution of the <code>fpm</code> command was moved to the next step to handle the creation and publishing of the package in the same task file.</p>
+
+<h1 id="output">output</h1>
+
+<p>The output plugin to be used is selected via a similar procedure to the one used by the input plugins.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># output</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">include component input vars file</span> 
+    <span class="l-Scalar-Plain">include_vars</span><span class="p-Indicator">:</span> <span class="s">&quot;group_vars/output-{{</span><span class="nv"> </span><span class="s">component_output</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l-Scalar-Plain">when</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">component_output is defined</span>
+    <span class="l-Scalar-Plain">ignore_errors</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">yes</span></code></pre></div>
+
+<p>There are way too many variables to take into consideration when creating native packages. Just using ansible to ease the handling of variables passed as command line options to the <code>fpm</code> would had worth the effort.</p>
+
+<p>Here we create the native package, grab the name (parsing fpm’s output) and notify the availability via a hipchat channel.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deb -  creating package with fpm</span> 
+  <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="s">&#39;fpm</span><span class="nv"> </span><span class="s">-t</span><span class="nv"> </span><span class="s">deb</span><span class="nv"> </span><span class="s">-s</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">pkg_input_type</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">--name</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">component_package_name_prefix</span><span class="nv"> </span><span class="s">}}-{{</span><span class="nv"> </span><span class="s">component_package_name</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">--version</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">version</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">--iteration</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">branch</span><span class="nv"> </span><span class="s">}}-{{</span><span class="nv"> </span><span class="s">sha</span><span class="nv"> </span><span class="s">}}-{{</span><span class="nv"> </span><span class="s">iter</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">--architecture</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">component_arch</span><span class="nv"> </span><span class="s">}}</span><span class="nv">  </span><span class="s">--maintainer</span><span class="nv"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">pkg_maintainer</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="nv"> </span><span class="s">--description</span><span class="nv"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">component_description</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="nv"> </span><span class="s">--url</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">component_uri</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">--vendor</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">pkg_vendor</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">--license</span><span class="nv"> </span><span class="s">&quot;{{</span><span class="nv"> </span><span class="s">pkg_license</span><span class="nv"> </span><span class="s">}}&quot;</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">pkg.deb.user</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">pkg.deb.group</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">fpm_scripts_opts</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">-C</span><span class="nv"> </span><span class="s">src/</span><span class="nv"> </span><span class="s">.</span><span class="nv"> </span><span class="s">chdir={{</span><span class="nv"> </span><span class="s">pkg_tmp_dir</span><span class="nv"> </span><span class="s">}}/{{</span><span class="nv"> </span><span class="s">component</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">&#39;</span>
+  <span class="l-Scalar-Plain">register</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">out</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deb -  get package name</span>
+  <span class="l-Scalar-Plain">set_fact</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">pkgfile={{ out.stdout_lines[0] | regex_replace(&#39;.*path=&gt;&quot;(.*\.deb).*$&#39;, &#39;\\1&#39;) }}</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">debug</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">var=pkgfile</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">hipchat_v2</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">msg=&quot;new package created {{ pkgfile }}&quot; color=&quot;{{ pkg_hipchat_color }}&quot; room=&quot;{{ pkg_hipchat_room }}&quot; token=&quot;{{ pkg_hipchat_token }}&quot;</span></code></pre></div>
+
+<p>Debian repositories only make available the latest version of a package. This is a problem for development environments when a rollback to a previous version is always an option. <a href="http://www.aptly.info/">Aptly</a> is a tool for managing Debian repositories.</p>
+
+<p>Aptly works in two steps:</p>
+
+<ul>
+  <li>first the package is added to the aptly internal repository</li>
+  <li>then the package is published on a Debian repository (local or on S3).</li>
+</ul>
+
+<p>For this setup, the code’s branch is used to decide on which internal aptly repo the package will be added. A package can be published to one or more debian repositories.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="c1"># main apt repository (aptly)</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deb -  adding package to repository</span>
+  <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">aptly repo add {{ item.repo }} {{ pkg_tmp_dir }}/{{ component }}/{{ pkgfile }}</span>
+  <span class="l-Scalar-Plain">with_items</span><span class="p-Indicator">:</span> <span class="s">&quot;component_package_publish.branch.{{</span><span class="nv"> </span><span class="s">yaml_branch</span><span class="nv"> </span><span class="s">}}.aptly&quot;</span>
+  <span class="l-Scalar-Plain">when</span><span class="p-Indicator">:</span> <span class="s">&quot;&#39;main_apt&#39;</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">component_publish_target&quot;</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">deb -  update repository</span>
+  <span class="l-Scalar-Plain">command</span><span class="p-Indicator">:</span> <span class="s">&quot;aptly</span><span class="nv"> </span><span class="s">publish</span><span class="nv"> </span><span class="s">update</span><span class="nv">  </span><span class="s">{{</span><span class="nv"> </span><span class="s">item.distribution</span><span class="nv"> </span><span class="s">}}</span><span class="nv">  </span><span class="s">{{</span><span class="nv"> </span><span class="s">item.endpoint</span><span class="nv"> </span><span class="s">}}&quot;</span>
+  <span class="l-Scalar-Plain">with_items</span><span class="p-Indicator">:</span> <span class="s">&quot;component_package_publish.branch.{{</span><span class="nv"> </span><span class="s">yaml_branch</span><span class="nv"> </span><span class="s">}}.aptly&quot;</span>
+  <span class="l-Scalar-Plain">when</span><span class="p-Indicator">:</span> <span class="s">&quot;&#39;main_apt&#39;</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">component_publish_target&quot;</span></code></pre></div>
+
+<h1 id="ansible">ansible</h1>
+
+<p>Ansible is responsable for orquestrating the creation of the package. Providing the variables, executing the <code>fpm</code> command with the right options and publishing the package to the debian repository.</p>
+
+<p>Execution is done via the following command</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">ansible-playbook -i inventory main.yml -e &quot;component=web-modules version=1.0.2 branch=master sha=646a561&quot;</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">├── group_vars</span>
+<span class="l-Scalar-Plain">│   ├── all</span>
+<span class="l-Scalar-Plain">│   ├── backend-daemon</span>
+<span class="l-Scalar-Plain">│   ├── common-web</span>
+<span class="l-Scalar-Plain">│   ├── languages</span>
+<span class="l-Scalar-Plain">│   ├── web-modules</span>
+<span class="l-Scalar-Plain">│   └── web-themes</span>
+<span class="l-Scalar-Plain">├── inventory</span>
+<span class="l-Scalar-Plain">├── main.yml</span>
+<span class="l-Scalar-Plain">└── roles</span>
+    <span class="l-Scalar-Plain">└── packaging</span>
+        <span class="l-Scalar-Plain">├── defaults</span>
+        <span class="l-Scalar-Plain">│   └── main.yml</span>
+        <span class="l-Scalar-Plain">└── tasks</span>
+            <span class="l-Scalar-Plain">├── artifact.yml</span>
+            <span class="l-Scalar-Plain">├── deb.yml</span>
+            <span class="l-Scalar-Plain">├── git.yml</span>
+            <span class="l-Scalar-Plain">├── main.yml</span>
+            <span class="l-Scalar-Plain">├── pkg-conffiles.yml</span>
+            <span class="l-Scalar-Plain">├── pkg-scripts.yml</span>
+            <span class="l-Scalar-Plain">└── svn.yml</span></code></pre></div>
+
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://toja.io/about-native-packages/" class="btn" title="About Native Packages">Previous</a>
+      
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2015 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
+	
+	
+	
+	
+	
+	
+	<a href="http://github.com/otsuarez" title="Osvaldo Toja on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
+	
+  <a href="http://toja.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://toja.io';
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://toja.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://toja.io/assets/js/scripts.min.js"></script>
+
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-47799513-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+</body>
+</html>
