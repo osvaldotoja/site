@@ -1,4 +1,5 @@
 all: serve
+
 serve:
 	jekyll serve -c _config-dev.yml --watch
 
@@ -20,5 +21,5 @@ publish:
 	rm -fr _site/
 	git add . ; git commit -am"site update" ; git push
 	git checkout master
-	ssh-add -D
+	#ssh-add -D
 
