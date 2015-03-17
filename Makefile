@@ -14,6 +14,7 @@ build:
 
 publish:
 	#ssh-add ~/.ssh/osvaldotoja
+	ssh-add 
 	jekyll build
 	git commit -am"site update" 
 	git checkout gh-pages
