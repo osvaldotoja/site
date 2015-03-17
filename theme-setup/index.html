@@ -35,7 +35,6 @@
 <link rel="canonical" href="http://toja.io/theme-setup/">
 <link href="http://toja.io/feed.xml" type="application/atom+xml" rel="alternate" title="toja.io Feed">
 
-
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -94,20 +93,11 @@
 		    
 		    <li><a href="http://toja.io/about/" >About</a></li>
 		  
-        <li class="dosearch"><span><i class="fa fa-search"></i> Search</span></li>
 	    </ul>
 	</nav>
 </div><!-- /.navigation-wrapper -->
 
 <!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
-
-<div class="search-wrapper">
-  <div class="search-form">
-    <input type="text" class="search-field" placeholder="Search...">
-    <button class="close-btn"><i class="fa fa-times-circle fa-2x"></i></button>
-    <ul class="search-results post-list"></ul><!-- /.search-results -->
-  </div><!-- /.search-form -->
-</div><!-- ./search-wrapper -->
 
 <header class="masthead">
 	
@@ -116,9 +106,10 @@
 
 <div class="js-menu-screen menu-screen"></div>
 
+
 <div id="main" role="main">
   <article class="entry">
-    <img src="http://toja.io/images/so-simple-sample-image-6.jpg" class="entry-feature-image" alt="Theme Setup" style="margin-top:0;"><p class="image-credit">Photo Credit: <a href="http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/">WeGraphics</a>
+    <img src="http://toja.io/images/so-simple-sample-image-6.jpg" class="entry-feature-image" alt="Theme Setup" style="margin-top:0;"><p class="image-credit">Photo Credit: <a href="http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/">WeGraphics</a></p>
     <div class="entry-wrapper">
       <header class="entry-header">
         <h1 class="entry-title">Theme Setup</h1>
@@ -130,34 +121,13 @@
   <li><a href="#installation">Installation</a></li>
   <li><a href="#running-jekyll">Running Jekyll</a></li>
   <li><a href="#scaffolding">Scaffolding</a></li>
-  <li><a href="#site-setup">Site Setup</a>    <ul>
-      <li><a href="#site-wide-configuration">Site Wide Configuration</a>        <ul>
-          <li><a href="#title">title</a></li>
-          <li><a href="#logo">logo</a></li>
-          <li><a href="#url">url</a></li>
-          <li><a href="#google-analytics-and-webmaster-tools">Google Analytics and Webmaster Tools</a></li>
-        </ul>
-      </li>
-      <li><a href="#navigation-links">Navigation Links</a></li>
-    </ul>
-  </li>
-  <li><a href="#adding-new-content-with-octopress">Adding New Content with Octopress</a>    <ul>
-      <li><a href="#new-post">New Post</a></li>
-      <li><a href="#new-page">New Page</a></li>
-    </ul>
-  </li>
-  <li><a href="#layouts-and-content">Layouts and Content</a>    <ul>
-      <li><a href="#post-and-page">Post and Page</a></li>
-      <li><a href="#categories">Categories</a></li>
-      <li><a href="#feature-images">Feature Images</a></li>
-      <li><a href="#videos">Videos</a></li>
-      <li><a href="#link-post-type">Link Post Type</a></li>
-      <li><a href="#author-override">Author Override</a></li>
-    </ul>
-  </li>
+  <li><a href="#site-setup">Site Setup</a></li>
+  <li><a href="#adding-new-content-with-octopress">Adding New Content with Octopress</a></li>
+  <li><a href="#layouts-and-content">Layouts and Content</a></li>
   <li><a href="#social-share-links">Social Share Links</a></li>
+  <li><a href="#disqus-comments">Disqus Comments</a></li>
   <li><a href="#twitter-cards">Twitter Cards</a></li>
-  <li><a href="#simple-search">Simple Search</a></li>
+  <li><a href="#jekyll-search">Jekyll search</a></li>
   <li><a href="#further-customization">Further Customization</a></li>
   <li><a href="#questions">Questions?</a></li>
   <li><a href="#license">License</a></li>
@@ -214,13 +184,13 @@ bundle exec jekyll serve</code></pre></div>
 <div class="highlight"><pre><code class="language-text" data-lang="text">so-simple-theme/
 ├── _includes/
 |    ├── browser-upgrade.html   # prompt to install a modern browser for &lt; IE9
-|    ├── disqus_comments.html   # Disqus comments script
+|    ├── disqus-comments.html   # Disqus comments script
+|    ├── feed-footer.html       # post footers in feed
 |    ├── footer.html            # site footer
 |    ├── head.html              # site head
 |    ├── navigation.html        # site top navigation
-|    ├── open-graph.html        # Twitter Cards and Open Graph meta data
+|    ├── open-graph.html        # meta data for Open Graph and Twitter cards
 |    └── scripts.html           # site scripts
-|    └── site-search.html       # site search overlay
 ├── _layouts/
 |    ├── page.html               # single column page layout
 |    └── post.html               # main content with sidebar for author/post details
@@ -330,7 +300,7 @@ bundle exec jekyll serve</code></pre></div>
 
 <p>In the sample posts folder you may have noticed <code>categories: articles</code> in the YAML front matter. Categories can be used to group posts into sub-folders. If you decide to rename or add categories you will need to create new category index pages.</p>
 
-<p>For example. Say you want to group all your posts under blog/ instead of articles/. In your post add <code>category: blog</code> to the YAML front matter, rename or duplicate articles/index.md to blog/index.md and update the <em>for loop</em> to limit posts to just the blog category.</p>
+<p>For example. Say you want to group all your posts under blog/ instead of articles/. In your post add <code>categories: blog</code> to the YAML front matter, rename or duplicate articles/index.md to blog/index.md and update the <em>for loop</em> to limit posts to just the blog category.</p>
 
 <div class="highlight"><pre><code class="language-text" data-lang="text">{% for post in site.categories.blog %}</code></pre></div>
 
@@ -408,6 +378,22 @@ bundle exec jekyll serve</code></pre></div>
 
 <hr />
 
+<h2 id="disqus-comments">Disqus Comments</h2>
+
+<p>To enable comments <a href="https://disqus.com/admin/signup/?utm_source=New-Site">signup for a Disqus account</a> and create a shortname for your site. Then add it to your <code>_config.yml</code> under the site owner section like so:</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">site</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">owner</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">disqus-shortname</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">shortname</span></code></pre></div>
+
+<p>If you would like comments to appear on every post or page that uses the <code>post.html</code> layout simply add the following line to your <code>_config.yml</code> and you’re done.</p>
+
+<div class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="l-Scalar-Plain">comments</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span></code></pre></div>
+
+<p>To be more selective and granualar with which posts and pages Disqus comments appear on, add <code>comments: true</code> to the YAML Front Matter of each post or page instead.</p>
+
+<hr />
+
 <h2 id="twitter-cards">Twitter Cards</h2>
 
 <p>Feature and thumbnail images are used by <a href="https://developers.facebook.com/docs/opengraph/">Open Graph</a> and <a href="https://dev.twitter.com/docs/cards">Twitter Cards</a> as well. If you don’t assign a thumbnail the site logo is used.</p>
@@ -420,20 +406,17 @@ bundle exec jekyll serve</code></pre></div>
 
 <hr />
 
-<h2 id="simple-search">Simple Search</h2>
+<h2 id="jekyll-search">Jekyll search</h2>
 
-<p>Adding <code>search: true</code> to your <code>_config.yml</code> enables search using Christian Fei’s <a href="https://github.com/christian-fei/Simple-Jekyll-Search">Simple Jekyll jQuery plugin</a>. Clicking the search link in the navigation bar will overlay a Search box that searches on post titles using an auto generated JSON file.</p>
+<p>This is a very basic attempt at <a href="https://github.com/mathaywarduk/jekyll-search">indexing a Jekyll site</a> and returning search results with JSON — Google quality results this is not.</p>
 
-<figure>
-  <img src="http://toja.io/images/simple-search-screenshot.jpg" alt="search screenshot" />
-  <figcaption>Search your site by post title</figcaption>
-</figure>
+<p>To exclude posts/pages from search results add <code>search_omit: true</code> to their YAML Front Matter.</p>
 
 <hr />
 
 <h2 id="further-customization">Further Customization</h2>
 
-<p>Jekyll 2.x added support for Sass files making it much easier to modify a theme’s fonts and colors. By editing values found in <code>_sass/variables.scss</code> you can fine tune the site’s colors and typography.</p>
+<p>Jekyll 2.x added support for Sass files making it much easier to modify a theme’s fonts and colors. By editing values found in <code>_sass/_variables.scss</code> you can fine tune the site’s colors and typography.</p>
 
 <p>For example if you wanted a red background instead of white you’d change <code>$body-color: #ebebeb;</code> to <code>$body-color: $cc0033;</code>.</p>
 
@@ -474,7 +457,7 @@ bundle exec jekyll serve</code></pre></div>
   <footer role="contentinfo" class="entry-wrapper">
     
 
-<span>&copy; 2014 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<span>&copy; 2015 Osvaldo Toja. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
 <div class="social-icons">
 	<a href="http://twitter.com/otsuarez" title="Osvaldo Toja on Twitter" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
 	
@@ -483,54 +466,21 @@ bundle exec jekyll serve</code></pre></div>
 	
 	
 	
-	<a href="http://github.com/osvaldotoja" title="Osvaldo Toja on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	<a href="http://github.com/otsuarez" title="Osvaldo Toja on Github" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+	
 	
   <a href="http://toja.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
 </div><!-- /.social-icons -->
   </footer>
 </div><!-- /.footer-wrapper -->
 
+<script type="text/javascript">
+  var BASE_URL = 'http://toja.io';
+</script>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="http://toja.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 <script src="http://toja.io/assets/js/scripts.min.js"></script>
-
-<!-- Jekyll Simple Search option -->
-<script>
-  $(document).ready(function() {
-      $('.search-field').jekyllSearch({
-          jsonFile: 'http://toja.io/search.json',
-          searchResults: '.search-results',
-          template: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
-          fuzzy: true,
-          noResults: '<p>Nothing found.</p>'
-        });
-  });
-
-  (function( $, window, undefined ) {
-    
-     var bs = {
-          close: $(".close-btn"),
-          searchform: $(".search-form"),
-          canvas: $(".js-menu-screen"),
-          dothis: $('.dosearch')
-      };
-    
-    bs.dothis.on('click', function() {
-      $('.search-wrapper').css({ display: "block" });
-      $('body').toggleClass('no-scroll');
-      bs.searchform.toggleClass('active');
-      bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('is-visible');
-    });
-    
-      bs.close.on('click', function() {
-        $('.search-wrapper').removeAttr( 'style' );
-        $('body').toggleClass('no-scroll');
-        bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('is-visible');
-    });
-  })( jQuery, window );
-</script>
 
 
 <!-- Asynchronous Google Analytics snippet -->
@@ -550,8 +500,6 @@ bundle exec jekyll serve</code></pre></div>
 </script>
 
 
-
-          
 
 </body>
 </html>

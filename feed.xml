@@ -4,7 +4,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="http://toja.io/feed.xml" />
 <link rel="alternate" type="text/html" href="http://toja.io" />
-<updated>2014-12-01T09:38:01-03:00</updated>
+<updated>2015-03-17T14:44:36-03:00</updated>
 <id>http://toja.io/</id>
 <author>
   <name>Osvaldo Toja</name>
@@ -16,363 +16,463 @@
   
 
 <entry>
-  <title type="html"><![CDATA[Velocity Barcelona Dia 2]]></title>
-  <link rel="alternate" type="text/html" href="http://toja.io/velocity-barcelona-dia-2/" />
-  <id>http://toja.io/velocity-barcelona-dia-2</id>
-  <published>2014-12-01T07:05:17-03:00</published>
-  <updated>2014-12-01T07:05:17-03:00</updated>
+  <title type="html"><![CDATA[Creating Native Packages the Lazy Way]]></title>
+  <link rel="alternate" type="text/html" href="http://toja.io/creating-native-packages-the-lazy-way/" />
+  <id>http://toja.io/creating-native-packages-the-lazy-way</id>
+  <published>2015-03-17T12:01:06-03:00</published>
+  <updated>2015-03-17T12:01:06-03:00</updated>
   <author>
     <name>Osvaldo Toja</name>
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;h1 id=&quot;segundo-da&quot;&gt;Segundo Día&lt;/h1&gt;
+  <content type="html">
+    &lt;h1 id=&quot;the-chain&quot;&gt;the chain&lt;/h1&gt;
 
-&lt;h2 id=&quot;upgrading-the-web-polyfills-components-and-the-future-of-web-development-at-scalehttpvelocityconfcomvelocityeu2014publicscheduledetail37693&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37693&quot;&gt;Upgrading the Web: Polyfills, Components and the Future of Web Development at Scale&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Using native packages provides many benefits. However, building native packages is not a simple task. Tools like &lt;code&gt;fpm&lt;/code&gt; help getting the job done but still creating the package is only one link on the whole chain. &lt;/p&gt;
 
-&lt;p&gt;La charla giró en torno a un producto creado por la empresa del ponente: FT Labs y Fastly que hace la vida mas fácil para los diseñadores y programadores al mismo tiempo que a los encargados de asegurar el performance de la aplicación web.
-Empezó hablando de &lt;a href=&quot;http://origami.ft.com/&quot;&gt;Origami&lt;/a&gt; un estándar de componentes para la creación del frontend de sitios web. Una de las ventajas de su implementación fue la reducción de esfuerzos duplicados a la hora de mantener distintas versiones de un mismo sitio.&lt;/p&gt;
+&lt;p&gt;The chain starts on the code repositories, where the files to be deployed are stored. For source code files, subversion and git repositories are common choices. Artifactory servers are used by java projects. The first step would be to able to grab the code from any of thouse sources.&lt;/p&gt;
 
-&lt;p&gt;Estos componentes utilizan tecnologías que no siempre están presentes en todos los navegadores, como por ejemplo funcionalidades de HTML 5, para suplir esto se utilizan los polyfills. Los polyfills son código que se descargan, implementan esas tecnologías y le permiten a las viejas versiones de los navegadores poder mostrar una página creada con los últimos estandares web.&lt;/p&gt;
+&lt;p&gt;To create the packages some data is needed. Metadata like the plattform supported by the files, the version number. Data like the directory where the files will be installed. Actions which might be required to be executed upon installation or removal of the package.&lt;/p&gt;
 
-&lt;p&gt;Para facilitar servir los polyfills, crearon un &lt;a href=&quot;https://cdn.polyfill.io/&quot;&gt;servicio&lt;/a&gt; que a través  de la CDN de Fastly sirve estos polyfills on demand. De manera automática, en base al &lt;code&gt;User-Agent&lt;/code&gt; prepara selectivamente y envia el paquete de polyfills que necesita ese navegador para completar las funcionalidades que le estarían faltando.&lt;/p&gt;
+&lt;p&gt;The family of the server will define whether a deb or an rpm file will be created. Both formats should be supported since are the most used and it would not be weird to have only one to migrate to the other one at some point in time.&lt;/p&gt;
 
-&lt;p&gt;Más info &lt;a href=&quot;http://labs.ft.com/2014/09/polyfills-as-a-service/&quot;&gt;aquí&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The final step would be to make available the new package to the servers. Package repositories are used for that purpose. So the package will need to be published. Repositories used to be stored on web server’s directories but these days services like Amazon’s S3 are used as well.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/financial-times/polyfill-service&quot;&gt;Github Repository&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;the-tool&quot;&gt;the tool&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://cdn.oreillystatic.com/en/assets/1/event/121/Upgrading%20the%20Web_%20Polyfills,%20Components%20and%20the%20Future%20of%20Web%20Development%20at%20Scale%20Presentation.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;How can we orchestrate the package creation chain? A tool for achieving such goal is described below. It is built on ansible, using fpm as the motor engine, aptly as the publishing media and jenkins for running the show. &lt;/p&gt;
 
-&lt;h2 id=&quot;monitoring-without-alerts---and-why-it-makes-way-more-sense-than-you-might-thinkhttpvelocityconfcomvelocityeu2014publicscheduledetail39064&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/39064&quot;&gt;Monitoring without Alerts - and Why it Makes Way More Sense than You Might Think&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;Traza que no vas a mirar, no la loguees. Las trazas generan alertas. No por tener más alertas vamos a resolver mejor los problemas. Además, para ser realmente efectiva, la alerta necesita un contexto. Presentó el producto de su compañia que permite todo esto. El demo esta disponible en el sitio web http://ruxit.com&lt;/p&gt;
-
-&lt;h2 id=&quot;velocity-at-githubhttpvelocityconfcomvelocityeu2014publicscheduledetail39131&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/39131&quot;&gt;Velocity at GitHub&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;Chicos, Github enterprise esta disponible en Amazon AWS.&lt;/p&gt;
-
-&lt;p&gt;Ah, y los logos son muy divertidos.&lt;/p&gt;
-
-&lt;h2 id=&quot;lightning-demoshttpvelocityconfcomvelocityeu2014publicscheduledetail37195&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37195&quot;&gt;Lightning Demos&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;Ilya Grigorik de Google mostró como analizar volumenes de datos utilizando BigQuery y Google Cloud Dataflow. Como base de datos utilizo el HTTP Archive, que contiene mas de 300K sitios web y archiva los archivos descargados de los mismos. 
-En el sitio http://bigqueri.es se pueden armar sentencias de búsqueda en un lenguaje similar al SQL pero con expresiones regulares y encontrar por ejemplo, una clasificación en base a los tiempos de cache de la páginas que están utilizando los sitios móbiles. Hay ejemplos de búsquedas ya creadas en el sitio a manera de guía de la potencialidad de esta herramienta.&lt;/p&gt;
-
-&lt;p&gt;La parte divertida vino a continuación. A partir de un &lt;a href=&quot;http://geeksta.net/geeklog/exploring-expressions-emotions-github-commit-messages/&quot;&gt;proyecto&lt;/a&gt; que analizaba las emociones de los programadores de cada lenguaje a partir del análisis de los commits en Github, realizó un experimento similar en base a los códigos HTML, CSS y JavaScript. ¿Que relevancia tiene esto en una conferencia sobre rendimiento de sitios web? Que las mismas búsquedas se pueden aplicar a encontrar, por ejemplo, de que maneras estan cargando el codigo JavaScript los sitios. Esto ya es algo con un impacto directo en el rendimiento del sitio. Spoiler: los resultados no fueron muy buenos, casi nadie usa async o defer :(&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.igvita.com/&quot;&gt;Sitio web de Ilya Grigorik&lt;/a&gt; (tiene cosas muy buenas, vale la pena echarle un vistazo)&lt;/p&gt;
-
-&lt;p&gt;El segundo demo fue de &lt;a href=&quot;https://github.com/IteraSpeed/OpenSpeedMonitor&quot;&gt;OpenSpeedMonitor&lt;/a&gt;, una herramienta opensource que automatiza la medición del rendimiento de páginas web, basado en &lt;a href=&quot;http://www.webpagetest.org/&quot;&gt;webpagetest&lt;/a&gt;. &lt;/p&gt;
-
-&lt;p&gt;Ambas presentaciones estuvieron buenas, el &lt;a href=&quot;http://www.youtube.com/watch?v=_CMcaYnBt-g&quot;&gt;Video&lt;/a&gt; dura 18 mins pero pasan rápido.&lt;/p&gt;
-
-&lt;h2 id=&quot;etsys-journey-to-building-a-continuous-integration-infrastructure-for-mobile-appshttpvelocityconfcomvelocityeu2014publicscheduledetail37081&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37081&quot;&gt;Etsy’s Journey to Building a Continuous Integration Infrastructure for Mobile Apps&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;Etsy libera código a producción más de 50 veces al dia en el sitio web, pero para las aplicaciones para móbiles el proceso no es tán sencillo. Apple se demora un promedio de 5 dias en evaluar una app con lo cual, en caso de un error, el rollback no es tán sencillo.&lt;/p&gt;
-
-&lt;p&gt;Armaron un pipeline interno para probar las apps, utilizan &lt;a href=&quot;https://github.com/nomad/shenzhen/&quot;&gt;shenzhen&lt;/a&gt; para firmar las apps, las buildean en un pool de 25 mac minis (deployadas mediante Chef).&lt;/p&gt;
-
-&lt;p&gt;Fue interesante conocer que no utilizan branches para el desarrollo. El código nuevo va en el mismo código base, diferenciandose mediante “feature flags”. Admitió que se corre el riesgo al ir deprecando funcionalidades quede código viejo sin usar, pero prefiere ese riesgo a favor de la facilidades comparando a los problemas de compatibilidad que introduce el código basado en branches (para una empresa que comitea todos los dias, si haces hoy un branch para desarrollar una funcionalidad que te toma un mes, es muy probable que cuando vayas a mergear de vuelta tu código, ya el base se haya diferenciado demasiado del código sobre el que habias hecho el fork en primera instancia).&lt;/p&gt;
-
-&lt;p&gt;Como un detalle técnico, mencionó la herramienta &lt;a href=&quot;https://github.com/etsy/TryLib&quot;&gt;TryLib&lt;/a&gt; que permite testear en los jenkins el código antes de comitearlo al repo.&lt;/p&gt;
-
-&lt;p&gt;Tercerizan el testeo en equipos físicos a https://appthwack.com/.&lt;/p&gt;
-
-&lt;p&gt;Escribir los unit tests no le gusta a nadie. Para buscarle un ángulo divertido, implementaron los “testing dojos”, donde 6 desarrolladores se rotan cada 3 minutos para escribir una funcionalidad, por un lado tener el tiempo limitado, por otro tener tiempo para ver los otros desarrolladores como van escribiendo el código ayuda además a fomentar el trabajo en equipo.&lt;/p&gt;
-
-&lt;p&gt;Para lo que es QA directamente, habló sobre dos técnicas, una es la creacion de equipos compuestos por 8 voluntarios, un facilitador de QA y un grupo de dispositivos que se juntan durante una hora con el objetivo de encontrar la mayora cantidad de bugs durante ese tiempo. La otra es una herramienta &lt;a href=&quot;https://github.com/etsy/BugHunt-iOS&quot;&gt;BugHunt&lt;/a&gt; que le permite a los desarolladores postear capturas de pantallas de los bugs que van encontrando, convirtiendolo en un juego al llevar un ranking.&lt;/p&gt;
-
-&lt;h2 id=&quot;its-3am-do-you-know-why-you-got-pagedhttpvelocityconfcomvelocityeu2014publicscheduledetail37141&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37141&quot;&gt;It’s 3AM, Do You Know Why You Got Paged?&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;El contexto de las alarmas es importante. 
-Mostró un gráfico con el número de alertas por año. Hubieron dos descensos significativos. El primero, cuando el equipo de operaciones se tomó una semana entera, sin hacer nada más, para revisar todas las alarmas que tenian en los nagios, y hacer limpieza.&lt;/p&gt;
-
-&lt;p&gt;La segunda, cuando implementaron &lt;a href=&quot;https://github.com/etsy/nagios-herald&quot;&gt;nagios-herald&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;breaking-news-at-1000mshttpvelocityconfcomvelocityeu2014publicscheduledetail37127&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37127&quot;&gt;Breaking News at 1000ms&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;En estos tiempos donde la percepción en la velocidad de carga de un sitio web es tan importante, &lt;a href=&quot;http://www.theguardian.com&quot;&gt;The Guardian&lt;/a&gt; encontró una manera de estar en la delantera entre los sitios de noticios. Incluyen en el código fuente de la página todo lo que es necesario para que carguen los elementos principales de que se compone la página. Por ejemplo, en la página de un árticulo lo importante es mostrar el texto del árticulo, pero no sólo el contenido sino el diseño en su formato final támbien. Incluyen el código css y el javascript en el html inicial que se envia al navegador cuando se accede a la URL. De esta manera, cuando está manera, cuando la pagina carga ya muestra la noticia directamente. A continuación envían el resto del contenido: comentarios, anuncios, etc. Interesante la charla y en las slides mostraba como otros sitios de noticias mostraban una página en blanco en el navegador (mientras este aún estaba esperando por cargar archivos de css o js antes de decidir como iba a mostrar el contenido) ya el sitio de ellos mostraba el contenido, en su formato final.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://speakerdeck.com/patrickhamann/breaking-news-at-1000ms-velocity-eu-2014&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;using-promise-theory-to-improve-digital-service-qualityhttpvelocityconfcomvelocityny2014publicscheduledetail35740&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityny2014/public/schedule/detail/35740&quot;&gt;Using Promise Theory to Improve Digital Service Quality&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;Wikipedia dice que la &lt;a href=&quot;http://en.wikipedia.org/wiki/Promise_theory&quot;&gt;Promise Theory&lt;/a&gt;: “es un modelo de cooperación voluntaria entre individuos, agentes o actores autónomos que comunican sus intenciones entre ellos en forma de promesas.&lt;/p&gt;
-
-&lt;p&gt;Una promesa es una declaración de intención con el propósito de incrementar la certidumbre del destinatario con respecto al reclamo de una conducta pasada, presente o futura. Para que una promesa incremente la certidumbre el destinatario necesita creer en el que promete, pero la confianza también puede provenir del conocimiento de promesas anteriores que fueron cumplidas, de esta manera se aprecia que la confianza mantiene una relación simbiótica con las promesas.”&lt;/p&gt;
-
-&lt;p&gt;¿Como se relaciona esto con nuestro mundo? Para empezar asumiendo que las promesas, como tales, no necesariamente se cumplen. Los sistemas en el mundo real son colecciones de agentes autónomos colaborando a través de promesas. De este modo, el reconocimiento de la incertidumbre nos brinda un mayor grado de certidumbre. Además, al tratar a los agentes como autónomos, incrementamos la escalabilidad y la robustez de nuestros sistemas.&lt;/p&gt;
-
-&lt;p&gt;Luego pasó a hablar de los servicios. El servicio es acerca de las experiencias, no las cosas físicas. Las relaciones, no las transacciones. Los proveedores de servicios promete a sus usuarios a ayudarlos a concluir sus objetivos. Todos los elementos que integran una organización de servicios deben colaborar para cumplir con las promesas a sus usuarios.&lt;/p&gt;
-
-&lt;p&gt;Es importante hacernos preguntas como: ¿Qué promesas debemos hacer?, ¿Que promesas necesitamos que otros nos hagan a nosotros?, ¿Que debemos hacer para incrementar la confianza que nos tienen otros?, ¿Que promesas nos deben hacer nuestros usuarios?&lt;/p&gt;
-
-&lt;p&gt;La teoría de la promesa ayuda a cruzar fronteras, a establecer relaciones entre todos los integrantes de la organización. Ayuda entonces modelar la organización a partir del usuario en el flujo que siguen los mismos y definir los servicios con los que interactua.&lt;/p&gt;
-
-&lt;p&gt;Hay que ver las relaciones en términos de promesas:&lt;/p&gt;
+&lt;p&gt;Main features:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Beneficios&lt;/li&gt;
-  &lt;li&gt;Empatía&lt;/li&gt;
-  &lt;li&gt;Autonomía&lt;/li&gt;
-  &lt;li&gt;Resistencia al fallo&lt;/li&gt;
+  &lt;li&gt;simple. Configuration is done via yaml files.&lt;/li&gt;
+  &lt;li&gt;modular. New inputs or outputs can be added writing ansible playbooks.&lt;/li&gt;
+  &lt;li&gt;scalable. Can be used for large number of components.&lt;/li&gt;
+  &lt;li&gt;convention over configuration.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Todo esto en el contexto de todas las áreas de la organización.&lt;/p&gt;
+&lt;p&gt;One of the objectives for this project was not to require any technical knowledge of native package creation in order to use it. All the data required to create the package is stored in one place: the variables files. When a new package is required, just add a new file to the variables directory and it will be ready to be built. If a git repository is used for this project, a PR would be all it needs for a developer to get his code ready for installation using native packages.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://blog.ingineering.it/&quot;&gt;Blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The arquitecture is based on the Unix philosophy. Small parts combined to provide the final result. Each step is responsable for one thing only. The input plugins will retrieve the files and place them under a predefined directory. The package’s data is defined on variables stored in yaml files. The &lt;code&gt;fpm&lt;/code&gt; command is executed with the proper set of variables to create the native package. Once the package was created, the output plugin will publish it to a package repository.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.slideshare.net/ingineeringit/promising-digital-service-quality&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Simplicity does comes at a cost. Use of convention over configuration is mandatory for some of the features of this tool, the use of common variables for instance.&lt;/p&gt;
 
-&lt;h2 id=&quot;how-bbc-sport-scales-engineeringhttpvelocityconfcomvelocityeu2014publicscheduledetail37176&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37176&quot;&gt;How BBC Sport Scales Engineering&lt;/a&gt;&lt;/h2&gt;
+&lt;h1 id=&quot;data&quot;&gt;data&lt;/h1&gt;
 
-&lt;p&gt;Tenian el problema de un ciclo de release muy largo, esto incrementaba el nivel de riesgo y de frustración. Armaron un pipeline de continuous deployment similar al que usamos en OLX.
-Para deployar el código evaluaron 4 variantes:&lt;/p&gt;
+&lt;p&gt;Data is stored in ansible variable files. Packages can be grouped to avoid repeating data. For instance, a web site might have different components: modules, themes (i’m thinking drupal), each one a different package yet all sharing the same document root. A common file can be created for storing such data while keeping info about the components on their specific file. A variable file named &lt;code&gt;all&lt;/code&gt; will contain data available to all projects. &lt;/p&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;El código puesto en un equipo directamente.&lt;/li&gt;
-  &lt;li&gt;El código puesto en un container puesto en un equipo.&lt;/li&gt;
-  &lt;li&gt;El código puesto en un paquete instalado en un equipo.&lt;/li&gt;
-  &lt;li&gt;El código puesto en un paquete instalado en un container puesto en un equipo.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Las dos primeras tenian un problema: ¿cómo expresas dependencias en tu software sin paquetes? (y no me digan con bash scripts)&lt;/p&gt;
-
-&lt;p&gt;Conclusión: Deja el manejo de dependencia de versiones a los sistemas diseñados a tal efecto: los gestores de paquetes.&lt;/p&gt;
-
-&lt;p&gt;Ya sea que usas contenedores o deployas directo a un equipo, empaqueta tu código.&lt;/p&gt;
-
-&lt;p&gt;Respecto a la opción de deployar contenedores (docker) es un tema dinámico:&lt;/p&gt;
+&lt;p&gt;Data can be stored in a hierarchy format composed by three levels where the more granular override the general ones:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;las herramientas de deployment y administración aun son inmaduras.&lt;/li&gt;
-  &lt;li&gt;es dificil el manejo de dependencias entre el codigo deployado en el container&lt;/li&gt;
-  &lt;li&gt;etc &lt;/li&gt;
+  &lt;li&gt;global&lt;/li&gt;
+  &lt;li&gt;common&lt;/li&gt;
+  &lt;li&gt;component&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;La solución elegida entonces fue: código -&amp;gt; paquete -&amp;gt; equipo.&lt;/p&gt;
+&lt;p&gt;There is also data specific for the plugins, which be stored on files &lt;code&gt;input-*&lt;/code&gt; and &lt;code&gt;output-*&lt;/code&gt; where the plugin name will be part of the filename (e.g. &lt;code&gt;input-git&lt;/code&gt; for the git input plugin).&lt;/p&gt;
 
-&lt;p&gt;Crean dos binarios:&lt;/p&gt;
+&lt;h2 id=&quot;global&quot;&gt;global&lt;/h2&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;Paquetes (e.g. rpm, deb, etc)&lt;/li&gt;
-  &lt;li&gt;Imagenes de Equipos (e.g. AMI)&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;The &lt;code&gt;global&lt;/code&gt; level consists of only one file: &lt;code&gt;group_vars/all&lt;/code&gt;. This file stores variables shared by all components.&lt;/p&gt;
 
-&lt;p&gt;Principios Importantes&lt;/p&gt;
+&lt;p&gt;Examples.&lt;/p&gt;
+
+&lt;p&gt;Package metadata can be stored on this file. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# package metadata&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_vendor&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;ACME&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_license&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;Apache Licence&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_maintainer&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;&amp;lt;release-team@acme.com&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Default values for the build process like the directory where the input plugins will store the files for the build process process them.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# fpm temp dir&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_tmp_dir&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;/var/tmp/fpm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Mantainer scripts can be added to the package just by droping the scripts in a predefined folder. Same works for config files like service scripts.
+The location of the folder where this files are to be found can be defined at a global level. It is also a good design choice to provide default options or whether to use or not the funcionalities provided by the tool.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# roles/packaging/tasks/pkg-scripts.yml&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;init_scripts_rootdir&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;/home/local/git/pkg-scripts/&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_scripts_setup&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_script_opts&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;--template-scripts&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_script_files_opt&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p-Indicator&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;preinst&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;--before-install&amp;#39;&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;postinst&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;--after-install&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;prerm&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;--before-remove&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;postrm&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;--after-remove&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt; &lt;span class=&quot;p-Indicator&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;fpm_pkg_opts&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# roles/packaging/tasks/pkg-conffiles.yml&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_conffiles_setup&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;false&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_conffiles_etcdir&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;/etc&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;fpm_scripts_opts&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Any value found on this file will be ovewritten if declared on any of the following levels.&lt;/p&gt;
+
+&lt;h2 id=&quot;common&quot;&gt;common&lt;/h2&gt;
+
+&lt;p&gt;If a project is splited on several packages, chances are they will share some variables, like the document root for web based projects. To avoid repeating data, a file can be created which will be automatically be imported during the build phase. &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;rpm&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;base_prefix&lt;/span&gt; &lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;/home/httpd/www.acme.com&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;--rpm-user&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;httpd&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;--deb-group&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;httpd&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;deb&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;base_prefix&lt;/span&gt; &lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;/var/www/www.acme.com&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;--deb-user&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;www-data&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;--deb-group&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;www-data&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The common level is composed by files named &lt;code&gt;common-&#39;component-name&#39;&lt;/code&gt;. The filename for the common variables is created by parsing the component string: “common-&lt;first word=&quot;&quot; of=&quot;&quot; the=&quot;&quot; component=&quot;&quot; up=&quot;&quot; to=&quot;&quot; dash=&quot;&quot; sign=&quot;&quot;&gt;&quot;. So a component named &lt;code&gt;web-frontend&lt;/code&gt; will automatically import the &lt;code&gt;common-web&lt;/code&gt; file.&lt;/first&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# extracts the component name up to the first dash&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;get common component filename&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;set_fact&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;common_component=&amp;quot;{{ component | regex_replace(&amp;#39;(.*?)\-.*$&amp;#39;, &amp;#39;\\1&amp;#39;) }}&amp;quot;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;#&amp;quot; include common if it exists, just continue if not&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include component common vars file&lt;/span&gt; 
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include_vars&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;group_vars/common-{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;common_component&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;ignore_errors&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;yes&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The common file is not mandatory, execution will continue normally if the file is not found.&lt;/p&gt;
+
+&lt;h2 id=&quot;component&quot;&gt;component&lt;/h2&gt;
+
+&lt;p&gt;The variables declared at this level will override any previously declared variable. Because of the way ansible works, there is no merge for variables, it just use the new one. The files at component level will be named after the project’s name and stored in the &lt;code&gt;group_vars&lt;/code&gt; directory. For a project named web-frontend, the file &lt;code&gt;group_vars/web-frontend&lt;/code&gt; will automatically be imported. The execution of the tool will fail if this file is not found.&lt;/p&gt;
+
+&lt;p&gt;The component variable file is mandatory, execution will be interrupted if the file is not found.&lt;/p&gt;
+
+&lt;h1 id=&quot;input&quot;&gt;input&lt;/h1&gt;
+
+&lt;p&gt;The input plugins do only one job. To retrieve the files and put them on a folder in the server. Plugins are ansible tasks files available in the &lt;code&gt;packaging&lt;/code&gt; role. Each plugin will have the logic for retrieving the files where the development team left them.&lt;/p&gt;
+
+&lt;p&gt;The plugin to be used is declared via the &lt;code&gt;component_input&lt;/code&gt; variable, usually on the common file: &lt;/p&gt;
+
+&lt;p&gt;group_vars/common-web&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;component_input: main_jfrog&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;By convention, input variable files will be named: &lt;code&gt;input-&#39;component_input&#39;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include component input vars file&lt;/span&gt; 
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include_vars&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;group_vars/input-{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_input&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;component_input is defined&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Although the project can use the same technologies, like artifactory servers or git repositories, different teams might use different servers, which means different access urls, credentials.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;component_input&lt;/code&gt; variable will point to an input file where such data is stored. All git related input files will do share one variable in common: &lt;code&gt;input_type: artifact&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# group_vars/web-frontend&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;component_input&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;github&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# group_vars/web-translations&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;component_input&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;gitlab&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# group_vars/web-daemon&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;component_input&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;main_jfrog&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# group_vars/input-github&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;input_url&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;git@github.com:acme&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;input_type&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;git&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# group_vars/input-gitlab&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;input_url&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;git@git.acme.com.ar:acme&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;input_type&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;git&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;#group_vars/input-main_jfrog&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;jfrog_admin_user&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;admin&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;jfrog_admin_password&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;secret&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;jfrog_url&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;jfrog.acme.com.ar/artifactory/simple&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;input_type&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;artifact&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The input variable files will contain specific access data for that component. But all the component stored in a git repository will have the following line: &lt;code&gt;input_type: git&lt;/code&gt;. This variable defines the task file to be used on the ansible role &lt;code&gt;packaging&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;roles/packaging/tasks/main.yml&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;git.yml&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;input_type == &amp;#39;git&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;artifact.yml&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;input_type == &amp;#39;artifact&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;With this setup, both components: web-frontend and web-translations will download code using the &lt;code&gt;git.yml&lt;/code&gt; task file using the corresponding access credentials. &lt;/p&gt;
+
+&lt;p&gt;At the end of this step, the code will reside in a directory, by default: &lt;code&gt;/var/tmp/&#39;component-name&#39;/src&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;build&quot;&gt;build&lt;/h1&gt;
+
+&lt;p&gt;Once the files had been retrieved and placed in the directory, the time has come for the &lt;code&gt;fpm&lt;/code&gt; command to be executed. Mantainer scripts and rcconf files are added if required.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg-scripts.yml&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_scripts_setup&lt;/span&gt;
+
+&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg-conffiles.yml&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkg_conffiles_setup&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The actual execution of the &lt;code&gt;fpm&lt;/code&gt; command was moved to the next step to handle the creation and publishing of the package in the same task file.&lt;/p&gt;
+
+&lt;h1 id=&quot;output&quot;&gt;output&lt;/h1&gt;
+
+&lt;p&gt;The output plugin to be used is selected via a similar procedure to the one used by the input plugins.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# output&lt;/span&gt;
+  &lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include component input vars file&lt;/span&gt; 
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;include_vars&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;group_vars/output-{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_output&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;component_output is defined&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;ignore_errors&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;yes&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;There are way too many variables to take into consideration when creating native packages. Just using ansible to ease the handling of variables passed as command line options to the &lt;code&gt;fpm&lt;/code&gt; would had worth the effort.&lt;/p&gt;
+
+&lt;p&gt;Here we create the native package, grab the name (parsing fpm’s output) and notify the availability via a hipchat channel.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;deb -  creating package with fpm&lt;/span&gt; 
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;fpm&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-t&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;deb&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;pkg_input_type&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--name&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_package_name_prefix&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}-{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_package_name&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--version&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--iteration&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;branch&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}-{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sha&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}-{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;iter&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--architecture&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_arch&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--maintainer&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;pkg_maintainer&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--description&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_description&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--url&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_uri&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--vendor&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;pkg_vendor&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;--license&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;quot;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;pkg_license&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&amp;quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;pkg.deb.user&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;pkg.deb.group&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;fpm_scripts_opts&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;-C&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;src/&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;chdir={{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;pkg_tmp_dir&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}/{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;out&lt;/span&gt;
+
+&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;deb -  get package name&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;set_fact&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;pkgfile={{ out.stdout_lines[0] | regex_replace(&amp;#39;.*path=&amp;gt;&amp;quot;(.*\.deb).*$&amp;#39;, &amp;#39;\\1&amp;#39;) }}&lt;/span&gt;
+&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;var=pkgfile&lt;/span&gt;
+&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;hipchat_v2&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;msg=&amp;quot;new package created {{ pkgfile }}&amp;quot; color=&amp;quot;{{ pkg_hipchat_color }}&amp;quot; room=&amp;quot;{{ pkg_hipchat_room }}&amp;quot; token=&amp;quot;{{ pkg_hipchat_token }}&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Debian repositories only make available the latest version of a package. This is a problem for development environments when a rollback to a previous version is always an option. &lt;a href=&quot;http://www.aptly.info/&quot;&gt;Aptly&lt;/a&gt; is a tool for managing Debian repositories.&lt;/p&gt;
+
+&lt;p&gt;Aptly works in two steps:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Los binarios deben crearse de forma que sea repoducible.&lt;/li&gt;
-  &lt;li&gt;Solo se crean los binarios una vez.&lt;/li&gt;
-  &lt;li&gt;Deja el manejo de dependencias a las herramientas creadas para la tarea.&lt;/li&gt;
+  &lt;li&gt;first the package is added to the aptly internal repository&lt;/li&gt;
+  &lt;li&gt;then the package is published on a Debian repository (local or on S3).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Hay distintos niveles de manejo de paquetes:&lt;/p&gt;
+&lt;p&gt;For this setup, the code’s branch is used to decide on which internal aptly repo the package will be added. A package can be published to one or more debian repositories.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Específicos del sistema, e.g. apt, yum&lt;/li&gt;
-  &lt;li&gt;Portables, e.g. pip, bundle, npm&lt;/li&gt;
-&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# main apt repository (aptly)&lt;/span&gt;
+&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;deb -  adding package to repository&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;aptly repo add {{ item.repo }} {{ pkg_tmp_dir }}/{{ component }}/{{ pkgfile }}&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;with_items&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;component_package_publish.branch.{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;yaml_branch&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}.aptly&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;#39;main_apt&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_publish_target&amp;quot;&lt;/span&gt;
 
-&lt;p&gt;Para manejar dependencias entre distintos tipos de manejadores de paquetes se recomienda empaquetar para el nivel mas bajo y luego, resolver las dependencias a nivel mas alto en el momento de buildear incluyendolas en el paquete final.&lt;/p&gt;
+&lt;span class=&quot;p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l-Scalar-Plain&quot;&gt;deb -  update repository&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;aptly&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;publish&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;item.distribution&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;item.endpoint&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;with_items&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;component_package_publish.branch.{{&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;yaml_branch&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;}}.aptly&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;l-Scalar-Plain&quot;&gt;when&lt;/span&gt;&lt;span class=&quot;p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;quot;&amp;#39;main_apt&amp;#39;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;component_publish_target&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Usar CI es crítico, la elección de CI es irrelevante.&lt;/p&gt;
+&lt;h1 id=&quot;ansible&quot;&gt;ansible&lt;/h1&gt;
 
-&lt;p&gt;Buildean el código dentro de chroots creados on-demand con &lt;a href=&quot;http://fedoraproject.org/wiki/Projects/Mock&quot;&gt;mock&lt;/a&gt; lo que les asegura que todas las dependencias en tiempo de build esten especificadas correctamente y el build es reproducible.&lt;/p&gt;
+&lt;p&gt;Ansible is responsable for orquestrating the creation of the package. Providing the variables, executing the &lt;code&gt;fpm&lt;/code&gt; command with the right options and publishing the package to the debian repository.&lt;/p&gt;
 
-&lt;p&gt;¿Como crean los paquetes?&lt;/p&gt;
+&lt;p&gt;Execution is done via the following command&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Usan jenkins&lt;/li&gt;
-  &lt;li&gt;Crean los paquetes dentro de chroots usando mock.&lt;/li&gt;
-  &lt;li&gt;Los servicios son empaquetados como archivos rpm.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;l-Scalar-Plain&quot;&gt;ansible-playbook -i inventory main.yml -e &amp;quot;component=web-modules version=1.0.2 branch=master sha=646a561&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;¿Qué hay en una imagen de equipo?&lt;/p&gt;
-
-&lt;p&gt;Crean dos imagenes (AMIs)&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Una con el sistema operativo y los paquetes de los servicios&lt;/li&gt;
-  &lt;li&gt;Una que toma como base la imagen anterior y le agrega los paquetes con las configuraciones. &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;De esta manera pueden re-utilizar la misma imagen con el sistema operativo y los paquetes de los servicios a la hora de crear las imagenes que se deployan en los distintos ambientes.&lt;/p&gt;
-
-&lt;p&gt;Es una solución de compromiso entre las dos opciones: crear una imagen básica que se deploya para luego instalar todos los paquetes sobre la misma ó crear una imagen que tenga todos los paquetes que va a llevar y este lista para ser deployada y funcionar al momento.&lt;/p&gt;
-
-&lt;p&gt;Utilizan AWS Cloudformation y el concepto de Infrastructura como código, esto les permite:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Manejar las dependencias de infrastructura&lt;/li&gt;
-  &lt;li&gt;Soportan rollbacks&lt;/li&gt;
-  &lt;li&gt;Reproducible&lt;/li&gt;
-  &lt;li&gt;Versionan la infrasctura con el código.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Esto permite:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Deployar copias idénticas del servicio en distintos ambientes&lt;/li&gt;
-  &lt;li&gt;Pueden versionar los templates de infrastructura en código y ser capaces entonces de reproducir todo el stack en cualquier momento en el tiempo.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Entonces, la aplicación no es solo código, son código e infrastructura combinados.&lt;/p&gt;
-
-&lt;p&gt;¿Como provisionan la infrastructura?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Separan en distintos templates la infrastuctura stateless de la stateful.&lt;/li&gt;
-  &lt;li&gt;Usa &lt;a href=&quot;https://github.com/cloudtools/troposphere&quot;&gt;librerias de abstracción de Cloudformation&lt;/a&gt; para generar programáticamente los templates.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Si no están utilizando Autoscaling Groups, lo están haciendo mal!&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ASGs se asegura de que tus instancias siempre esten corriendo.&lt;/li&gt;
-  &lt;li&gt;ASGs maneja multi AZ por usted.&lt;/li&gt;
-  &lt;li&gt;ASGs hacen de usted un mejor ingeniero.&lt;/li&gt;
-  &lt;li&gt;ASGs pueden deployar servicios.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Es importante olvidarse de las instancias como tal, son solo una unidad de capacidad computacional.&lt;/p&gt;
-
-&lt;p&gt;¿Cómo queda todo junto?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Utilice subnets VPCs y ACLs para limitar el acceso por red a sus servicios.&lt;/li&gt;
-  &lt;li&gt;Siempre distribuya su infrastructura entre multiple AZs&lt;/li&gt;
-  &lt;li&gt;Utilice múltiples cuentas de AWS para distintos servicios y/o ambientes.&lt;/li&gt;
-  &lt;li&gt;Corra su servicio en ASGs.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── group_vars&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;│   ├── all&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;│   ├── backend-daemon&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;│   ├── common-web&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;│   ├── languages&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;│   ├── web-modules&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;│   └── web-themes&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── inventory&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── main.yml&lt;/span&gt;
+&lt;span class=&quot;l-Scalar-Plain&quot;&gt;└── roles&lt;/span&gt;
+    &lt;span class=&quot;l-Scalar-Plain&quot;&gt;└── packaging&lt;/span&gt;
+        &lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── defaults&lt;/span&gt;
+        &lt;span class=&quot;l-Scalar-Plain&quot;&gt;│   └── main.yml&lt;/span&gt;
+        &lt;span class=&quot;l-Scalar-Plain&quot;&gt;└── tasks&lt;/span&gt;
+            &lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── artifact.yml&lt;/span&gt;
+            &lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── deb.yml&lt;/span&gt;
+            &lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── git.yml&lt;/span&gt;
+            &lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── main.yml&lt;/span&gt;
+            &lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── pkg-conffiles.yml&lt;/span&gt;
+            &lt;span class=&quot;l-Scalar-Plain&quot;&gt;├── pkg-scripts.yml&lt;/span&gt;
+            &lt;span class=&quot;l-Scalar-Plain&quot;&gt;└── svn.yml&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/velocity-barcelona-dia-2/&quot;&gt;Velocity Barcelona Dia 2&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on December 01, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/creating-native-packages-the-lazy-way/&quot;&gt;Creating Native Packages the Lazy Way&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on March 17, 2015.&lt;/p&gt;
+  </content>
 </entry>
 
 
   
 
 <entry>
-  <title type="html"><![CDATA[Velocity Barcelona Dia 1]]></title>
-  <link rel="alternate" type="text/html" href="http://toja.io/velocity-barcelona-dia-1/" />
-  <id>http://toja.io/velocity-barcelona-dia-1</id>
-  <published>2014-11-28T07:59:02-03:00</published>
-  <updated>2014-11-28T07:59:02-03:00</updated>
+  <title type="html"><![CDATA[About Native Packages]]></title>
+  <link rel="alternate" type="text/html" href="http://toja.io/about-native-packages/" />
+  <id>http://toja.io/about-native-packages</id>
+  <published>2015-03-17T11:50:04-03:00</published>
+  <updated>2015-03-17T11:50:04-03:00</updated>
   <author>
     <name>Osvaldo Toja</name>
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;h1 id=&quot;primer-dia&quot;&gt;Primer dia&lt;/h1&gt;
+  <content type="html">
+    &lt;h1 id=&quot;code&quot;&gt;Code&lt;/h1&gt;
 
-&lt;h1 id=&quot;keynotes&quot;&gt;Keynotes&lt;/h1&gt;
+&lt;p&gt;It all started with a developer writing the code. Once it’s finished, how can we use that code? Code runs on servers, so what we do with code? Deploy it on servers!  But it’s not that simple: lots of code runs on servers. &lt;/p&gt;
 
-&lt;h2 id=&quot;life-after-human-errorhttpvelocityconfcomvelocityeu2014publicscheduledetail37751&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37751&quot;&gt;Life after ‘Human Error’&lt;/a&gt;&lt;/h2&gt;
+&lt;h1 id=&quot;servers&quot;&gt;Servers&lt;/h1&gt;
 
-&lt;p&gt;El presentador no era una persona del mundo de sistemas sino un sicólogo. Llamó la atención sobre como existen muchas palabras para definir el error pero solo una para el éxito. Mostró como los medios atribuyen los errores al factor humano como el único causante cuando en realidad es una mezcla de factores. &lt;/p&gt;
+&lt;p&gt;Let’s talk a bit about servers. Servers are like apartment buildings, not houses. If you and your neighbor, you both live in houses with three or more floors, each house could have its own elevator. But if you live in a apartment building, chances are you and your neighbor, both share the same and one elevator. The point is, there are facilities on buildings which are shared by all of the residents.&lt;/p&gt;
 
-&lt;p&gt;También mencionó estudios que demuestran que la presión influye proporcionalmente en el incremento de la tasa de error.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;it can also be said: servers are like cattle, not pets. but that wasn’t the topic at hand ;)&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Se puede leer mas sobre el tema en este &lt;a href=&quot;http://www.infoq.com/news/2014/11/human-error-velocity-conference&quot;&gt;post&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Same way, in servers, where lots of process live, there are facilities which were created in order to ease the operations of the server and the services running on top of it. Logs for example. Instead of having to write the code which will handle the creation, rotation, maintenace, etc of log files, there is a facility provided by the server OS providing that service. The code use that facility when it needs to log anything, a system call is all it takes. The OS will take care of the rest (syslog on unix systems, event viewer on windows).&lt;/p&gt;
 
-&lt;h2 id=&quot;lightning-demo-always-keep-an-eye-on-your-website-performance---perfbarhttpvelocityconfcomvelocityeu2014publicscheduledetail38145&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/38145&quot;&gt;LIGHTNING DEMO: Always Keep an Eye on Your Website Performance - PerfBar&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;A similar solution was created in order to deploy code on servers but more on that in a moment.&lt;/p&gt;
 
-&lt;p&gt;Es un script en js que te permite graficar la performance de la pagina. Se podría decir que es un New Relic para pobres ;)
-Muy sencillo e interesante, a tener en cuenta para los entornos de desarrollo.&lt;/p&gt;
+&lt;h1 id=&quot;artifacts&quot;&gt;Artifacts&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://lafikl.github.io/perfBar/&quot;&gt;Website&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;We were talking about getting the code into servers. So, how we deploy the code on the servers? &lt;/p&gt;
 
-&lt;h2 id=&quot;the-impatience-economy-where-velocity-creates-valuehttpvelocityconfcomvelocityeu2014publicscheduledetail39554&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/39554&quot;&gt;The Impatience Economy, Where Velocity Creates Value&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In the beginings:  tgz files (a winzip unix equivalent).  The code was packed on a zipped file, copied to the server, unpacked and if required, moved to the proper directory. &lt;/p&gt;
 
-&lt;p&gt;La charla comenzo con el tema del marketing, en particular las aplicaciones Real-Time Bidding (RTB), tipo google adwords, te presentan anuncios en basados en un grupo de criterios, calculando todo eso en tiempo real.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Those zipped files ready for deployments are also known as artifacts.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Se mostró como el producto de su empresa &lt;a href=&quot;http://www.aerospike.com/&quot;&gt;Aerospike&lt;/a&gt; permitió escalar a varios clientes su performance al tiempo que disminuían el número de servidores sin incrementar el los administradores del sistema. Es un producto de base de datos tipo mongodb.&lt;/p&gt;
+&lt;p&gt;A simple process for installing the artifacts but not without problems: &lt;/p&gt;
 
-&lt;p&gt;Mencionaba como en los sitios se tiene una capa de datos sirviendo el frontend y se empieza a tener una capa de datos en el backend donde se guarda toda la data historica relacionada con el trafico del sitio y sus usuarios. Mientras que la capa que sirve el frontend se entiende la importancia de su optimizacion, no tanto la capa del frontend. El producto que vende apunta a ofrecer rendimiento en esa capa de backend.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;dependencies &lt;/li&gt;
+  &lt;li&gt;tracking &lt;/li&gt;
+  &lt;li&gt;auditing &lt;/li&gt;
+  &lt;li&gt;versioning &lt;/li&gt;
+  &lt;li&gt;upgrade &lt;/li&gt;
+  &lt;li&gt;rollback &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;La conclusión es que además de prestarle atención a la capa de datos que sirve el frontend, la capa de datos del backend empieza a tomar relevancia y su rendimiento pasa a ser un elemento a tomar en cuenta en la arquitectura de la aplicación.&lt;/p&gt;
+&lt;p&gt;What if a component depends on another one? You can’t define that in zip files.
+How to keep record of installation of new packages? Writing custom scripts, yeap, been there, avoid that.
+How to know if the files on the directories were locally modified after deployment? Unpacking the original file in another directory and run a comparisson.
+How to handle upgrades? What if the new version deprecated a file? You will need to delete it (which is not that hard, but remember to do it, it is).
+What if something went wrong and you need to rollback? Download the previous version file, unpack, restore it. Not that bad but time consuming it is (did i mentioned it was a rollback?)&lt;/p&gt;
 
-&lt;h2 id=&quot;recruiting-for-diversity-in-techhttpvelocityconfcomvelocityeu2014publicscheduledetail36013&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/36013&quot;&gt;Recruiting for Diversity in Tech&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you’re using artifacts, you might had faced this kind of problems. If you’re using git based deployments you might not had had most of those issues, but then, you might have a different set of problems like deploying the code to fresh servers (when the .git folder containing commit history is heavier than the actual code size, and it will take longer as the repo grows). Although that’s not the main issue with git based deployments, what if the code needs to be placed. Or  on  different directories in the filesystem, for each directory on the same root dir. Not good.&lt;/p&gt;
 
-&lt;p&gt;Las comunidades se forman a imagen y semejanza de sus líderes. Si aplicamos el criterio de la meritocracia en solitario, y tenemos un grupo de líderes WASP (y masculinos), la comunidad, eventualmente terminará excluyendo a aquellos que no conforman ese grupo. Es importante tener un grupo de líderes diverso, diverso en cuanto a sexo, nacionalidad, estado social, etc. Ahi entonces si podemos decir que la meritocracia funciona.&lt;/p&gt;
+&lt;h1 id=&quot;native-packages&quot;&gt;Native packages&lt;/h1&gt;
 
-&lt;p&gt;Este principio se aplica a comunidades, empresas, etc.&lt;/p&gt;
+&lt;p&gt;Lucky us working with linux, since 1998 a (by then small) company came up with a solution, a &lt;a href=&quot;http://magazine.redhat.com/2007/02/08/the-story-of-rpm/&quot;&gt;tool&lt;/a&gt; for solving all of those problems, The tool was called rpm and the company name was Red Hat (rpm stands for RedHat Package Manager).&lt;/p&gt;
 
-&lt;p&gt;Y no pasa solo por la meritocracia, en cualquier sistema de gestión van a aplicarse estos principios.&lt;/p&gt;
+&lt;p&gt;Files were packed in one rpm file and installed using the (surprise) the &lt;code&gt;rpm&lt;/code&gt; command. An rpm package contains no only the files to be deployed but also provides metadata about the package and even the chance to execute commands during the installation (or removal) process.&lt;/p&gt;
 
-&lt;p&gt;Como incorporar la diversidad? empezando por el principio, contrantando con un criterio diverso.&lt;/p&gt;
+&lt;p&gt;This is not a Red Hat exclusive, Debian created its own package manager: &lt;code&gt;apt-get&lt;/code&gt; command for &lt;code&gt;.deb&lt;/code&gt; files. Microsoft users will be familiar with &lt;code&gt;.msi&lt;/code&gt; files and so on. All of this files are called native packages because they are created fo an specific plattform.  You will be stopped if you try to install a 32bit package on a 64bit plattform. Packages are created not only for an specific OS but most of the time, can only be installed on specific versions of the OS. &lt;/p&gt;
 
-&lt;h2 id=&quot;better-performance-through-better-designhttpvelocityconfcomvelocityeu2014publicscheduledetail37705&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37705&quot;&gt;Better Performance Through Better Design&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;OS in the context refers to OS family, like Debian and Ubuntu or Red Hat and CentOS.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Una de las formas que tenemos de mejorar el rendimiento es mejorando la presentación de los datos relacionados con el rendimiento.&lt;/p&gt;
+&lt;p&gt;Benefits of native packages:&lt;/p&gt;
 
-&lt;p&gt;Una cosa es decirle a un jefe de producto que el sitio demora 2.03 segundos en cargar y que necesitamos mejorar esa performance y otra, es mostrarle un gráfico donde se muestran los tiempos de carga de nuestro sitio comparandolo con los tiempos de los sitios de la competencia. En el primer ejemplo, nosotros le decimos que necesitamos mejorar, en el segundo, es muy probable que sea el jefe de producto el que nos lo diga (en el caso de que no estuvieramos en la punta).&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dependencies &lt;/li&gt;
+  &lt;li&gt;Tracking &lt;/li&gt;
+  &lt;li&gt;auditing &lt;/li&gt;
+  &lt;li&gt;versioning &lt;/li&gt;
+  &lt;li&gt;upgrade &lt;/li&gt;
+  &lt;li&gt;rollback &lt;/li&gt;
+  &lt;li&gt;Conf files (init scripts, logrotate conf, …) &lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Scripts ([[pre&lt;/td&gt;
+          &lt;td&gt;post]&lt;/td&gt;
+          &lt;td&gt;[inst&lt;/td&gt;
+          &lt;td&gt;rem]] (create log dirs, app dirs, users)&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;command line tools &lt;/li&gt;
+  &lt;li&gt;repositories &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Vale la pena mirar la pagina del &lt;a href=&quot;http://speedcurve.com/demo/&quot;&gt;demo&lt;/a&gt;, es interesante la forma en que muestran el tiempo de carga, el timeline donde se muestra como un sitio ya cargó mientras los otros aún mantienen la pagina en blanco algun tiempo más.&lt;/p&gt;
+&lt;p&gt;Those issues we had with zipped files, are now benefits. You can declare dependencies between packages on the file’s metadata. The command will enforce (and automatically resolve) those dependencies. The tools (whether &lt;code&gt;rpm&lt;/code&gt; or &lt;code&gt;apt-get&lt;/code&gt;) keep a log of actions (using the shared facility) so events can be tracked, all done by the system with no scripting from our side. The tools allow us to check available or installed versions. Upgrade can be done by running a single command, to the latest or to an specific version. Rolling back is as simple as declaring a previous version when installing a package.&lt;/p&gt;
 
-&lt;h1 id=&quot;sesiones&quot;&gt;Sesiones&lt;/h1&gt;
+&lt;p&gt;Besides, native packages can be instructed to executed certain actions, like creating or removing a user, a folder, or managing services. This actions will be declared for each of the following four states:&lt;/p&gt;
 
-&lt;h2 id=&quot;continuous-and-visible-security-testing-with-bdd-securityhttpvelocityconfcomvelocityeu2014publicscheduledetail37137&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37137&quot;&gt;Continuous and Visible Security Testing with BDD-Security&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;before the installation&lt;/li&gt;
+  &lt;li&gt;after the installation&lt;/li&gt;
+  &lt;li&gt;before the removal&lt;/li&gt;
+  &lt;li&gt;after the removal&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Interesante charla, mostrando un nuevo uso para las mismas técnicas y herramientas. En este caso, las tradicionales de BDD en el campo de la seguridad.&lt;/p&gt;
+&lt;p&gt;Native packages provide special handling for configuration files, those which usually reside on the &lt;code&gt;/etc&lt;/code&gt; directory (like init scripts).
+But there’s more. You can’t install the same file from two packages (try one zip file’s content not to overwrite another’s one). Want to know which package certain file came from? no problem. Some examples are presented below (debian/ubuntu):&lt;/p&gt;
 
-&lt;p&gt;Hay que partir de la seguridad como un ciudadano de primera clase en la aplicación. Luego, tenemos el problema de como aplicarla de manera más transparante y sencilla posible. &lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;How to check metadata &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; a package:
+&lt;span class=&quot;c&quot;&gt;# apt-cache info &amp;lt;package-name&amp;gt;&lt;/span&gt;
+How to install a package:
+&lt;span class=&quot;c&quot;&gt;# apt-get install &amp;lt;package-name&amp;gt; &lt;/span&gt;
+How to find a package: 
+&lt;span class=&quot;c&quot;&gt;# apt-cache search &amp;lt;pkg-name&amp;gt; &lt;/span&gt;
+Which files were installed by a package 
+&lt;span class=&quot;c&quot;&gt;# dpkg -L &amp;lt;package-name&amp;gt;&lt;/span&gt;
+Wich package installed that file? 
+&lt;span class=&quot;c&quot;&gt;# dpkg -S &amp;lt;fullpathfilename&amp;gt;&lt;/span&gt;
+Which versions are available &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; a package
+&lt;span class=&quot;c&quot;&gt;# apt-cache madison &amp;lt;package-name&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;Las herramientas presentadas en esta sesión son un paso en este sentido.&lt;/p&gt;
+&lt;h1 id=&quot;native-package-creation&quot;&gt;Native package creation&lt;/h1&gt;
 
-&lt;p&gt;Utilizando lenguaje natural, defines las reglas que quieres implementar y al ejecutar los tests, te aseguras de que las modificaciones en el código no introduzcan problemas de seguridad en la aplicación.&lt;/p&gt;
+&lt;p&gt;So, packages are a good fit for deploying code into servers. How can we create packages? &lt;/p&gt;
 
-&lt;p&gt;La ventaja de usar BDD es que las reglas quedan documentadas. &lt;/p&gt;
+&lt;p&gt;It’s complicated, but … meet &lt;a href=&quot;https://github.com/jordansissel/fpm&quot;&gt;fpm&lt;/a&gt; (a ruby gem). It helps you build packages quickly and easily (no kidding on this one!). &lt;/p&gt;
 
-&lt;p&gt;Se mostró un framework que integra todo el proceso. &lt;/p&gt;
+&lt;p&gt;Installing the tools is already simple, being a ruby gem is just a matter of executing:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://cdn.oreillystatic.com/en/assets/1/event/121/Continuous%20and%20Visible%20Security%20Testing%20with%20BDD-Security%20Presentation.pptx&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;gem install fpm&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;monitoring-the-math-behind-bad-behaviorhttpvelocityconfcomvelocityeu2014publicscheduledetail36976&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/36976&quot;&gt;Monitoring: The Math Behind Bad Behavior&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Building a package will only require declaring a source and an output like this:&lt;/p&gt;
 
-&lt;p&gt;Esta charla giró en torno al tema del manejo de datos, por ejemplo las trazas. Como las técnicas actuales manejan promedios de los datos cuando en realidad no es una buena idea, ya que por ejemplo, un pico puede quedar ignorado cuando se cacula el promedio entre un largo grupo de datos.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;fpm -s &amp;lt;&lt;span class=&quot;nb&quot;&gt;source type&lt;/span&gt;&amp;gt; -t &amp;lt;target &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&amp;gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;list of sources&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;..&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;design-reviews-for-operationshttpvelocityconfcomvelocityeu2014publicscheduledetail37146&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/37146&quot;&gt;Design Reviews for Operations&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;“Source type” is what your package is coming from; a directory (dir), a rubygem (gem), an rpm (rpm), a python package (python), a php pear module (pear), etc.&lt;/li&gt;
+  &lt;li&gt;“Target type” is what your output package form should be. Most common are “rpm” and “deb” but others exist (solaris, etc)&lt;/li&gt;
+  &lt;li&gt;list of sources will depend on the source type.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Un checklist de cosas que hay que tener en cuenta a la hora de desarrollar un producto que cubren el lado de operaciones y performance. No siempre tenidas en cuenta como parte del parte del proceso, por eso un checklist ahorra palabras y hace más fácil el proceso.&lt;/p&gt;
+&lt;h1 id=&quot;naming-schema&quot;&gt;Naming Schema&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://cdn.oreillystatic.com/en/assets/1/event/121/Design%20Reviews%20for%20Operations%20Presentation.zip&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It helps a lot to use a naming schema when creating native packages. Any schema wil work as long as it’s carefully thought of and enforce from the begining.&lt;/p&gt;
 
-&lt;h2 id=&quot;cognitive-biases-in-engineering-organizationshttpvelocityconfcomvelocityeu2014publicscheduledetail36806&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/36806&quot;&gt;Cognitive Biases in Engineering Organizations&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;One proposal can be the following&lt;/p&gt;
 
-&lt;p&gt;El cerebro humano esta condicionado en formas en las que uno no se percibe concientemente. La charla giró en torno a tres de esas preconcepciones que directamente afectan nuestro trabajo.&lt;/p&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&amp;lt;company-name&amp;gt;-&amp;lt;component-name&amp;gt;-&amp;lt;semver&amp;gt;-&amp;lt;branch&amp;gt;-&amp;lt;sha&amp;gt;-&amp;lt;serial&amp;gt;_&amp;lt;arch&amp;gt;.deb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;Fundamental Attribution Error&lt;/strong&gt; Es cuando le atribuimos a otros motivaciones sin una base real que las justifique, solo porque miramos la situacion desde nuestro punto de vista sin deternernos a considerar que pueden haber otras razones fuera de nuestro conocimiento que provocan el comportamiento o accion de la otra persona.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;company name. It’s easy just to type &lt;code&gt;dpkg -l &#39;company-name&#39;-*&lt;/code&gt; in order to check custom installed packages. It helps with the scripting.&lt;/li&gt;
+  &lt;li&gt;component name. Just the name of the package.&lt;/li&gt;
+  &lt;li&gt;semver. Semantic versioning, more on this in a bit.&lt;/li&gt;
+  &lt;li&gt;branch. Chances are you’re using some sort of code versioning tool. It helps enforcing deployment policies. Supose you deploy code from master branch in staging and production environments and from dev branch in testing. This will help avoid installing packages in the wrong environment.&lt;/li&gt;
+  &lt;li&gt;sha. If using git, this is the commit id.&lt;/li&gt;
+  &lt;li&gt;serial. It allows the creation of more than one package with the same code (branch and sha). When using jenkins to build packages, can be the &lt;code&gt;BUILD_NUMBER&lt;/code&gt; allowing easy access to the build which created that package.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Confirmation Bias&lt;/strong&gt; Es la tendencia que tenemos a prestarle mas atencion inconcientemente, a las cosas que justifican nuestros pensamientos o hipotesis. &lt;/p&gt;
+&lt;p&gt;Two words of advice:&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Hyperbolic Discounting&lt;/strong&gt; Es la tendencia a elegir cosas que nos ofrecen beneficios a corto plazo en vez de las que lo ofrecen a largo plazo, aún cuando el beneficio sea menor.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://semver.org/&quot;&gt;Semver&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Convention over configuration&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Si se sienten identificado con alguna de ellas, evítela :)&lt;/p&gt;
+&lt;p&gt;Semver works not only for proper package versioning but for helping enforce dependencies later on.&lt;/p&gt;
 
-&lt;p&gt;La charla esta publicada en el blog del autor &lt;a href=&quot;http://www.jonathanklein.net/2013/06/cognitive-biases-in-software-engineering.html&quot;&gt;enlace&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;It is almost certain that deployment scripts will parse package names at some point, enforce convention over configuration in order to avoid having to patch those scripts everytime a developer arrives with an odly named package. It will make you waste time but also important, will make him wait longer while we search for a ‘workaround’ instead of using the benefits of the already existing insfrastructure.&lt;/p&gt;
 
-&lt;h2 id=&quot;the-machine-is-dead-long-live-the-machine---service-resilience-and-deployment-automation-at-the-bbchttpvelocityconfcomvelocityeu2014publicscheduledetail36837&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/36837&quot;&gt;The Machine is Dead, Long Live the Machine! - Service Resilience and Deployment Automation at The BBC&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Last but not least. If the lenght of the package name cause any concerns, keep in mind it’s not supposed to be handled by humans,  but by automation tools. Readability works so we’re still good.&lt;/p&gt;
 
-&lt;p&gt;Interesante charla sobre la forma en que la BBC organizo su pipeline de deployment, desde los desarrolladores hasta produccion.&lt;/p&gt;
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
 
-&lt;p&gt;Miren las slides, vale la pena.&lt;/p&gt;
+&lt;p&gt;A tool was created to deal with the above scenario. A collection of yam files where you define variables and get a native package in return. Ansible is used as the glue, fpm for package creation and aptly for publishing the packages. 
+For input a plugable architecture allows for defining several sources, same for the output.&lt;/p&gt;
 
-&lt;p&gt;tl;dr: los desarrolladores comitean, los jenkins testean, se crean paquetes que se instalan en imagenes AMI. Se crean dos imagenes, una con el código de la aplicación y otra con el codigo de la aplicación y la configuración para el entorno de pruebas. Una vez que el código se prueba y esta listo para producción, se promueve. Se crea una imagen a partir de la que tenia el código de la aplicación, esta vez sumandole la configuración para produccion.&lt;/p&gt;
-
-&lt;p&gt;La configuración se maneja toda por separado de la aplicación e incluye tanto configuración de la aplicación en sí como de los servicios del sistema (apache, etc).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://cdn.oreillystatic.com/en/assets/1/event/121/The%20Machine%20is%20Dead,%20Long%20Live%20the%20Machine_%20-%20Service%20Resilience%20and%20Deployment%20Automation%20at%20The%20BBC%20Presentation.pdf&quot;&gt;Slides&lt;/a&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;your-place-or-mine-a-discussion-of-where-to-host-your-sitehttpvelocityconfcomvelocityeu2014publicscheduledetail39647&quot;&gt;&lt;a href=&quot;http://velocityconf.com/velocityeu2014/public/schedule/detail/39647&quot;&gt;Your Place or Mine: A Discussion of Where to Host Your Site&lt;/a&gt;&lt;/h2&gt;
-
-&lt;p&gt;Fue un panel donde se discutieron las ventajas y desventajas de hospedar un sitio en servidores físicos ó en la nube. &lt;/p&gt;
-
-&lt;p&gt;Conclusión: depende de cada caso.&lt;/p&gt;
+&lt;p&gt;Technologies such as docker, will complement this approach. What if you don’t need an rpm package for deploying code on a docker container? No problem, you had already a system in place capable of pulling the source from every component you have. That’s half the battle already won. Adding a layer to store the code in a container and publish it would only be as hard as adding an ansible playbook.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/velocity-barcelona-dia-1/&quot;&gt;Velocity Barcelona Dia 1&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on November 28, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/about-native-packages/&quot;&gt;About Native Packages&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on March 17, 2015.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -389,7 +489,8 @@ Muy sencillo e interesante, a tener en cuenta para los entornos de desarrollo.&l
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;from &lt;a href=&quot;http://docs.ansible.com/intro_inventory.html#splitting-out-host-and-group-specific-data&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;from &lt;a href=&quot;http://docs.ansible.com/intro_inventory.html#splitting-out-host-and-group-specific-data&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;In addition to the storing variables directly in the INI file, host and group variables can be stored in individual files relative to the inventory file.&lt;/p&gt;
 
@@ -483,7 +584,8 @@ localhost                  : ok=1    changed=0    unreachable=0    failed=0
   &lt;p&gt;Interesting fact: &lt;code&gt;ansible-playbook&lt;/code&gt; when provided a directory as the inventory, will search by default a file named inventory so no need to specify &lt;code&gt;-i production/inventory&lt;/code&gt;, only &lt;code&gt;-i production&lt;/code&gt; will work just fine.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/using-host-and-group-vars-files-in-ansible/&quot;&gt;Organizing Group Vars Files in Ansible&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on September 14, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/using-host-and-group-vars-files-in-ansible/&quot;&gt;Organizing Group Vars Files in Ansible&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on September 14, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -500,7 +602,8 @@ localhost                  : ok=1    changed=0    unreachable=0    failed=0
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;install-ansible-in-centos-5-3&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;install-ansible-in-centos-5-3&lt;/p&gt;
 
 &lt;p&gt;30 Jan 14 @ 14:48&lt;/p&gt;
 
@@ -542,7 +645,45 @@ ansible -i ~/ansible_hosts all -m ping
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;source bin/ansible/hacking/env-setup
 &lt;/code&gt;&lt;/pre&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/install-ansible-in-centos-5-3/&quot;&gt;Install Ansible in CentOS 5.3&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on September 14, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/install-ansible-in-centos-5-3/&quot;&gt;Install Ansible in CentOS 5.3&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on September 14, 2014.&lt;/p&gt;
+  </content>
+</entry>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Hello World]]></title>
+  <link rel="alternate" type="text/html" href="http://toja.io/hello-world/" />
+  <id>http://toja.io/hello-world</id>
+  <published>2014-08-08T16:39:55-03:00</published>
+  <updated>2014-08-08T16:39:55-03:00</updated>
+  <author>
+    <name>Osvaldo Toja</name>
+    <uri>http://toja.io</uri>
+    <email>osvaldo.toja@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+
+&lt;h2 id=&quot;sample-heading&quot;&gt;Sample Heading&lt;/h2&gt;
+
+&lt;h3 id=&quot;sample-heading-2&quot;&gt;Sample Heading 2&lt;/h3&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/hello-world/&quot;&gt;Hello World&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on August 08, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -559,7 +700,8 @@ ansible -i ~/ansible_hosts all -m ping
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;The bash way&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;The bash way&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;$ git log -n1 | grep commit | awk &#39;{print $2}&#39;
 fc77768a4f7c460be765012c9a04e9645e4520d2
@@ -581,7 +723,8 @@ fc77768a4f7c460be765012c9a04e9645e4520d2
 fc77768a4f7c460be7
 &lt;/code&gt;&lt;/pre&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/how-to-get-last-commit-hash-in-git/&quot;&gt;How to Get Last Commit Hash in Git&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on March 12, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/how-to-get-last-commit-hash-in-git/&quot;&gt;How to Get Last Commit Hash in Git&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on March 12, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -598,7 +741,8 @@ fc77768a4f7c460be7
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Parsing with regex is simple in coffescript. Just use the same syntax as &lt;a href=&quot;http://www.w3schools.com/jsref/jsref_obj_regexp.asp&quot;&gt;Javascript&lt;/a&gt; as shown below.&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;Parsing with regex is simple in coffescript. Just use the same syntax as &lt;a href=&quot;http://www.w3schools.com/jsref/jsref_obj_regexp.asp&quot;&gt;Javascript&lt;/a&gt; as shown below.&lt;/p&gt;
 
 &lt;p&gt;More info &lt;a href=&quot;http://coffeescriptcookbook.com/chapters/regular_expressions/heregexes&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
@@ -645,7 +789,8 @@ coffee&amp;gt; version
 coffee&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/parsing-in-coffescript/&quot;&gt;Parsing in Coffescript&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on February 26, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/parsing-in-coffescript/&quot;&gt;Parsing in Coffescript&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on February 26, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -662,7 +807,8 @@ coffee&amp;gt;
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Coffescript is quite easy.&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;Coffescript is quite easy.&lt;/p&gt;
 
 &lt;p&gt;The following code shows how to perform an http get request. The script will obtain the string value if exists, and will show an error if the http return code indicates the value doesn’t exist.&lt;/p&gt;
 
@@ -707,7 +853,8 @@ body: prod
 &lt;p&gt;As a bonus note check how the &lt;code&gt;console.log &quot;done!&quot;&lt;/code&gt; is executed before displaying the output from the request. That’s because of the asynchronous nature from the callback function  handling the request.&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/http-request-in-coffeescript/&quot;&gt;Http Requests in Coffeescript&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on February 26, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/http-request-in-coffeescript/&quot;&gt;Http Requests in Coffeescript&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on February 26, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -724,7 +871,8 @@ body: prod
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;One of the limitations for the opensource version of &lt;a href=&quot;http://www.jfrog.com/home/v_artifactory_opensource_overview&quot;&gt;Artifactory’s jfrog&lt;/a&gt; is notifications for newly added artifacts. We will provide a workaround to that issue.&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;One of the limitations for the opensource version of &lt;a href=&quot;http://www.jfrog.com/home/v_artifactory_opensource_overview&quot;&gt;Artifactory’s jfrog&lt;/a&gt; is notifications for newly added artifacts. We will provide a workaround to that issue.&lt;/p&gt;
 
 &lt;p&gt;Being an app running inside a tomcat container, a  quick inspection on the log file revealed new artifacts creation was being logged in. Below it’s an example taken from the log file.&lt;/p&gt;
 
@@ -772,7 +920,8 @@ output {
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/using-logstash-for-artifactory-notifications/&quot;&gt;Using Logstash for Artifactory Notifications&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on February 16, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/using-logstash-for-artifactory-notifications/&quot;&gt;Using Logstash for Artifactory Notifications&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on February 16, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -789,7 +938,8 @@ output {
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;This site was meant to be an static site (generated, of course). However, I found some issues with the generated site (links pointing to folder/index.html instead of just folder/) so the decision to run it behind an nginx server was made.&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;This site was meant to be an static site (generated, of course). However, I found some issues with the generated site (links pointing to folder/index.html instead of just folder/) so the decision to run it behind an nginx server was made.&lt;/p&gt;
 
 &lt;p&gt;Today ghost crashed:&lt;/p&gt;
 
@@ -831,7 +981,8 @@ osvaldo@li68-220:~$
 &lt;p&gt;To stop Ghost type &lt;code&gt;forever stop index.js&lt;/code&gt;&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/staying-alive-by-ghost/&quot;&gt;'Staying Alive' by Ghost&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on February 06, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/staying-alive-by-ghost/&quot;&gt;&#39;Staying Alive&#39; by Ghost&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on February 06, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -848,7 +999,8 @@ osvaldo@li68-220:~$
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Installation of pip will be done via &lt;code&gt;easy_install&lt;/code&gt;, a command provided by the setuptools package.&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;Installation of pip will be done via &lt;code&gt;easy_install&lt;/code&gt;, a command provided by the setuptools package.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;cd /var/tmp
 wget http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg --no-check-certificate
@@ -859,7 +1011,8 @@ sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
 &lt;p&gt;requires previous &lt;a href=&quot;/installing-python-2-7-in-centos-5-3/&quot;&gt;python 2.7 installation&lt;/a&gt;&lt;/p&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/installing-pip/&quot;&gt;Installing Pip&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 30, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/installing-pip/&quot;&gt;Installing Pip&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 30, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -876,12 +1029,14 @@ sh setuptools-0.6c11-py2.7.egg --prefix=/home/osvaldo/bin/python
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+  <content type="html">
+    &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
 sudo yum install git-core
 &lt;/code&gt;&lt;/pre&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/installing-git-in-centos-5-3/&quot;&gt;Installing Git in Centos 5.3&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 30, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/installing-git-in-centos-5-3/&quot;&gt;Installing Git in Centos 5.3&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 30, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -898,7 +1053,8 @@ sudo yum install git-core
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;Ansible requires python 2.6 or newer.
+  <content type="html">
+    &lt;p&gt;Ansible requires python 2.6 or newer.
 CentOS 5.3 comes with python 2.4, a version which is used by system tools like yum.
 In order to run ansible on older CentOS version, an alternative installation is provided below.
 The following commands will install Python 2.7 (check section for requirements below) in the user’s directory. No root access is required.&lt;/p&gt;
@@ -973,7 +1129,8 @@ Finished processing dependencies for setuptools==0.6c11
 &lt;/code&gt;&lt;/pre&gt;
 
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/installing-python-2-7-in-centos-5-3/&quot;&gt;Installing Python 2.7 in CentOS 5.3&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 29, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/installing-python-2-7-in-centos-5-3/&quot;&gt;Installing Python 2.7 in CentOS 5.3&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 29, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -990,7 +1147,8 @@ Finished processing dependencies for setuptools==0.6c11
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;
+  <content type="html">
+    &lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;
 https://ghost.org/download/
 
 git clone git@github.com:TryGhost/Ghost.git
@@ -1018,7 +1176,8 @@ buster deploy
 # nice! .... (no hice el setup)
 &lt;/code&gt;&lt;/pre&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/previewing-ghost-0-4/&quot;&gt;Previewing Ghost 0.4&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 11, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/previewing-ghost-0-4/&quot;&gt;Previewing Ghost 0.4&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 11, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -1035,7 +1194,8 @@ buster deploy
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;no matter how pretty ghost might be, proper display of code snippets is a must.&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;no matter how pretty ghost might be, proper display of code snippets is a must.&lt;/p&gt;
 
 &lt;p&gt;shell script&lt;/p&gt;
 
@@ -1053,7 +1213,8 @@ phpinfo();
 
 &lt;p&gt;hum… no coloring syntax. we’ll came back to that later on.&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/code-snippets/&quot;&gt;Code Snippets&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 01, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/code-snippets/&quot;&gt;Code Snippets&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 01, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 
@@ -1070,7 +1231,8 @@ phpinfo();
     <uri>http://toja.io</uri>
     <email>osvaldo.toja@gmail.com</email>
   </author>
-  <content type="html">&lt;p&gt;the long title for this post is: “Searching for a blogging tool that’s fun to use, easy, nice looking and a couple more of things”&lt;/p&gt;
+  <content type="html">
+    &lt;p&gt;the long title for this post is: “Searching for a blogging tool that’s fun to use, easy, nice looking and a couple more of things”&lt;/p&gt;
 
 &lt;p&gt;fun to use because boring stuff is … well, not fun to use. life’s too short so what’s the point in doing something you’re just not motivated to do in first place.
 easy because i’m lazy, you got me.
@@ -1078,7 +1240,8 @@ nice looking because let’s face it dudes, pretty matters, good things don’t 
 
 &lt;p&gt;will ghost fit the bill? let’s find out …&lt;/p&gt;
 
-  &lt;p&gt;&lt;a href=&quot;http://toja.io/oh-my-ghost/&quot;&gt;Oh My Ghost&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 01, 2014.&lt;/p&gt;</content>
+    &lt;p&gt;&lt;a href=&quot;http://toja.io/oh-my-ghost/&quot;&gt;Oh My Ghost&lt;/a&gt; was originally published by Osvaldo Toja at &lt;a href=&quot;http://toja.io&quot;&gt;toja.io&lt;/a&gt; on January 01, 2014.&lt;/p&gt;
+  </content>
 </entry>
 
 </feed>
