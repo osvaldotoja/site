@@ -1,4 +1,5 @@
 all: serve
+
 serve:
 	jekyll serve -c _config-dev.yml --watch
 
@@ -14,7 +15,7 @@ build:
 publish:
 	#ssh-add ~/.ssh/osvaldotoja
 	jekyll build
-	git add . ; git commit -am"site update" 
+	git commit -am"site update" 
 	git checkout gh-pages
 	rsync -av _site/* .
 	rm -fr _site/
