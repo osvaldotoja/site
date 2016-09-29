@@ -159,7 +159,7 @@ group-vars.yml
   gather_facts: False
 
   tasks:
-     - debug: msg="reading from "
+     - debug: msg="reading from {{env_name}}"
 </code></pre>
 
 <h2 id="files-in-production-directory">files in production directory</h2>
@@ -200,7 +200,7 @@ env_name: staging
 
 PLAY [all] ********************************************************************
 
-TASK: [debug msg="reading from {{env_name}}"] *********************************
+TASK: [debug msg="reading from "] *********************************
 ok: [localhost] =&gt; {
     "msg": "reading from staging"
 }
@@ -215,7 +215,7 @@ localhost                  : ok=1    changed=0    unreachable=0    failed=0
 
 PLAY [all] ********************************************************************
 
-TASK: [debug msg="reading from {{env_name}}"] *********************************
+TASK: [debug msg="reading from "] *********************************
 ok: [localhost] =&gt; {
     "msg": "reading from production"
 }
