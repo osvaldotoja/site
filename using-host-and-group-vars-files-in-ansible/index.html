@@ -200,7 +200,7 @@ env_name: staging
 
 PLAY [all] ********************************************************************
 
-TASK: [debug msg="reading from "] *********************************
+TASK: [debug msg="reading from {{env_name}}"] *********************************
 ok: [localhost] =&gt; {
     "msg": "reading from staging"
 }
@@ -215,7 +215,7 @@ localhost                  : ok=1    changed=0    unreachable=0    failed=0
 
 PLAY [all] ********************************************************************
 
-TASK: [debug msg="reading from "] *********************************
+TASK: [debug msg="reading from {{env_name}}"] *********************************
 ok: [localhost] =&gt; {
     "msg": "reading from production"
 }
